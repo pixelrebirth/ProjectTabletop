@@ -1,56 +1,56 @@
- 01-17:Alchemical item 
- 01-12:Alchemist’s fire (1d4 flasks, 20 gp each) 
- 13-24:Acid (2d4 flasks, 10 gp each) 
- 25-36:Smokesticks (1d4 sticks, 20 gp each) 
- 37-48:Holy water (1d4 flasks, 25 gp each) 
- 49-62:Antitoxin (1d4 doses, 50 gp each) 
- 63-74:Everburning torch 
- 75-88:Tanglefoot bags (1d4 bags, 50 gp each) 
- 89-00:Thunderstones (1d4 stones, 30 gp each) 
-..... 
- 18-35:Armor
- 01-12:Chain shirt (100 gp) 
- 13-18:Studded leather (25 gp) 
- 19-26:Breastplate (200 gp) 
- 27-34:Banded mail (250 gp) 
- 35-54:Half-plate (600 gp) 
- 55-80:Full plate (1,500 gp) 
- 81-90:Darkwood  
-.....
- 36-50:Shield  
- 01-17:Buckler (15 gp)  
- 18-40:Light wooden shield (3 gp)  
- 41-60:Light steel shield (9 gp)  
- 61-83:Heavy wooden shield (7 gp)  
- 84-00:Heavy steel shield (20 gp) 
-.....
- 51-83:Weapons 
- 01-50:Light melee weapon (10% Silver) 
- 51-70:One-Handed weapon (10% Silver) 
- 71-00:Ranged weapon (10% item or ammo (quantity 20) Silver) 
-.....
- 84-00:Tools and gear 
- 01-03:Backpack, empty (2 gp) 
- 04-06:Crowbar (2 gp) 
- 07-11:Lantern (12 gp) 
- 12-16:Lock, simple (20 gp) 
- 17-21:Lock, average (40 gp) 
- 22-28:Lock, good (80 gp) 
- 29-35:Lock, superior (150 gp) 
- 36-40:Manacles, masterwork (50 gp) 
- 41-43:Case, Scroll (1gp) 
- 44-46:Rope, silk (50 ft.) (10 gp) 
- 47-53:Spyglass (1,000 gp) 
- 54-58:Chain, 10 ft. (30gp) 
- 59-63:Grappling hook (1gp) 
- 64-68:Ink (8gp) 
- 69-73:Piton (1sp) 
- 74-77:Holy symbol, silver (25 gp) 
- 78-81:Pole, 10 ft. (2sp) 
- 82-88:Candle (1cp) 
- 89-95:Caltrops (1gp) 
- 96-00:Thieves’ tools (30 gp) 
------
+01:17:Alchemical item*
+18:35:Armor*
+36:50:Shield*
+51:83:Weapons*
+84:100:Tools and gear
+;
+01:24:Healing Potion (str+lvl)*
+25:36:Smokesticks (1d4 sticks, 20 gp each)*
+37:48:Holy water (1d4 flasks, 25 gp each)*
+49:62:Antitoxin (1d4 doses, 50 gp each)*
+63:74:Everburning torch*
+75:88:Tanglefoot bags (1d4 bags, 50 gp each)*
+89:100:Thunderstones (1d4 stones, 30 gp each)*
+;
+01:12:Chain shirt (100 gp)*
+13:18:Studded leather (25 gp)*
+19:26:Breastplate (200 gp)*
+27:34:Banded mail (250 gp)*
+35:54:Half-plate (600 gp)*
+55:80:Full plate (1,500 gp)*
+81:90:Darkwood (reroll cost x 1.5)*
+;
+01:17:Buckler (15 gp)*
+18:40:Light wooden shield (3 gp)*
+41:60:Light steel shield (9 gp)*
+61:83:Heavy wooden shield (7 gp)*
+84:100:Heavy steel shield (20 gp)*
+;
+01:50:Light melee weapon (10% Silver)*
+51:70:One-Handed weapon (10% Silver)*
+71:100:Ranged weapon (10% item or ammo (quantity 20) Silver)*
+;
+01:03:Backpack, empty (2 gp)*
+04:06:Crowbar (2 gp)*
+07:11:Lantern (12 gp)*
+12:16:Lock, simple (20 gp)*
+17:21:Lock, average (40 gp)*
+22:28:Lock, good (80 gp)*
+29:35:Lock, superior (150 gp)*
+36:40:Manacles, masterwork (50 gp)*
+41:43:Case, Scroll (1gp)*
+44:46:Rope, silk (50 ft.) (10 gp)*
+47:53:Spyglass (1,000 gp)*
+54:58:Chain, 10 ft. (30gp)*
+59:63:Grappling hook (1gp)*
+64:68:Ink (8gp)*
+69:73:Piton (1sp)*
+74:77:Holy symbol, silver (25 gp)*
+78:81:Pole, 10 ft. (2sp)*
+82:88:Candle (1cp)*
+89:95:Caltrops (1gp)*
+96:100:Thieves’ tools (30 gp)*
+**--
  Magic Items 
    Roll to determine type of magic item found. 
 Roll Item Type 1-3 Armor* 4-6 Shield* 7-9 Weapon** 10-11 Potion**** 12 Ring 13 Rod 14-15 Scroll**** 16 Staff 17-18 Wand**** 19-20 Wondrous Item*** 
@@ -162,7 +162,7 @@ D%
 Coins (1d8x) 
 Quantity of Art, Gems, Mundane, Magic found 
 Art Gems Mundane Magic (+3)** 
- 00-10 -- 1d6 55%-75%* 55%-75%* -- 55%-75%* 11-15 10,000sp *Start at 55% for 11th level and add a +5% chance to each for every level, i.e. 12th level 60% @ 13th  65%, etc. 16-74 1,000gp **Magic – If a Magic Item is rolled make another D% roll to see if the item has a higher magic bonus, 10% (+4). Roll individually for each Power. If Magic item is +4 roll again 5% (+5) for each Power. 75 -00 100pp 
+00-10 -- 1d6 55%-75%* 55%-75%* -- 55%-75%* 11-15 10,000sp *Start at 55% for 11th level and add a +5% chance to each for every level, i.e. 12th level 60% @ 13th  65%, etc. 16-74 1,000gp **Magic – If a Magic Item is rolled make another D% roll to see if the item has a higher magic bonus, 10% (+4). Roll individually for each Power. If Magic item is +4 roll again 5% (+5) for each Power. 75 -00 100pp 
 
 Level 16-20 
 D% 
@@ -170,7 +170,7 @@ Coins (1d10)
 Quantity of Art, Gems, Mundane, Magic found 
 Art Gems Mundane Magic (+4)** 
 00-05 -- 1d8 80%-100%* 80%-100%* -- 80%-100%* 06-68 10,000gp *Start at 80% for 16th level and add a +5% chance to each for every level, i.e. 17th level 85%, 18th 90%, etc. 69-00 1,000pp **Magic – If a Magic Item is rolled make another D% roll to see if the item has a higher magic bonus, 10% (+5). Roll individually for each Power.
-----
+*-
 
 d% Value Average Examples 
 01-10 1d10 × 10 gp 55 gp 
@@ -203,4 +203,4 @@ Alexandrite; aquamarine; violet garnet; black pearl; deep blue spinel; golden ye
 Emerald; white, black, or fire opal; blue sapphire; fiery yellow or rich purple corundum; blue or black star sapphire; star ruby 
 100 2d4 × 1,000 gp 5,000 gp 
 Clearest bright green emerald; blue-white, canary, pink, brown, or blue diamond; jacinth 
------
+*--
