@@ -1,0 +1,154 @@
+**--
+ Magic Items 
+   Roll to determine type of magic item found. 
+Roll Item Type 1-3 Armor* 4-6 Shield* 7-9 Weapon** 10-11 Potion**** 12 Ring 13 Rod 14-15 Scroll**** 16 Staff 17-18 Wand**** 19-20 Wondrous Item*** 
+ 
+   Roll for the items power or powers. 
+ 
+Roll Power 1-2 ___of Power =+1Str 3-4 ___of Speed =+1Dex 5-6 ___of Wisdom =+1Mind 7-8 ___of Endurance =+1Phys 9-10 ___of Shadow =+1 Sub 11-12 ___of Brilliance =+1Know 13-14 ___of Tongues =+1Com 15-16 ___of Life =+1HP (per level) 17-18 ___of Armor =+1AC 
+19 
+___of _"spell name"_ =an item with 1d10 charges of whatever spell the GM decides 
+20 
+Roll again on table, and then roll once more. 
+ 
+   Use the following tables to determine type of armor, shield or weapon. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Armor 
+ 
+Roll Armor 1-2 Padded 3-4 Leather 5-6 Studded Leather 7-8 Chain Shirt 
+9-10 Hide 11-12 Scale Mail 13-14 Chainmail 15-16 Breastplate 
+17 Splint Mail 18 Banded Mail 19 Half-Plate 20 Full Plate 
+ 
+Shields 
+ 
+Roll Shield 1-3 Buckler 4-8 Shield, Light Wooden 9-11 Shield, Light Steel 
+12-16 Shield, Heavy Wooden 17-19 Shield, Heavy Steel 20 Shield, Tower 
+ 
+Light Weapons 
+ 
+Roll Light Weapons 1-2 Axe, Throwing 3-5 Dagger 6-7 Hammer, Light 8-9 Handaxe 10-11 Mace, Light 12-13 Pick, Light 14-15 Sap 16-17 Sickle 18-20 Shortsword 
+ 
+ 
+ 
+ 
+ 
+  
+30 
+ 
+One-Handed Weapons 
+ 
+Roll Weapon 1 Battleaxe 2-3 Club 4 Flail 5-6 Longsword 7-8 Mace, Heavy 9-10 Morningstar 11 Pick, Heavy 12-13 Rapier 14-15 Scimitar 16-17 Shortspear 18 Sword, Bastard 19 Trident 20 Waraxe 
+ 
+Two-Handed Weapons 
+ 
+Roll Weapon 1 Chain, Spiked 2 Falchion 3-4 Flail, Heavy 5 Flamberge 6 Glaive 7 Greataxe 8-9 Greatclub 10-11 Greatsword 12 Guisarme 13 Halberd 14 Lance 15 Longspear 16-17 Quarterstaff 18 Scythe 19-20 Spear 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Ranged Weapons 
+ 
+Roll Weapon 1-2 Crossbow, Hand 3-4 Crossbow, Heavy 5-6 Crossbow, Light 7-8 Dart 9-10 Javelin 11-12 Longbow 13-14 Net 15-17 Shortbow 18-20 Sling 
+
+Treasure and Magic Item Values/Cost 
+ 
+   Every item on the treasure and magic items tables will have a value, assigned by the table, or a base cost which can be found in the equipment section. 
+ 
+   Additional value or costs for special properties are listed below.  
+ 
+For Properties; __ of Power, __ of Speed, __ of Wisdom, __ of Life, __ of Armor* Bonus Additional Cost/Value +1 1,000gp +2 4,000gp +3 9,000gp +4 16,000gp +5 25,0000gp * Non-armor items with a permanent (no charges) “__ of Armor” property are double the cost/value. 
+ 
+For Properties; __ of Endurance, __ of Shadow Bonus Additional Cost/Value +1 500gp +2 2,000gp +3 4,500gp +4 8,000gp +5 12,500gp 
+ 
+For Properties; __ of Brilliance, __ of Tongues Bonus Additional Cost/Value +1 250gp +2 1,000gp +3 2.250gp +4 4,000gp +5 6,250gp 
+ 
+Silver Items Type Additional Cost/Value Ammunition 2gp Light Weapon 20gp One-Handed Weapon 90gp Two-Handed Weapon 180gp 
+ 
+ 
+ 
+Mithril Type Additional Cost/Value Light Armor 1,000gp Medium Armor 4,000gp Heavy Armor 9,000gp Shield 1,000gp Other Items 500gp/lb. 
+ 
+Cold Iron Type Additional Cost/Value Any Item x2 its Cost Item Magical 2,000gp 
+ 
+Darkwood Type Additional Cost/Value Any Wooden Item 10gp/lb. 
+ 
+Dragonhide Type Additional Cost/Value Light Armor 2,500gp Medium Armor 5,000gp Heavy Armor 7,500gp Shield 2,500gp 
+ 
+Adamantine Type Additional Cost/Value Ammunition 60gp Light Armor 5,000gp Medium Armor 10,000gp Heavy Armor 15,000gp Weapon 3,000gp Shield 2,000gp 
+ 
+Spells* Level Cost/Value Level Cost/Value 0 12gp 5 1,125gp 1 25gp 6 1,650gp 2 150gp 7 2,275gp 3 375gp 8 3,000gp 4 700gp 9 3,825gp *Items with 1d10 charges. 
+
+Level 1-5 
+D% 
+Coins (1d4x) 
+Quantity of Art, Gems, Mundane, Magic found 
+Art Gems Mundane Magic (+1)** 
+00-10 -- 1 5%-25%* 5%-25%* 5%-25%* 5%-25%* 11-20 1,000cp *Start at 5% for 1st level and add +5% chance to each for every level, i.e. 2nd level 10%, 3rd 15%, etc. 21-40 100sp **Magic – If a Magic Item is rolled make another D% roll to see if the item has a higher magic bonus, 10% (+2). Roll individually for each Power. If Magic item is +2 roll again 5% (+3) for each Power. 41-95 10gp 96-00 1pp 
+
+Level 6-10 
+D% 
+Coins (1d6x) 
+Quantity of Art, Gems, Mundane, Magic found 
+Art Gems Mundane Magic (+2)**  
+00-10 -- 1d4 30%-50%* 30%-50%* 30%-50%* 30%-50%* 11-15 10,000cp *Start at 30% for 6th level and add +5% chance to each for every level, i.e. 3rd level 35%, 4th 40%, etc. 16-30 1,000sp **Magic – If a Magic Item is rolled make another D% roll to see if the item has a higher magic bonus, 10% (+3). Roll individually for each Power. If Magic item is +3 roll again 5% (+4) for each Power. 31-89 100gp 90-00 10pp 
+
+Level 11-15 
+D% 
+Coins (1d8x) 
+Quantity of Art, Gems, Mundane, Magic found 
+Art Gems Mundane Magic (+3)** 
+00-10 -- 1d6 55%-75%* 55%-75%* -- 55%-75%* 11-15 10,000sp *Start at 55% for 11th level and add a +5% chance to each for every level, i.e. 12th level 60% @ 13th  65%, etc. 16-74 1,000gp **Magic – If a Magic Item is rolled make another D% roll to see if the item has a higher magic bonus, 10% (+4). Roll individually for each Power. If Magic item is +4 roll again 5% (+5) for each Power. 75 -00 100pp 
+
+Level 16-20 
+D% 
+Coins (1d10) 
+Quantity of Art, Gems, Mundane, Magic found 
+Art Gems Mundane Magic (+4)** 
+00-05 -- 1d8 80%-100%* 80%-100%* -- 80%-100%* 06-68 10,000gp *Start at 80% for 16th level and add a +5% chance to each for every level, i.e. 17th level 85%, 18th 90%, etc. 69-00 1,000pp **Magic – If a Magic Item is rolled make another D% roll to see if the item has a higher magic bonus, 10% (+5). Roll individually for each Power.
+*-
+
+d% Value Average Examples 
+01-10 1d10 × 10 gp 55 gp 
+Silver ewer; carved bone or ivory statuette; finely wrought small gold bracelet 
+11-25 3d6 × 10 gp 105 gp 
+Cloth of gold vestments; black velvet mask with numerous citrines; silver chalice with lapis lazuli gems 26-40 1d6 × 100 gp 350 gp Large well-done wool tapestry; brass mug with jade inlays 
+41-50 1d10 × 100 gp 550 gp 
+Silver comb with moonstones; silver-plated steel longsword with jet jewel in hilt 
+51-60 2d6 × 100 gp 700 gp 
+Carved harp of exotic wood with ivory inlay and zircon gems; solid gold idol (10 lb.) 
+61-70 3d6 × 100 gp 1,050 gp 
+Gold dragon comb with red garnet eye; gold and topaz bottle stopper cork; ceremonial electrum dagger with a star ruby in the pommel 
+71-80 4d6 × 100 gp 1,400 gp 
+Eye patch with mock eye of sapphire and moonstone; fire opal pendant on a fine gold chain; old masterpiece painting 
+81-85 5d6 × 100 gp 1,750 gp 
+Embroidered silk and velvet mantle with numerous moonstones; sapphire pendant on gold chain 86-90 1d4 × 1,000 gp 2,500 gp Embroidered and bejeweled glove; jeweled anklet; gold music box 91-95 1d6 × 1,000 gp 3,500 gp Golden circlet with four aquamarines; a string of small pink pearls (necklace) 96-99 2d4 × 1,000 gp 5,000 gp Jeweled gold crown; jeweled electrum ring 100 2d6 × 1,000 gp 7,000 gp Gold and ruby ring; gold cup set with emeralds 
+ 
+Gems 
+ 
+d% Value Average Examples 
+01-25 4d4 gp 10 gp 
+Banded, eye, or moss agate; azurite; blue quartz; hematite; lapis lazuli; malachite; obsidian; rhodochrosite; tiger eye turquoise; freshwater (irregular) pearl 
+26-50 2d4 × 10 gp 50 gp 
+Bloodstone; carnelian; chalcedony; chrysoprase; citrine; iolite, jasper; moonstone; onyx; peridot; rock crystal (clear quartz); sard; sardonyx; rose, smoky, or star rose quartz; zircon 
+51-70 4d4 × 10 gp 100 gp 
+Amber; amethyst; chrysoberyl; coral; red or brown-green garnet; jade; jet; white, golden, pink, or silver pearl; red spinel, red-brown or deep green spinel; tourmaline 
+71-90 2d4 × 100 gp 500 gp 
+Alexandrite; aquamarine; violet garnet; black pearl; deep blue spinel; golden yellow topaz 
+91-99 4d4 × 100 gp 1,000 gp 
+Emerald; white, black, or fire opal; blue sapphire; fiery yellow or rich purple corundum; blue or black star sapphire; star ruby 
+100 2d4 × 1,000 gp 5,000 gp 
+Clearest bright green emerald; blue-white, canary, pink, brown, or blue diamond; jacinth 
+*--

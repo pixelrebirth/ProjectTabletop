@@ -1,26 +1,27 @@
 param(
     $Type,
-    [switch]$ManualRollMode
+    [switch]$ManualRollMode,
+    $level = 7
 )
 function roll {
     param($dice)
     $splitDice = $dice -split("d")
     $count = [int]$splitDice[0]
     $sides = [int]$splitDice[1]
-    (1..$count | ForEach-Object {Get-Random -min 1 -max ($sides+1)} | Measure-Object -sum).sum
+    return (1..$count | ForEach-Object {Get-Random -min 1 -max ($sides+1)} | Measure-Object -sum).sum
 }
 
 function Get-Treasure {
     param($Type, $TreasureParsed)
+    $MundaneParsed = $TreasureParsed[0].split(";")
     switch ($Type) {
-        mundane { 
-            $MundaneParsed = $TreasureParsed[0].split(";")
+        "mundane" { 
             function SubRoll ([int]$intArray) {
                 $roll = roll 1d100
-                $MundaneParsed[$intArray] | foreach {
+                $MundaneParsed[$intArray].split('*') | foreach {
                     $each = $_.split(":")
                     if(($each[0]..$each[1]) -match $roll){
-                        return $each[3]
+                        return $each[2]
                     }
                 }
             }
@@ -34,14 +35,14 @@ function Get-Treasure {
                 "Tools and gear" {SubRoll -intArray 5}
             }
             
-            $OutputTreasure = [PSCustomObject]@{
-                Type = $MundaneParsed[0]
-                Treasure = $Choice[1]
-            }
+            # $OutputTreasure = [PSCustomObject]@{
+            #     Type = $MundaneParsed[0]
+            #     Treasure = $Choice[1]
+            # }
          }
-         gems    { }
-         art     { }
-         magic   { }
+         "gems"    { }
+         "art"     { }
+         "magic"   { }
     }
 }
 
@@ -54,9 +55,11 @@ foreach ($eachType in $TreasureTypes){
         Get-Treasure -Type "mundane" -TreasureParsed $TreasureParsed
     }
 }
-$CoinsMax = (roll "1d$([int]($level / 2))") * ([math]::floor(($level / 5)) + 1) * 100
+
+$CoinSides = [int]($level / 2)
+$CoinsMax = (roll "1d$CoinSides") * ([math]::floor(($level / 5)) + 1) * 100
 $CoinsMin = $CoinsMax * .75
-$Coins =  [int](Get-Random -min $CoinsMin -max $CoinsMax)
+"$([int](Get-Random -min $CoinsMin -max $CoinsMax)) coins"
 
 
 # foreach type in @(magic,mundane,gems,art) if (1d100 > (100 - (level * 5)){roll on typechart}
