@@ -1,37 +1,37 @@
-01:17:Alchemical item*
+01:17:Alchemical*
 18:35:Armor*
 36:50:Shield*
 51:83:Weapons*
-84:100:Tools and gear*
+84:100:Tools*
 -----
-01:24:Healing Potion (str Score + lvl)*
-25:36:Smokesticks (1d4 sticks, 20 gp each)*
-37:48:Holy water (1d4 flasks, 25 gp each)*
-49:62:Antitoxin (1d4 doses, 50 gp each)*
+01:24:Healing Potion (STR Score + lvl)*
+25:36:Smokesticks (1d4 sticks)*
+37:48:Holy water (1d4 flasks)*
+49:62:Antitoxin (1d4 doses)*
 63:74:Everburning torch*
-75:88:Tanglefoot bags (1d4 bags, 50 gp each)*
-89:100:Thunderstones (1d4 stones, 30 gp each)*
+75:88:Tanglefoot bags (1d4 bags)*
+89:100:Thunderstones (1d4 stones)*
 -----
-01:03:Empty Backpack (2 gp)*
-04:06:Crowbar (2 gp)*
-07:11:Lantern (12 gp)*
-12:16:Simple Lock (20 gp)*
-17:21:Average Lock (40 gp)*
-22:28:Good Lock (80 gp)*
-29:35:Superior Lock (150 gp)*
-36:40:Masterwork Manacles (50 gp)*
-41:43:Scroll Case (1gp)*
-44:46:Silk Rope (50 ft.) (10 gp)*
-47:53:Spyglass (1,000 gp)*
-54:58:10 ft. Chain (30gp)*
-59:63:Grappling hook (1gp)*
-64:68:Ink (8gp)*
-69:73:Piton (1sp)*
-74:77:Holy symbol, silver (25 gp)*
-78:81:10 ft. Pole (2sp)*
-82:88:Candle (1cp)*
-89:95:Caltrops (1gp)*
-96:100:Thieves’ tools (30 gp)
+01:03:Empty Backpack*
+04:06:Crowbar*
+07:11:Lantern*
+12:16:Simple Lock*
+17:21:Average Lock*
+22:28:Good Lock*
+29:35:Superior Lock*
+36:40:Masterwork Manacles*
+41:43:Scroll Case*
+44:46:Silk Rope (50 ft.)*
+47:50:Spyglass*
+51:58:10 ft. Chain*
+59:63:Grappling hook*
+64:68:Ink*
+69:73:Piton*
+74:77:Silver Holy Symbol*
+78:81:10 ft. Pole*
+82:88:Candle*
+89:95:Caltrops*
+96:100:Thieves' tools
 -----
 1:2:Padded*
 3:4:Leather*
@@ -47,7 +47,7 @@
 20:20:Full Plate
 -----
 1:3:Buckler*
-4:8:, Light Wooden Shield*
+4:8:Light Wooden Shield*
 9:11:Light Steel Shield*
 12:16:Heavy Wooden Shield*
 17:19:Heavy Steel Shield*
@@ -103,25 +103,23 @@
 15:17:Shortbow*
 18:20:Sling
 -----
-1:3:Armor*
-4:6:Shield*
-7:9:Weapon*
-10:11:Potion
-12:12:Ring
-13:13:Rod*
-14:15:Scroll
-16:16:Staff*
-17:18:Wand*
-19:20:Wondrous Item (Eberron google site item list)
+1:4:Armor*
+5:6:Shield*
+7:11:Weapon*
+12:12:Ring*
+13:13:Amulet*
+14:15:Scroll*
+16:17:Tool*
+18:18:Alchemical*
+19:20:Wondrous Item
 -----
-1:2:___of Power =+1Str*
-3:4:___of Speed =+1Dex*
-5:6:___of Wisdom =+1Mind*
-7:8:___of Endurance =+1Phys*
-9:10:___of Shadow =+1 Sub*
-11:12:___of Brilliance =+1Know*
-13:14:___of Tongues =+1Com*
-15:16:___of Life =+1HP (per level)*
-17:18:___of Armor =+1AC*
-19:19:___of _"spell name"_ =an item with 1d10 charges of whatever spell the GM decides*
-20:20:Roll again on table, and then roll once more.
+1:2:of Power*
+3:4:of Speed*
+5:6:of Wisdom*
+7:8:of Endurance*
+9:10:of Shadow*
+11:12:of Brilliance*
+13:14:of Tongues*
+15:16:of Hunting*
+17:18:of Armor*
+19:20:of Heroism*
