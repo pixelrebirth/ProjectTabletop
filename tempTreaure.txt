@@ -229,3 +229,9 @@ Emerald; white, black, or fire opal; blue sapphire; fiery yellow or rich purple 
 100 2d4 × 1,000 gp 5,000 gp 
 Clearest bright green emerald; blue-white, canary, pink, brown, or blue diamond; jacinth 
 *--
+
+Wonderous Items: 
+$get = invoke-restmethod -uri 'https://sites.google.com/site/eberronpathfinder/conversion-info/magic
+al-items/wondrous-items/altar-of-resurrection'
+((($get -split("\n")) | ? {$_ -match "Description:"}) -split ("\<|\>") | ? {$_.length -gt 5 -and $_
+-notmatch "\=|\/"}) -join (" ")

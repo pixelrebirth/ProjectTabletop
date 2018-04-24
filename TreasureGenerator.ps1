@@ -1,9 +1,10 @@
 class Treasure {
     $Level
     $Gold
-    $TreasureParsed
     [System.Collections.ArrayList]$Items
-    [Bool]$ManualRollMode = $false
+    hidden $TreasureParsed
+    hidden [Bool]$ManualRollMode = $false
+    hidden $LastType
     
     Treasure ($Level) {
         $this.Items = New-Object System.Collections.ArrayList
@@ -37,14 +38,13 @@ class Treasure {
         }
     }
 
-    [void] GetParse ([int]$ArrayInt,[int]$TreasureInt) {
+    [void] GetParse ([int]$ArrayInt) {
         $roll = $this.roll("1d100")
-        $SectionParsed = $this.TreasureParsed[$TreasureInt].split(";")
-        $SectionParsed[$ArrayInt].split('*') | foreach {
+        $this.TreasureParsed[$ArrayInt].split('*') | foreach {
             $each = $_.split(":")
             if(($each[0]..$each[1]) -match $roll){
-                if ($ArrayInt -eq 0 -AND $TreasureInt -eq 0){
-                    return $each[2]
+                if ($ArrayInt -eq 0){
+                    $this.LastType = $each[2]
                 }
                 else {
                     $this.items.Add($each[2])
@@ -54,22 +54,27 @@ class Treasure {
     }
 
     [void] GetMundane () {     
-        $type = $this.GetParse(0,0)
-        switch ($type) {
-            "Alchemical item" {$this.GetParse(1,0)}
-            "Armor" {$this.GetParse(2,0)}
-            "Shield" {$this.GetParse(3,0)}
-            "Weapons" {$this.GetParse(4,0)}
-            "Tools and gear" {$this.GetParse(5,0)}
+        $this.GetParse(0)
+        switch ($this.LastType) {
+            "Alchemical item" {$this.GetAlchemical()}
+            "Armor" {$this.GetArmor()}
+            "Shield" {$this.GetWeapon()}
+            "Weapons" {$this.GetShield()}
+            "Tools and gear" {$this.GetTools()}
         }
     }
     [void] GetMagic () {}
     [void] GetGem () {}
     [void] GetArt () {}
     
-    [void] GetArmor () {}
-    [void] GetWeapon () {}
-    [void] GetShield () {}
+    [void] GetAlchemical () {$this.GetParse(1)}
+    [void] GetTools () {$this.GetParse(2)}
+    [void] GetArmor () {$this.GetParse(3)}
+    [void] GetShield () {$this.GetParse(4)}
+    [void] GetWeapon () {
+        $int = Get-Random -min 5 -max 9
+        $this.GetParse($int)
+    }
 
     [void] GetGold () {
         $CoinSides = "1d$([int]($This.level / 2))"
@@ -79,4 +84,4 @@ class Treasure {
     }
 }
 
-[treasure]::new(10)
+[treasure]::new(20)
