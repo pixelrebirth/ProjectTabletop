@@ -15,8 +15,27 @@ class Treasure {
 
         foreach ($eachType in $TreasureTypes){
             $d100roll = $this.roll("1d100")
-            if ($d100roll -gt (100 - ($this.level * 5))){
-                $This.GetTreasure($eachType)
+            switch ($eachType) {
+                "mundane"  {
+                    if ($d100roll -gt (50 - ($this.level * 5))){
+                        $This.GetTreasure($eachType)
+                    } 
+                }
+                "gems"    {
+                    if ($d100roll -gt (60 - ($this.level * 5))){
+                        $This.GetTreasure($eachType)
+                    } 
+                }
+                "art"     {
+                    if ($d100roll -gt (70 - ($this.level * 5))){
+                        $This.GetTreasure($eachType)
+                    } 
+                }
+                "magic"   {
+                    if ($d100roll -gt (80 - ($this.level * 5))){
+                        $This.GetTreasure($eachType)
+                    } 
+                }
             }
         }
 
@@ -47,7 +66,7 @@ class Treasure {
 
         $this.TreasureParsed[$ArrayInt].split('*') | foreach {
             $each = $_.split(":")
-            if(($each[0]..$each[1]) -match $roll){
+            if(($each[0]..$each[1]) -match "^$roll$"){
                 if ($ArrayInt -match "^0$|^9$"){
                     $this.LastType = $each[2]
                 }
@@ -56,7 +75,6 @@ class Treasure {
                 }
                 else {
                     $this.items.Add($each[2])
-                    start-sleep -Milliseconds 10
                 }
             }
         }
@@ -67,53 +85,60 @@ class Treasure {
         switch ($this.LastType) {
             "Alchemical" {$this.GetAlchemical()}
             "Armor" {$this.GetArmor()}
-            "Shield" {$this.GetWeapon()}
-            "Weapons" {$this.GetShield()}
-            "Tools" {$this.GetTools()}
+            "Shield" {$this.GetShield()}
+            "Weapon" {$this.GetWeapon()}
+            "Tool" {$this.GetTool()}
         }
+        $this.LastType = $null
     }
     [void] GetMagic () {
         $this.GetParse(9)
         $this.GetParse(10)
+        $plus = ([math]::floor(($this.level / 5)) + 1)
+
         switch ($this.LastType){
             "Alchemical" {
                 $this.GetAlchemical()
-                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
+                $this.SetMagicItem()
             }
             "Armor" {
                 $this.GetArmor()
-                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
+                $this.SetMagicItem()
             }
             "Shield" {
-                $this.GetWeapon()
-                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
+                $this.GetShield()
+                $this.SetMagicItem()
             }
             "Weapon" {
-                $this.GetShield()
-                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
+                $this.GetWeapon()
+                $this.SetMagicItem()
             }
             "Tool" {
-                $this.GetTools()
-                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
+                $this.GetTool()
+                $this.SetMagicItem()
             }
-            "Ring" {}
-            "Amulet" {}
-            "Scroll" {}
-            "Wonderous Item" {}
+            "Ring" {$this.items.add("Ring $($this.ofQuality) + $plus")}
+            "Amulet" {$this.items.add("Amulet $($this.ofQuality) + $plus")}
+            "Scroll" {$this.items.add("Scroll $($this.ofQuality) + $plus")}
+            "Wonderous Item" {$this.items.add("Wonderous Item $($this.ofQuality) + $plus")}
         }
+        $this.LastType = $null
     }
-    [void] GetGem () {}
-    [void] GetArt () {}
+    [void] GetGem () {$this.items.Add("Gem")}
+    [void] GetArt () {$this.items.Add("Art")}
     
     [void] GetAlchemical () {$this.GetParse(1)}
-    [void] GetTools () {$this.GetParse(2)}
+    [void] GetTool () {$this.GetParse(2)}
     [void] GetArmor () {$this.GetParse(3)}
     [void] GetShield () {$this.GetParse(4)}
     [void] GetWeapon () {
         $int = Get-Random -min 5 -max 9
         $this.GetParse($int)
     }
-
+    [void] SetMagicItem () {
+        $plus = ([math]::floor(($this.level / 5)) + 1)
+        $this.items[-1] = "$($this.items[-1]) $($this.ofQuality) + $plus"
+    }
     [void] GetGold () {
         $CoinSides = "1d$([int]($this.level / 2))"
         $CoinsMax = $this.roll($CoinSides) * ([math]::floor(($this.level / 5)) + 1) * 100
@@ -122,4 +147,7 @@ class Treasure {
     }
 }
 
-[treasure]::new(20)
+$all = 1..1000 | % {[treasure]::new(2)}
+$all.items
+($all.items | ? {$_ -match "\+"}).count
+$all.items.count

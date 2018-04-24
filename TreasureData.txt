@@ -1,8 +1,8 @@
-01:17:Alchemical*
-18:35:Armor*
-36:50:Shield*
-51:83:Weapons*
-84:100:Tools*
+01:20:Alchemical*
+21:40:Armor*
+41:49:Shield*
+50:80:Weapon*
+81:100:Tool*
 -----
 01:24:Healing Potion (STR Score + lvl)*
 25:36:Smokesticks (1d4 sticks)*
@@ -33,11 +33,11 @@
 89:95:Caltrops*
 96:100:Thieves' tools
 -----
-1:2:Padded*
+1:2:Padded Leather*
 3:4:Leather*
 5:6:Studded Leather*
 7:8:Chain Shirt*
-9:10:Hide*
+9:10:Hide Armor*
 11:12:Scale Mail*
 13:14:Chainmail*
 15:16:Breastplate*
@@ -58,7 +58,7 @@
 6:7:Light Hammer*
 8:9:Handaxe*
 10:11:Light Mace*
-12:13:Light Pick*
+12:13:Light Pickaxe*
 14:15:Sap*
 16:17:Sickle*
 18:20:Shortsword
@@ -69,7 +69,7 @@
 5:6:Longsword*
 7:8:Heavy Mace*
 9:10:Morningstar*
-11:11:Heavy Pick*
+11:11:Heavy Pickaxe*
 12:13:Rapier*
 14:15:Scimitar*
 16:17:Shortspear*
@@ -104,8 +104,8 @@
 18:20:Sling
 -----
 1:4:Armor*
-5:6:Shield*
-7:11:Weapon*
+5:5:Shield*
+6:11:Weapon*
 12:12:Ring*
 13:13:Amulet*
 14:15:Scroll*
@@ -121,5 +121,6 @@
 11:12:of Brilliance*
 13:14:of Tongues*
 15:16:of Hunting*
-17:18:of Armor*
-19:20:of Heroism*
+17:18:of Hardening*
+19:19:of Heroism*
+20:20:of Gutting*
