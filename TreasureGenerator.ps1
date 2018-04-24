@@ -48,11 +48,11 @@ class Treasure {
         $this.TreasureParsed[$ArrayInt].split('*') | foreach {
             $each = $_.split(":")
             if(($each[0]..$each[1]) -match $roll){
-                if ($ArrayInt -eq 10){
-                    $this.ofQuality = $each[2]
-                }
                 if ($ArrayInt -match "^0$|^9$"){
                     $this.LastType = $each[2]
+                }
+                elseif ($ArrayInt -eq 10){
+                    $this.ofQuality = $each[2]
                 }
                 else {
                     $this.items.Add($each[2])
@@ -78,23 +78,23 @@ class Treasure {
         switch ($this.LastType){
             "Alchemical" {
                 $this.GetAlchemical()
-                $this.items[-1] = "$($this.items[-1]): $($this.ofQuality)"
+                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
             }
             "Armor" {
                 $this.GetArmor()
-                $this.items[-1] = "$($this.items[-1]): $($this.ofQuality)"
+                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
             }
             "Shield" {
                 $this.GetWeapon()
-                $this.items[-1] = "$($this.items[-1]): $($this.ofQuality)"
+                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
             }
             "Weapon" {
                 $this.GetShield()
-                $this.items[-1] = "$($this.items[-1]): $($this.ofQuality)"
+                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
             }
             "Tool" {
                 $this.GetTools()
-                $this.items[-1] = "$($this.items[-1]): $($this.ofQuality)"
+                $this.items[-1] = "$($this.items[-1]) $($this.ofQuality)"
             }
             "Ring" {}
             "Amulet" {}
