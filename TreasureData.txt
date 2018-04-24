@@ -2,9 +2,9 @@
 18:35:Armor*
 36:50:Shield*
 51:83:Weapons*
-84:100:Tools and gear
+84:100:Tools and gear*
 ;
-01:24:Healing Potion (str+lvl)*
+01:24:Healing Potion (str Score + lvl)*
 25:36:Smokesticks (1d4 sticks, 20 gp each)*
 37:48:Holy water (1d4 flasks, 25 gp each)*
 49:62:Antitoxin (1d4 doses, 50 gp each)*
@@ -12,11 +12,11 @@
 75:88:Tanglefoot bags (1d4 bags, 50 gp each)*
 89:100:Thunderstones (1d4 stones, 30 gp each)*
 ;
-01:100:See Armor Function
+01:100:See Armor Function*
 ;
-01:100:See Shield Function
+01:100:See Shield Function*
 ;
-01:100:See Weapon Function
+01:100:See Weapon Function*
 ;
 01:03:Backpack, empty (2 gp)*
 04:06:Crowbar (2 gp)*
@@ -38,3 +38,94 @@
 82:88:Candle (1cp)*
 89:95:Caltrops (1gp)*
 96:100:Thieves’ tools (30 gp)*
+-----
+1:2:Padded*
+3:4:Leather*
+5:6:Studded Leather*
+7:8:Chain Shirt*
+9:10:Hide*
+11:12:Scale Mail*
+13:14:Chainmail*
+15:16:Breastplate*
+17:17:Splint Mail*
+18:18:Banded Mail*
+19:19:Half-Plate*
+20:20:Full Plate*
+-----
+1:3:Buckler*
+4:8:Shield, Light Wooden*
+9:11:Shield, Light Steel*
+12:16:Shield, Heavy Wooden*
+17:19:Shield, Heavy Steel*
+20:20:Shield, Tower*
+-----
+1:2:Axe, Throwing*
+3:5:Dagger*
+6:7:Hammer, Light*
+8:9:Handaxe*
+10:11:Mace, Light*
+12:13:Pick, Light*
+14:15:Sap*
+16:17:Sickle*
+18:20:Shortsword*
+-----
+1:1:Battleaxe*
+2:3:Club*
+4:4:Flail*
+5:6:Longsword*
+7:8:Mace, Heavy*
+9:10:Morningstar*
+11:11:Pick, Heavy*
+12:13:Rapier*
+14:15:Scimitar*
+16:17:Shortspear*
+18:18:Sword, Bastard*
+19:19:Trident*
+20:20:Waraxe*
+-----
+1:1:Chain, Spiked*
+2:2:Falchion*
+3:4:Flail, Heavy*
+5:5:Flamberge*
+6:6:Glaive*
+7:7:Greataxe*
+8:9:Greatclub*
+10:11:Greatsword*
+12:12:Guisarme*
+13:13:Halberd*
+14:14:Lance*
+15:15:Longspear*
+16:17:Quarterstaff*
+18:18:Scythe*
+19:20:Spear*
+-----
+1:2:Crossbow, Hand*
+3:4:Crossbow, Heavy*
+5:6:Crossbow, Light*
+7:8:Dart*
+9:10:Javelin*
+11:12:Longbow*
+13:14:Net*
+15:17:Shortbow*
+18:20:Sling*
+-----
+1:3:Armor*
+4:6:Shield*
+7:9:Weapon*
+10:11:Potion 12 Ring 13 Rod*
+14:15:Scroll 16 Staff*
+17:18:Wand*
+19:20:Wondrous Item*
+-----
+1:2:___of Power =+1Str*
+3:4:___of Speed =+1Dex*
+5:6:___of Wisdom =+1Mind*
+7:8:___of Endurance =+1Phys*
+9:10:___of Shadow =+1 Sub*
+11:12:___of Brilliance =+1Know*
+13:14:___of Tongues =+1Com*
+15:16:___of Life =+1HP (per level)*
+17:18:___of Armor =+1AC*
+19:19:___of _"spell name"_ =an item with 1d10 charges of whatever spell the GM decides*
+20:20:Roll again on table, and then roll once more.*
+-----
