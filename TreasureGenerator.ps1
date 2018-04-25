@@ -147,7 +147,4 @@ class Treasure {
     }
 }
 
-$all = 1..1000 | % {[treasure]::new(2)}
-$all.items
-($all.items | ? {$_ -match "\+"}).count
-$all.items.count
+[treasure]::new(3)
