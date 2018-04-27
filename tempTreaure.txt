@@ -210,7 +210,5 @@ d% Value Average Examples
 100 2d4:1000:Clearest bright green emerald;blue-white diamond;canary diamond;pink diamond;brown diamond;blue diamond;jacinth 
 
 Wonderous Items: 
-$get = invoke-restmethod -uri 'https://sites.google.com/site/eberronpathfinder/conversion-info/magic
-al-items/wondrous-items/altar-of-resurrection'
-((($get -split("\n")) | ? {$_ -match "Description:"}) -split ("\<|\>") | ? {$_.length -gt 5 -and $_
--notmatch "\=|\/"}) -join (" ")
+$get = invoke-restmethod -uri 'https://sites.google.com/site/eberronpathfinder/conversion-info/magical-items/wondrous-items/altar-of-resurrection'
+((($get -split("\n")) | ? {$_ -match "Description:"}) -split ("\<|\>") | ? {$_.length -gt 5 -and $_-notmatch "\=|\/"}) -join (" ")

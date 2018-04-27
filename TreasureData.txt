@@ -2,7 +2,7 @@
 21:40:Armor*
 41:49:Shield*
 50:80:Weapon*
-81:100:Tool*
+81:100:Tool
 -----
 01:24:Healing Potion (STR Score + lvl)*
 25:36:Smokesticks (1d4 sticks)*
@@ -10,7 +10,7 @@
 49:62:Antitoxin (1d4 doses)*
 63:74:Everburning torch*
 75:88:Tanglefoot bags (1d4 bags)*
-89:100:Thunderstones (1d4 stones)*
+89:100:Thunderstones (1d4 stones)
 -----
 01:03:Empty Backpack*
 04:06:Crowbar*
@@ -123,23 +123,23 @@
 15:16:of Hunting*
 17:18:of Hardening*
 19:19:of Heroism*
-20:20:of Gutting*
+20:20:of Gutting
 -----
-01:10:1d10:10:Silver Ewer;Carved Bone Statuette;Ivory Statuette;Fine Gold Bracelet
-11:25:3d6:10:Cloth of Gold Vestments;Black Velvet Mask with Citrines;Silver Chalice with Lapis Lazuli Gems
-26:40:1d6:100:Large well-done Wool Tapestry;Brass Mug with Jade Inlays 
-41:50:1d10:100:Silver Comb with Moonstones;Silver-Plated Steel Rod with Jet Jewel in Hilt 
-51:60:2d6:100:Carved Harp of Exotic Wood with Ivory Inlay and Zircon Gems;Solid Gold Idol
-61:70:3d6:100:Gold Dragon Comb with Red Garnet Eye;Gold and Topaz Bottle Stopper Cork;Ceremonial Electrum Dagger with a Star Ruby in the Pommel 
-71:80:4d6:100:Eye patch with mock eye of sapphire and moonstone;fire opal pendant on a fine gold chain;old masterpiece painting 
-81:85:5d6:100:Embroidered silk and velvet mantle with numerous moonstones;sapphire pendant on gold chain
-86:90:1d4:1000:Embroidered and bejeweled glove;jeweled anklet;gold music box
-91:95:1d6:1000:Golden circlet with four aquamarines;a string of small pink pearls (necklace)
+01:10:1d10:10:Silver Ewer;Carved Bone Statuette;Ivory Statuette;Fine Gold Bracelet*
+11:25:3d6:10:Cloth of Gold Vestments;Black Velvet Mask with Citrines;Silver Chalice with Lapis Lazuli Gems*
+26:40:1d6:100:Large well-done Wool Tapestry;Brass Mug with Jade Inlays *
+41:50:1d10:100:Silver Comb with Moonstones;Silver-Plated Steel Rod with Jet Jewel in Hilt *
+51:60:2d6:100:Carved Harp of Exotic Wood with Ivory Inlay and Zircon Gems;Solid Gold Idol*
+61:70:3d6:100:Gold Dragon Comb with Red Garnet Eye;Gold and Topaz Bottle Stopper Cork;Ceremonial Electrum Dagger with a Star Ruby in the Pommel *
+71:80:4d6:100:Eye patch with mock eye of sapphire and moonstone;fire opal pendant on a fine gold chain;old masterpiece painting *
+81:85:5d6:100:Embroidered silk and velvet mantle with numerous moonstones;sapphire pendant on gold chain*
+86:90:1d4:1000:Embroidered and bejeweled glove;jeweled anklet;gold music box*
+91:95:1d6:1000:Golden circlet with four aquamarines;a string of small pink pearls (necklace)*
 96:99:2d4:1000:Jeweled gold crown;jeweled electrum ring 100 2d6:1000:Gold and ruby ring;gold cup set with emeralds 
 -----
-01:25:4d4:Banded eye agate;moss agate;azurite;blue quartz;hematite;lapis lazuli;malachite;obsidian;rhodochrosite;tiger eye turquoise;irregular pearl 
-26:50:2d4:10:Bloodstone;carnelian;chalcedony;chrysoprase;citrine;iolite jasper;moonstone;onyx;peridot;clear quartz;sard;sardonyx;rose smoky quartz;star rose quartz;zircon 
-51:70:4d4:10:Amber;amethyst;chrysoberyl;coral;red garnet;brown-green garnet;jade;jet;white pearl;golden pearl;pink pearl;silver pearl;red spinel;red-brown spinel;deep green spinel;tourmaline 
-71:90:2d4:100:Alexandrite;aquamarine;violet garnet;black pearl;deep blue spinel;golden yellow topaz 
-91:99:4d4:100:Emerald;white opal;black opal;fire opal;blue sapphire;fiery corundum; yellow corundum;rich purple corundum;blue star sapphire;black star sapphire;star ruby 
-100 2d4:1000:Clearest bright green emerald;blue-white diamond;canary diamond;pink diamond;brown diamond;blue diamond;jacinth 
+01:25:4d4:1:Banded eye agate;moss agate;azurite;blue quartz;hematite;lapis lazuli;malachite;obsidian;rhodochrosite;tiger eye turquoise;irregular pearl *
+26:50:2d4:10:Bloodstone;carnelian;chalcedony;chrysoprase;citrine;iolite jasper;moonstone;onyx;peridot;clear quartz;sard;sardonyx;rose smoky quartz;star rose quartz;zircon *
+51:70:4d4:10:Amber;amethyst;chrysoberyl;coral;red garnet;brown-green garnet;jade;jet;white pearl;golden pearl;pink pearl;silver pearl;red spinel;red-brown spinel;deep green spinel;tourmaline *
+71:90:2d4:100:Alexandrite;aquamarine;violet garnet;black pearl;deep blue spinel;golden yellow topaz *
+91:99:4d4:100:Emerald;white opal;black opal;fire opal;blue sapphire;fiery corundum; yellow corundum;rich purple corundum;blue star sapphire;black star sapphire;star ruby *
+100:100:2d4:1000:Clearest bright green emerald;blue-white diamond;canary diamond;pink diamond;brown diamond;blue diamond;jacinth
