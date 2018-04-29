@@ -25,7 +25,7 @@ function Measure-CombatModifier {
     return [string]$Output -replace(", $|\)$","")
 }
 
-$content = gc .\DndMicroliteMonsters.txt
+$content = Get-Content $PSScriptRoot\Data\DndMicroliteMonsters.txt
 $AllCreatures = New-Object -typename System.Collections.ArrayList
 foreach ($row in $content) {
     $row -match "(.*) - (.*) Hit Dice: .*d \((\d)\) Speed: (.*) AC: (.*).* Attack\/Damage: (.*) Special Attacks: (.*) Special Qualities: (.*) Abilities: STR(.*), DEX(.*), MIND(.*) Skills: (.*) CR: (\.\d+|\d+)(.*)|(.*) - (.*) Hit Dice: .* \((.*)\) Speed: (.*) AC: (\d+).*Damage: (.*) Special Attacks: (.*) Special Qualities: (.*) Abilities: STR(.*), DEX(.*), MIND(.*) Skills: all @ (.*) CR: (\.\d+|\d+) (.*)" | Out-Null

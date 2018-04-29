@@ -17,7 +17,7 @@ begin {
         Treasure ($Level) {
             $this.Items = New-Object System.Collections.ArrayList
             $this.Level = $Level
-            $this.TreasureParsed = (((Get-Content ./TreasureData.txt).tolower()) -join("")) -split('-----')
+            $this.TreasureParsed = ((Get-Content $PSScriptRoot\Data\TreasureData.txt) -join("")) -split('-----')
             $TreasureTypes = @("magic","mundane","gems","art")
 
             foreach ($eachType in $TreasureTypes){

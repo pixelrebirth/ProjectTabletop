@@ -4,7 +4,7 @@ param (
     $TagsFilter
 )
 
-$content = get-content -path "./plots/$($PlotType).txt"
+$content = get-content -path "$PSScriptRoot/plots/$($PlotType).txt"
 $ParsedContent = ($content) -split('\=\=') | where {$_ -match "Tags:.*$TagsFilter.*$" -and $_ -match "Easily adapted to:.*$AdaptedToFilter.*\*Tags:"}
 $RandomNumber = Get-Random -min 0 -max ($ParsedContent.count - 1)
 $SelectChoice = ($ParsedContent[$RandomNumber].split("*")) -split("\.|\!|\?")

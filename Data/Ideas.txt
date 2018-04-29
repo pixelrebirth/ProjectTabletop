@@ -1,0 +1,35 @@
+Game Primer
+-----
+
+Quest Options
+2 x Monster
+1 x Motivated 'thugs'
+2 x Creative Element
+Side Quest Option
+Memorable Characters per Level
+Lore
+Eberron NPCs
+Nemesis
+
+
+
+Actually need per level
+-----
+2 random side quests w/ EL
+1 main quest objective w/ EL
+7 Treasure
+1 Hoard
+4 Monster
+3 NPC group
+3 random forgettables
+2 random memorables tied to side quests
+1 eberron created and integrated NPC
+3 descriptive lore elements
+3 descritptive lore based locations
+2 panic quest ideas
+
+
+Coding Stuff
+-----
+Vendor Generator
+Eberron NPC Generator
