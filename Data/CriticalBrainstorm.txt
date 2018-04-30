@@ -26,3 +26,4 @@ Markov Name Generator
 Legendary Weapon Generator
 Random Inn Generator
 Weather Generator
+monster image lookup

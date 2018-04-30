@@ -1,0 +1,11 @@
+Paladin,COMM;3,Any,Their touch and melee attacks may cure or inflict 2 HP on allies or evil enemies for every 1 HP they exhaust (d20+4 must be above AC on CM roll). May cast Divine spells with a spell level equal to or below ¼ caster level (round down),NA
+Bard,KNOW;3,Light,may inspire allies to add +1 to their d20 rolls for the rest of an encounter. Inspiration increases +1 at lv. 8- 13- and 18. They may cast Arcane spells with a max spell level of level/3 (round down)- and cast spells from the school of Enchantment as signature spells.,NA
+Druid,SURV;3,Medium Non-Metal,Use of Druid spells at 1/2 level,NA
+Wizard,KNOW;3,None,Use of Arcane spells at 1/2 level,NA
+Cleric,COMM;3,Medium,Use of Divine spells at 1/2 level,NA
+Artificer,KNOW;2,All,Can imbue an appropriate 'Heroism Type' onto a gemstone with 1d12 charges + gem level,NA
+Monk,PHYS;3,None + MIND,Unarmed attacks deal d8 damage. Add +1 to AC ‘saving throws’ and +2 CM made with unarmed attacks per 4 levels starting at first,NA
+Fighter,PHYS;3,All,Add +2 CM / 5 lvl rolls starting at first,NA
+Barbarian,PHYS;3,Medium,May expend HP to go into a rage for the rest of an encounter. For every 4 HP expended gain +4 CM and -2 AC.,NA
+Rogues,SUB;3,Light,If they successfully Sneak (usually sub+DEX but depends on situation) up on a foe they can add their Subterfuge skill rank to the damage of their first attack,NA
+Ranger,SURV;3,Light,May cast Divine spells with a spell level equal to or below ¼ caster level (round down) and +1 CM / 4 levels,NA

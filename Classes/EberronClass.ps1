@@ -1,0 +1,3 @@
+
+
+[EberronClass]::new('Fighter')

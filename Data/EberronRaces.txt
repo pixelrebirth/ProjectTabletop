@@ -1,0 +1,10 @@
+Warforged,AC;2,No armor + enchant able body armor + no sleep/eat/breathe,NA
+Kalashtar,NA;0,Ability to have a two way mind link at will,NA
+Shifter,NA;0,At half hp becomes beast with Bite Attack (1d6 + (2/3 lvl) CM) or Claws (2d4 + (2/3 lvl) CM) and 1/3 lvl HP / rnd,NA
+Half-Elf,NA;0,+2 to Heroism Roles,NA
+Elf,MIND;2,NA,NA
+Gnome,AC;2,NA,NA
+Dwarf,STR;2,NA,NA
+Human,Skills;1,NA,NA
+Half-Orc,CM;1,NA,NA
+Changeling,NA;0,Get disguise at will @ 1d6 dmg,NA

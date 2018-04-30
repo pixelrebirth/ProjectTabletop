@@ -15,21 +15,99 @@ Nemesis
 
 Actually need per level
 -----
-2 random side quests w/ EL
-1 main quest objective w/ EL
-7 Treasure
-1 Hoard
-4 Monster
-3 NPC group
-3 random forgettables
-2 random memorables tied to side quests
-1 eberron created and integrated NPC
-3 descriptive lore elements
-3 descritptive lore based locations
-2 panic quest ideas
-
+G 2 random side quests w/ EL
+G 7 Treasures 
+G 1 Hoard (each at +2 lvl)
+G 4 Monster
+G Villian NPC Boss
+G 3 random forgettables
+G 2 random memorables tied to side quests
+NG 2 panic quest ideas
+NG 3 NPC group
+MANUAL 1 main quest objective w/ EL (Must have beginning, middle, end with both mundane and magical elements)
+MANUAL 1 eberron created and integrated NPC (using the book NPCs, add an )
+MANUAL 3 descriptive lore elements
+MANUAL 3 descritptive lore based locations
+Export as PowerShell object and fancy pants 
 
 Coding Stuff
 -----
+Eberron NPC Generator w/ Combat Stats
+Panic Plots
+More Dynamic Parameters
+Daily or Level based DM Guide
+Loggers and Loaders
+More Search and Filter functionality
+Add % modifiers to the mundane v weapon v gem v art rolls
+Add more content to the generators that exist
+
+PC Generator and Tracker Website, Level Up's and Item Adds DYNAMIC
+
 Vendor Generator
-Eberron NPC Generator
+Dungeon Generator from Book
+Markov Name Generator
+Legendary Weapon Generator
+Random Inn Generator
+Weather Generator
+
+Reset Magic Cost to M20 Default
+0 1 
+1 3 
+2 5 
+3 7 
+4 9 
+5 11 
+6 13 
+7 15 
+8 17 
+9 19 
+
+Monster and NPC Image Lookup
+
+WildMage Artifact with an additive, subtractive, and cure switch, linked ancestorally to Eborris
+Adjust HP to be all stat mods * 2 / lvl, not just STR
+
+Coin Bags
+Convert characters on their behalf
+CheckList for in game ideas
+Cutouts for dungeon, players rotate on room builds
+Assigning an enemy to each person to make it easier to track and spread out the combat love
+
+Define the foundation and ground rules a little more clearly--- 
+-----
+Roleplay first, you are this person, what does he affiliate with, what lore can you share through them
+
+
+
+
+
+
+
+------
+Overarching story: 
+
+Dragon that meet us manipulated us into not actually persueing Orius.
+A new dragon will greet us when Eborris uses his ancestoral artifact
+The sight (passive) see the truth, always - Mark of Detection (detect illusion and relatable spells)
+Each house will be 'ratified' each level, and all the tasks needed to do so will be in the leveling model
+
+Defeating the bosses that pleague the houses will gain trust and favor with them, when you earn a house you earn
+Cantrips (0 Level)
+Guidance
+True Strike
+
+1st Level 
+Comprehend Languages
+Detect Evil and Good
+Detect Magic
+Detect Poison/Disease
+Hunter’s Mark
+Identify
+Speak with Animals
+
+2nd Level Augury Beast Sense Detect Thoughts Find Traps Locate Animals or Plants Locate Object See Invisibility
+3rd Level Clairvoyance Tongues
+4th Level Arcane Eye Divination Locate Creature
+5th Level Commune Commune with Nature Contact Other Plane Legend Lore Rary’s Telepathic Bond Scrying
+6th Level Find the Path True Seeing
+9th Level Foresight
