@@ -1,3 +1,0 @@
-
-
-[EberronRace]::new('Elf')

@@ -3,38 +3,53 @@ class EberronCharacter {
     hidden [EberronClass]$ClassInternal
     hidden [EberronRace]$RaceInternal
     
-    $Race
-    $Class
-
-    [int]$STR
-    [int]$DEX
-    [int]$MIND
+    hidden [int]$STR
+    hidden [int]$DEX
+    hidden [int]$MIND
+    
+    hidden [int]$MeleeCM
+    hidden [int]$RangedCM
+    
+    hidden $MeleeType
+    hidden $MeleeDamage
+    
+    hidden $RangedType
+    hidden $RangedDamage
+    
+    hidden $ArmorAC
+    
+    [string]$Race
+    [string]$Class
+    [int]$AC
+    [int]$HP
+    [int]$SpellDC
+    [String]$Attack
+    
     [int]$StrMod
     [int]$DexMod
     [int]$MindMod
     
-    [int]$AC
-    [int]$HP
-
-    [int]$MeleeCM
-    [int]$RangedCM
-
-    [int]$SpellDC
-
+    $ArmorType
+    
     [int]$Phys
     [int]$Sub
     [int]$Know
     [int]$Comm
     [int]$Surv
-
-    $Traits
-    $Description
+    
+    [String]$Traits
+    [String]$Description
 
     EberronCharacter ([int]$Level) {
         $this.Level = $Level
         $this.GetClass()
         $this.GetRace()
+
         $this.GetLevel()
+        $this.CalculateLevel()
+        
+        $this.GetWeapon()
+        $this.CalculateEquipment()
     }
 
     [void] GetRace () {$this.RaceInternal = [EberronRace]::new()}
@@ -44,11 +59,35 @@ class EberronCharacter {
         $this.Race = $this.RaceInternal.RaceName
         $this.Class = $this.ClassInternal.ClassName
 
-        $this.STR = $this.roll('3d6') + 3
-        $this.DEX = $this.roll('3d6') + 3
-        $this.MIND = $this.roll('3d6') + 3
+        $this.STR = $this.roll('3d6') + (Get-Random -Min 1 -max 6)
+        $this.DEX = $this.roll('3d6') + (Get-Random -Min 1 -max 6)
+        $this.MIND = $this.roll('3d6') + (Get-Random -Min 1 -max 6)
+    }
 
-        $this.CalculateLevel()
+    [void] GetWeapon () {
+        $Equipment = ((Get-Content $PSScriptRoot\..\Data\WeaponsArmorShields.txt) -join("*")) -split('-----')
+
+        $Melee = $Equipment[0].split("*") | where {$_ -notmatch "^$"}
+        $Ranged = $Equipment[1].split("*") | where {$_ -notmatch "^$"}
+        $Armor = $Equipment[2].split("*") | where {$_ -notmatch "^$"}
+        $RandomMelee = Get-Random -Minimum 0 -Maximum $Melee.count
+        $RandomRanged = Get-Random -Minimum 0 -Maximum $Ranged.count
+        $RandomArmor = Get-Random -Minimum 0 -Maximum $Armor.count
+
+        $this.ArmorType = $Armor[$RandomArmor].split(";")[0]
+        $this.ArmorAC = $Armor[$RandomArmor].split(";")[1]
+
+        $this.RangedType = $Ranged[$RandomRanged].split(";")[0]
+        $this.RangedDamage = $Ranged[$RandomRanged].split(";")[1]
+
+        $this.MeleeType = $Melee[$RandomMelee].split(";")[0]
+        $this.MeleeDamage = $Melee[$RandomMelee].split(";")[1]
+
+    }
+
+    [void] CalculateEquipment () {
+        $this.AC = $this.AC + $this.ArmorAC
+        $this.Attack = "$($this.MeleeType) ($($this.MeleeDamage)+$($this.MeleeCM)) or $($this.RangedType) ($($this.RangedDamage)+$($this.RangedCM))"
     }
 
     [void] CalculateLevel () {
@@ -183,5 +222,4 @@ class EberronRace {
     }
 }
 
-# 1..1000| % {[EberronCharacter]::new(18)} | Measure-Object -Minimum -Maximum -Average -Property HP
 [EberronCharacter]::new(3)

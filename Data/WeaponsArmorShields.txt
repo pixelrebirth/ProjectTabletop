@@ -1,0 +1,62 @@
+Spiked Chain;2d4
+Falchion;2d4
+Heavy Flail;1d10
+Flamberge;1d12
+Glaive;1d10
+Greataxe;1d12
+Greatclub;1d10
+Greatsword;2d6
+Guisarme;2d4
+Halberd;1d10
+Lance;1d8
+Longspear;1d8
+Quarterstaff 1d6
+Scythe;2d4
+Spear;1d8
+Battleaxe;1d8
+Club;1d6
+Flail;1d8
+Longsword;1d8
+Heavy Mace;1d8
+Morningstar;1d8
+Heavy Pick;1d6
+Rapier;1d6
+Scimitar;1d6
+Shortspear;1d6
+Bastard Sword;1d10
+Trident;1d8
+Dwarven Waraxe;1d10
+Warhammer;1d8
+Whip* 1 gp 1d3 
+Unarmed Strike;1d3
+Throwing Axe;1d6
+Dagger;1d4
+Light Hammer;1d6
+Handaxe;1d6
+Light Mace;1d6
+Light Pick;1d4
+Sap;1d6
+Sickle;1d6
+Shortsword;1d6
+-----
+Hand Crossbow 30 ft;1d4
+Heavy Crossbow 120 ft;1d10
+Light Crossbow 80 ft;1d8
+Dart 20 ft;1d4
+Javelin 30 ft;1d6
+Longbow 100 ft;1d8
+Shortbow 60 ft;1d6
+Sling 50 ft;1d4
+-----
+Padded;1
+Leather;2
+Studded Leather;3
+Chain Shirt;4
+Hide;3
+Scale Mail;4
+Chainmail;5
+Breastplate;5
+Splint Mail;6
+Banded Mail;6
+Half-Plate;7
+Full Plate;8
