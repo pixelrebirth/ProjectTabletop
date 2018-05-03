@@ -18,22 +18,77 @@ Actually need per level
 G 2 random side quests w/ EL
 G 7 Treasures 
 G 1 Hoard (each at +2 lvl)
+G 3 NPC groups
 G 4 Monster
-G Villian NPC Boss
+G 1 Villian NPC
 G 3 random forgettables
 G 2 random memorables tied to side quests
 NG 2 panic quest ideas
-NG 3 NPC group
 MANUAL 1 main quest objective w/ EL (Must have beginning, middle, end with both mundane and magical elements)
-MANUAL 1 eberron created and integrated NPC (using the book NPCs, add an )
+MANUAL 1 curated boss battle with environmental effects
+MANUAL 1 eberron created and integrated NPC (using the book NPCs? )
 MANUAL 3 descriptive lore elements
 MANUAL 3 descritptive lore based locations
-Export as PowerShell object and fancy pants 
+Export as PowerShell object and fancy pants sheet
+
+Steps to level
+-----
+Session 1
+---
+Introduction Scene
+Introduce Eberron Charter Character Ally 1
+Level Quest Intro - Introduce the Villian (Level Boss)
+Side Quest 1
+Talk some mid dungeon Eberron lore
+Epic 'Dungeon' (side quest) (Memorable Dungeon Descriptions and Layout, Projector Choosen Map)
+2 monster groups (2 x treasure)
+Talk about rumors of other organizations of trouble
+1 npc groups (treasure)
+Something Main Quest Happens
+Turn in- Banter/Shop
+
+-----
+Session 2
+---
+Introduction Scene
+Eberron Charter Character Ally 1
+Talk about rumors of other organizations of trouble
+Side Quest 2
+1 npc group (treasure)
+Random 'Dungeon' (side quest)
+Talk Eberron Lore
+Level Quest - Plot twist the villian, or make him/her directly affect the party
+1 npc group (treasure)
+1 monster group (treasure)
+Mini- Hoard (2x treasure)
+Something Epic Main Quest Happens
+Introduce Nuetral Character Somehow (consequence)
+Turn in- Banter/Shop
+
+-----
+Session 3
+---
+Introduction Scene
+Eberron Charter Character Ally 2 Intro - Dialog with Boss Build Up
+Gear Up!
+Something Epic Happens with Level Quest
+Talk Eberron Lore
+Simple 'Dungeon' (5 room dungeon, puzzles, magic, traps)
+Impeded or assisted by Nuetral Character's reaction to Party (consequence)
+1 NPC group (treasure)
+1 Monster group (treasure)
+Talk about rumors of other organizations of trouble
+Epic Boss Battle with 1 NPC Group 1 Monster Group 1 Villian
+Hoard (4x treasure)
+Turn in- Banter/Shop
+Eberron Charter Characters 1 and 2 each reward with a 'house' award (IE, Legendary Item (given to level roleplaying mvp as voted by table) or Intangable and GM Catered)
+Introduce Main Quest Reward and Lead
+Decide on next Main Quest action
+
+
 
 Coding Stuff
 -----
-Eberron NPC Generator w/ Combat Stats
-Panic Plots
 More Dynamic Parameters
 Daily or Level based DM Guide
 Loggers and Loaders
@@ -44,7 +99,7 @@ Add more content to the generators that exist
 PC Generator and Tracker Website, Level Up's and Item Adds DYNAMIC
 
 Vendor Generator
-Dungeon Generator from Book
+Dungeon Generator from Book/Cards
 Markov Name Generator
 Legendary Weapon Generator
 Random Inn Generator
@@ -66,6 +121,7 @@ Monster and NPC Image Lookup
 
 WildMage Artifact with an additive, subtractive, and cure switch, linked ancestorally to Eborris
 Adjust HP to be all stat mods * 2 / lvl, not just STR
+Manage travel
 
 Coin Bags
 Convert characters on their behalf

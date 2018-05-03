@@ -221,5 +221,3 @@ class EberronRace {
         $this.RacialHistory = $GetParse[3]
     }
 }
-
-[EberronCharacter]::new(3)
