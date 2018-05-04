@@ -21,9 +21,14 @@ Dungeon Room Generator (donjon/book?)
 
 --
 from donjon
-Vendor Generator
-Markov Name Generator
+Vendor (Magic Shop) Generator
+Markov Name Generator - Done
 Legendary Weapon Generator
+Ancient Tomes Generator
+Pickpocket Loot Generator
 Random Inn Generator
 Weather Generator
 monster image lookup
+Castle Generator
+Giants Bag
+M20 Traps Generator

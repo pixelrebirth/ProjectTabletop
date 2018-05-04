@@ -98,12 +98,17 @@ Add more content to the generators that exist
 
 PC Generator and Tracker Website, Level Up's and Item Adds DYNAMIC
 
-Vendor Generator
-Dungeon Generator from Book/Cards
-Markov Name Generator
+Vendor (Magic Shop) Generator
+Markov Name Generator - Done
 Legendary Weapon Generator
+Ancient Tomes Generator
+Pickpocket Loot Generator
 Random Inn Generator
 Weather Generator
+monster image lookup
+Castle Generator
+Giants Bag
+M20 Traps Generator
 
 Reset Magic Cost to M20 Default
 0 1 
@@ -122,6 +127,7 @@ Monster and NPC Image Lookup
 WildMage Artifact with an additive, subtractive, and cure switch, linked ancestorally to Eborris
 Adjust HP to be all stat mods * 2 / lvl, not just STR
 Manage travel
+Portraits in Frames
 
 Coin Bags
 Convert characters on their behalf
