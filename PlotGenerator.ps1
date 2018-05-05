@@ -4,27 +4,31 @@ param (
     $TagsFilter
 )
 
-$content = get-content -path "$PSScriptRoot/plots/$($PlotType).txt"
-$ParsedContent = ($content) -split('\=\=') | where {$_ -match "Tags:.*$TagsFilter.*$" -and $_ -match "Easily adapted to:.*$AdaptedToFilter.*\*Tags:"}
-$RandomNumber = Get-Random -min 0 -max ($ParsedContent.count - 1)
-$SelectChoice = ($ParsedContent[$RandomNumber].split("*")) -split("\.|\!|\?")
-#logging, if not match name in the log file, continue else loop
-$OutputObject = [PSCustomObject]@{
-    Title = $SelectChoice[0] 
-    AdaptedTo = $SelectChoice[-2]
-    Tags = $SelectChoice[-1]
-    ContentArray = $SelectChoice[1..$($SelectChoice.count - 3)]
+DynamicParam {
+    [Scriptblock]$ScriptAdapted = {((Get-Content $PSScriptRoot\Data\PlotAdaptedTo.txt) -split(",")).trim().tolower() | sort -unique}
+    [Scriptblock]$ScriptTags = {((Get-Content $PSScriptRoot\Data\PlotTags.txt) -split(",")).trim().tolower() | sort -unique}
+    return ./Functions/Get-DynamicParam.ps1 -ParamName @("AdaptedToFilter","TagsFilter") -ParamCode @($ScriptAdapted, $ScriptTags)
 }
 
-Write-Host "$($OutputObject.Tags)`n-----:-----:-----" -foregroundcolor DarkCyan
-Write-Host $($OutputObject.Title) -foregroundcolor Green
-Write-Host $($OutputObject.AdaptedTo) -foregroundcolor DarkCyan
-Write-Host "$($OutputObject.Tags)`n-----:-----:-----" -foregroundcolor DarkCyan
-#Write would you like to continue prompt
-foreach ($Sentence in $OutputObject.ContentArray){
-    if ($Sentence -ne ""){
-        Read-Host $Sentence
-        #Write object logging and placement logging here
+begin {
+    $AdaptedToFilter = $PsBoundParameters['AdaptedToFilter']
+    $TagsFilter = $PsBoundParameters['TagsFilter']
+}
+
+process {
+    $content = get-content -path $PSScriptRoot/data/plots/$($PlotType).txt
+    $ParsedContent = ($content) -split('\=\=') | where {$_ -match "Tags:.*$TagsFilter.*$" -and $_ -match "Easily adapted to:.*$AdaptedToFilter.*\*Tags:"}
+    $RandomNumber = Get-Random -min 0 -max ($ParsedContent.count - 1)
+    $SelectChoice = ($ParsedContent[$RandomNumber].split("*")) -split("\.|\!|\?")
+
+    $OutputObject = [PSCustomObject]@{
+        Title = $SelectChoice[0] 
+        AdaptedTo = $SelectChoice[-2]
+        Tags = $SelectChoice[-1]
+        ContentArray = $SelectChoice[1..$($SelectChoice.count - 3)]
     }
 }
-return $OutputObject | Format-List
+
+end {
+    return $OutputObject
+}

@@ -3,45 +3,32 @@ param(
     [ValidateSet("Fantasy","Modern","SciFI")]$Genre,
     [ValidateSet("Villains","Neutrals","Allies")]$Alignment,
     [ValidateSet("MetAlready","Memorable","Forgettable")]$Stature = "Memorable",
-    [Parameter(Mandatory=$true)]$Level,
-    [switch]$LoggingOff
+    [Parameter(Mandatory=$true)]$Level
 )
 
 DynamicParam {
-    $ParameterName = 'Trait'
-    $RuntimeParameterDictionary = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
-    $AttributeCollection = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
-
-    $ParameterAttribute = New-Object System.Management.Automation.ParameterAttribute
-    $AttributeCollection.Add($ParameterAttribute)
-
-    $arrSet = ((Get-Content $PSScriptRoot\Data\Traits.txt) -split(",")).trim().tolower() | sort -unique
-    $ValidateSetAttribute = New-Object System.Management.Automation.ValidateSetAttribute($arrSet)
-    $AttributeCollection.Add($ValidateSetAttribute)
-
-    $RuntimeParameter = New-Object System.Management.Automation.RuntimeDefinedParameter($ParameterName, [string], $AttributeCollection)
-    $RuntimeParameterDictionary.Add($ParameterName, $RuntimeParameter)
-    return $RuntimeParameterDictionary
+    [Scriptblock]$ScriptBlock = {((Get-Content $PSScriptRoot\Data\Traits.txt) -split(",")).trim().tolower() | sort -unique}
+    return ./Functions/Get-DynamicParam.ps1 -ParamName Trait -ParamCode $ScriptBlock
 }
 
 begin {
-    $Trait = $PsBoundParameters[$ParameterName]
+    $Trait = $PsBoundParameters['Trait']
     . $PSScriptRoot/Classes/EberronCharacter.ps1
 }
 
 process {
     $rawNPC = New-Object System.Collections.ArrayList
-    $SelectedFiles = Get-ChildItem .\NPCRaw | where name -match "$genre-$alignment"
+    $SelectedFiles = Get-ChildItem $PSScriptRoot\Data\NPCRaw | where name -match "$genre-$alignment"
     foreach ($file in $SelectedFiles){
-        $Content = Get-Content $PSScriptRoot\NPCRaw\$file
+        $Content = Get-Content $PSScriptRoot\Data\NPCRaw\$file
         $rawNPC.add($Content) | Out-Null
     }
     $joinedNPC = ($rawNPC) -join("")
-    $null | Out-File "$PSScriptRoot\Data\traits.txt"
     $CharacterSheet = [EberronCharacter]::new($Level)
 
     $NpcList = New-Object System.Collections.ArrayList
     if ($Stature -eq "Memorable"){
+        $null | Out-File "$PSScriptRoot\Data\traits.txt"
         foreach ($npc in $joinedNPC.split('*')){
             $npc -match '^=(.*)=(.*)="(.*)"=Appearance: (.*)=Roleplaying: (.*)=Personality: (.*)=Motivation: (.*)=Background: (.*)=Traits: (.*)=' | Out-Null
             $CurrentNpc = [PSCustomObject]@{
@@ -69,10 +56,6 @@ process {
             }
         }
         $RandomDigit = Get-Random -Minimum 0 -Maximum $($NpcList.count + 1)
-
-        if ($LoggingOff -eq $False){
-            $NpcList[$RandomDigit] | Export-Clixml "./Logs/Memorable/$($NpcList.name).xml"
-        }
         return $NpcList[$RandomDigit]
     }
 
@@ -92,10 +75,6 @@ process {
             Appearance = $SplitNpc[3]
             Trait = $SplitNpc[5]
             CharacterSheet = [EberronCharacter]::new($Level)
-        }
-
-        if ($LoggingOff -eq $False){
-            $NpcOutput | Export-Clixml "./Logs/Forgettable/$($NpcOutput.Name).xml"
         }
         return $NpcOutput
     }
