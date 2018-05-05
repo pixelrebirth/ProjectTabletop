@@ -1,12 +1,13 @@
 Param ([array]$ParamName,[array]$ParamCode)
 
 $Count = 0
+$RuntimeParameterDictionary = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
+
 $ParamName | foreach {
     
     $Name = $_
     $Scriptblock = $ParamCode[$count]
     $ParameterName = $Name
-    $RuntimeParameterDictionary = New-Object System.Management.Automation.RuntimeDefinedParameterDictionary
     $AttributeCollection = New-Object System.Collections.ObjectModel.Collection[System.Attribute]
 
     $ParameterAttribute = New-Object System.Management.Automation.ParameterAttribute
@@ -18,5 +19,6 @@ $ParamName | foreach {
 
     $RuntimeParameter = New-Object System.Management.Automation.RuntimeDefinedParameter($ParameterName, [string], $AttributeCollection)
     $RuntimeParameterDictionary.Add($ParameterName, $RuntimeParameter)
+    $count++
 }
 return $RuntimeParameterDictionary
