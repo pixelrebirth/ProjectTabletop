@@ -22,8 +22,8 @@ process {
 
     $OutputObject = [PSCustomObject]@{
         Title = $SelectChoice[0] 
-        AdaptedTo = $SelectChoice[-2]
-        Tags = $SelectChoice[-1]
+        AdaptedTo = ($SelectChoice[-2]) -replace("Easily adapted to: ","")
+        Tags = ($SelectChoice[-1]) -replace("Tags: \(.*\) ","")
         ContentArray = $SelectChoice[1..$($SelectChoice.count - 3)]
     }
 }
