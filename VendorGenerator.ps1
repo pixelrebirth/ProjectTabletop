@@ -1,4 +1,5 @@
 param(
+    [Parameter(Mandatory=$true)]
     [ValidateSet(
         "Thorp",
         "Hamlet",
@@ -9,6 +10,8 @@ param(
         "Large City",
         "Metropolis"
     )]$TownSize,
+    
+    [Parameter(Mandatory=$true)]
     [ValidateSet(
         "Trader",
         "Armorer",
@@ -18,6 +21,7 @@ param(
         "Wandwright"
     )]$ShopType
 )
+
 class vendor {
     $ShopName
     $ShopKeep
@@ -49,4 +53,4 @@ class StoreItem {
     $Notes
 }
 
-[vendor]::new("Thorp","Alchemist")
+[vendor]::new($TownSize,$ShopType)
