@@ -1,6 +1,5 @@
 param (
     [int]$PartyLevel = 10,
-# [int]$CRModifier = 1,
     [string]$CreatureType,
     [decimal]$MinCR,
     [decimal]$MaxCR,
@@ -45,6 +44,7 @@ foreach ($row in $content) {
         Skills = $Matches[26]
         CR = [decimal]$Matches[27]
         Notes = $Matches[28]
+        Image = if ((ls "$PSScriptRoot\Data\Images\$($Matches[15]).jpg" -ea 0) -ne $null){"$PSScriptRoot\Data\Images\$($Matches[15]).jpg"} else {"NaN"}
     }
     $AllCreatures.add($CurrentCreature) | Out-Null
 }
