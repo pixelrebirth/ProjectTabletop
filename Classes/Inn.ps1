@@ -1,17 +1,3 @@
-param(
-    [Parameter(Mandatory=$true)]
-    [ValidateSet(
-        "Common",
-        "Good",
-        "Poor"
-    )]$InnType,
-    
-    [Parameter(Mandatory=$true)]
-    [ValidateSet(
-        "Townsfolk",
-        "Adventurers"
-    )]$PatronType
-)
 class Inn {
     $Name
     $Location
@@ -34,5 +20,3 @@ class Inn {
         $this.rumors = (Invoke-WebRequest -Uri "$uri$InnType+Inn+Rumor&n=3") -split('","') -replace($pattern,'') 
     }
 }
-
-[Inn]::New($InnType,$PatronType)

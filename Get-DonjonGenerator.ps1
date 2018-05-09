@@ -10,7 +10,8 @@ param(
         "Pocket",
         "Tome",
         "Trap",
-        "Monster"
+        "Monster",
+        "GiantBag"
     )]$GeneratorType,
     [int]$HowMany = 4,
     [int]$Level = 1
@@ -26,6 +27,12 @@ switch ($GeneratorType) {
     "Tome" {$Response = Invoke-WebRequest -uri "https://donjon.bin.sh/fantasy/random/rpc.cgi?type=Ancient+Tome&n=$HowMany"}
     "Trap" {$Response = Invoke-WebRequest -uri "https://donjon.bin.sh/m20/random/rpc.cgi?type=Level+$Level+Room+Trap&n=$HowMany"}
     "Monster" {$Response = Invoke-WebRequest -uri "https://donjon.bin.sh/m20/monster/rpc.cgi?HD=$Level&n=$HowMany"}
+    "GiantBag" {
+        $Giants = @("Hill","Stone","Frost","Fire","Cloud","Storm")
+        $Random = Get-Random -Min 0 -Max $Giants.Count
+        $RandomGiant = $Giants[$Random]
+        $Response = Invoke-WebRequest "https://donjon.bin.sh/fantasy/random/rpc.cgi?type=Giant+Bag&giant_type=$RandomGiant+Giant&n=$HowMany"
+    }
 }
 
 return $Response.content -split('","') -replace('\[|\]|"','') 

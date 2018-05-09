@@ -1,9 +1,9 @@
 param (
     [int]$PartyLevel = 10,
     [string]$CreatureType,
-    [decimal]$MinCR,
-    [decimal]$MaxCR,
-    [int]$MaxUnique,
+    [decimal]$MinCR = 1,
+    [decimal]$MaxCR = 5,
+    [int]$MaxUnique = 3,
     [int]$HD
 )
 
@@ -22,11 +22,12 @@ function Measure-CombatModifier {
     foreach ($line in $LineOutput){
         [string]$Output += "$line, "
     }
-    return [string]$Output -replace(", $|\)$","")
+    return [string]$Output -replace(", $|\)$","$")
 }
-if ($HD -ne $Null){
+if ($HD -ne $Null -and $HD -ne ""){
     $Response = Invoke-WebRequest -uri "https://donjon.bin.sh/m20/monster/rpc.cgi?HD=$HD&n=$MaxUnique"
-    # return $Response.content  -split("","") -replace("\[|\]|`"","")
+    $CMModified = Measure-CombatModifier ($Response.content -split('","',"") -replace("\[|\]|`"",""))
+    return $CMModified
 }
 
 $content = Get-Content $PSScriptRoot\Data\DndMicroliteMonsters.txt
@@ -105,5 +106,5 @@ while ($MonsterCRTotal -lt $PartyLevel -OR $MonsterCRTotal -gt $PartyLevel){
 }
 if ($Fail -ne $true){
     Write-Verbose "Attempt Success :: $($OutputList.count) creatures and CR $MonsterCRTotal"
-    return $OutputList | sort CR
+    return $OutputList
 }

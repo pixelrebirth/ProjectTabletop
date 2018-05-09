@@ -1,11 +1,11 @@
-class EberronClass {
+class CharacterClass {
     [String]$ClassName
     [ValidatePattern('^\w+;\d+$')]$Bonuses
     [String]$DefiningTrait
     [String]$ClassHistory
     [String]$MaxArmor
     
-    EberronClass ($ClassName) {
+    CharacterClass ($ClassName) {
         $GetClasses = Get-Content $PSScriptRoot\..\Data\EberronClasses.txt
         foreach ($eachClass in $GetClasses){
             if ($eachClass -match "^$ClassName,"){
@@ -19,7 +19,7 @@ class EberronClass {
         }
     }
 
-    EberronClass () {
+    CharacterClass () {
         $GetClasses = Get-Content $PSScriptRoot\..\Data\EberronClasses.txt
         $Random = Get-Random -Min 0 -Max ($GetClasses.count)
         $eachClass = $GetClasses[$Random]

@@ -1,8 +1,3 @@
-param(
-    [parameter(Mandatory=$true)][string]$SearchTerm,
-    [switch]$RandomLore
-)
-
 class Lore {
     $Lore
 
@@ -16,12 +11,4 @@ class Lore {
         $Random = Get-Random -Min 0 -Max $Content.count
         $this.Lore = ($Content[$Random]) -replace("\.  ",".`n")
     }
-}
-
-if ($RandomLore -eq $false){
-    try {[Lore]::new($SearchTerm)}
-    catch {Write-Error "Cannot find `'$SearchTerm`' in the EberronHistory.txt"}
-}
-else {
-    [Lore]::new()
 }

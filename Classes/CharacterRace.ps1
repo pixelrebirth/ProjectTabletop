@@ -1,10 +1,10 @@
-class EberronRace {
+class CharacterRace {
     [String]$RaceName
     [ValidatePattern('^\w+;\d+$')]$Bonuses
     [String]$DefiningTrait
     [String]$RacialHistory
 
-    EberronRace ($RaceName) {
+    CharacterRace ($RaceName) {
         $GetRaces = Get-Content $PSScriptRoot\..\Data\EberronRaces.txt
         foreach ($eachRace in $GetRaces){
             if ($eachRace -match "^$RaceName,"){
@@ -17,7 +17,7 @@ class EberronRace {
         }
     }
 
-    EberronRace () {
+    CharacterRace () {
         $GetRaces = Get-Content $PSScriptRoot\..\Data\EberronRaces.txt
         $Random = Get-Random -Min 0 -Max ($GetRaces.count)
         $eachRace = $GetRaces[$Random]

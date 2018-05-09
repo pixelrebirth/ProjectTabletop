@@ -1,7 +1,7 @@
-class EberronCharacter {
+class CharacterSheet {
     [ValidateRange(1,20)]$Level
-    hidden [EberronClass]$ClassInternal
-    hidden [EberronRace]$RaceInternal
+    hidden [CharacterClass]$ClassInternal
+    hidden [CharacterRace]$RaceInternal
     
     hidden [int]$STR
     hidden [int]$DEX
@@ -40,7 +40,7 @@ class EberronCharacter {
     [String]$Traits
     [String]$Description
 
-    EberronCharacter ([int]$Level) {
+    CharacterSheet ([int]$Level) {
         $this.Level = $Level
         $this.GetClass()
         $this.GetRace()
@@ -52,8 +52,8 @@ class EberronCharacter {
         $this.CalculateEquipment()
     }
 
-    [void] GetRace () {$this.RaceInternal = [EberronRace]::new()}
-    [void] GetClass () {$this.ClassInternal = [EberronClass]::new()}
+    [void] GetRace () {$this.RaceInternal = [CharacterRace]::new()}
+    [void] GetClass () {$this.ClassInternal = [CharacterClass]::new()}
     
     [void] GetLevel () {
         $this.Race = $this.RaceInternal.RaceName
@@ -99,9 +99,7 @@ class EberronCharacter {
         
         $this.Description = $this.RaceInternal.RacialHistory + " and " + $this.ClassInternal.ClassHistory
         $this.Traits = $this.RaceInternal.DefiningTrait + " and " + $this.ClassInternal.DefiningTrait
-        
-        $MeleeCMBonus = 0
-        $RangedCMBonus = 0
+
         $RaceBonus = $this.RaceInternal.Bonuses.split(';')
         
         switch ($RaceBonus[0]){
@@ -152,72 +150,5 @@ class EberronCharacter {
         $count = [int]$splitDice[0]
         $sides = [int]$splitDice[1]
         return (1..$count | ForEach-Object {Get-Random -min 1 -max ($sides+1)} | Measure-Object -sum).sum
-    }
-}
-
-class EberronClass {
-    [String]$ClassName
-    [ValidatePattern('^\w+;\d+$')]$Bonuses
-    [String]$DefiningTrait
-    [String]$ClassHistory
-    [String]$MaxArmor
-    
-    EberronClass ($ClassName) {
-        $GetClasses = Get-Content $PSScriptRoot\..\Data\EberronClasses.txt
-        foreach ($eachClass in $GetClasses){
-            if ($eachClass -match "^$ClassName,"){
-                $GetParse = $eachClass.Split(',')
-                $this.ClassName = $GetParse[0]
-                $this.Bonuses = $GetParse[1]
-                $this.MaxArmor = $GetParse[2]
-                $this.DefiningTrait = $GetParse[3]
-                $this.ClassHistory = $GetParse[4]
-            }
-        }
-    }
-
-    EberronClass () {
-        $GetClasses = Get-Content $PSScriptRoot\..\Data\EberronClasses.txt
-        $Random = Get-Random -Min 0 -Max ($GetClasses.count)
-        $eachClass = $GetClasses[$Random]
-
-        $GetParse = $eachClass.Split(',')
-        $this.ClassName = $GetParse[0]
-        $this.Bonuses = $GetParse[1]
-        $this.MaxArmor = $GetParse[2]
-        $this.DefiningTrait = $GetParse[3]
-        $this.ClassHistory = $GetParse[4]
-    }
-}
-
-class EberronRace {
-    [String]$RaceName
-    [ValidatePattern('^\w+;\d+$')]$Bonuses
-    [String]$DefiningTrait
-    [String]$RacialHistory
-
-    EberronRace ($RaceName) {
-        $GetRaces = Get-Content $PSScriptRoot\..\Data\EberronRaces.txt
-        foreach ($eachRace in $GetRaces){
-            if ($eachRace -match "^$RaceName,"){
-                $GetParse = $eachRace.Split(',')
-                $this.RaceName = $GetParse[0]
-                $this.Bonuses = $GetParse[1]
-                $this.DefiningTrait = $GetParse[2]
-                $this.RacialHistory = $GetParse[3]
-            }
-        }
-    }
-
-    EberronRace () {
-        $GetRaces = Get-Content $PSScriptRoot\..\Data\EberronRaces.txt
-        $Random = Get-Random -Min 0 -Max ($GetRaces.count)
-        $eachRace = $GetRaces[$Random]
-        
-        $GetParse = $eachRace.Split(',')
-        $this.RaceName = $GetParse[0]
-        $this.Bonuses = $GetParse[1]
-        $this.DefiningTrait = $GetParse[2]
-        $this.RacialHistory = $GetParse[3]
     }
 }
