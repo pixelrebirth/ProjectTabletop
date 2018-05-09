@@ -7,7 +7,7 @@ class Lore {
     }
 
     Lore ($SearchTerm) {
-        $Content = (Get-Content $PSScriptRoot\data\EberronHistory.txt) -split('---') | where {$_ -match $SearchTerm}
+        $Content = (Get-Content $PSScriptRoot\..\data\EberronHistory.txt) -split('---') | where {$_ -match $SearchTerm}
         $Random = Get-Random -Min 0 -Max $Content.count
         $this.Lore = ($Content[$Random]) -replace("\.  ",".`n")
     }

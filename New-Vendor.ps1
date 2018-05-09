@@ -1,5 +1,4 @@
 param(
-    [Parameter(Mandatory=$true)]
     [ValidateSet(
         "Thorp",
         "Hamlet",
@@ -9,9 +8,8 @@ param(
         "Small City",
         "Large City",
         "Metropolis"
-    )]$TownSize,
+    )]$TownSize = "Large Town",
     
-    [Parameter(Mandatory=$true)]
     [ValidateSet(
         "Trader",
         "Armorer",
@@ -19,7 +17,7 @@ param(
         "Alchemist",
         "Scribe",
         "Wandwright"
-    )]$ShopType
+    )]$ShopType = "Trader"
 )
-
+. ./LoadClasses.ps1
 [vendor]::new($TownSize,$ShopType)

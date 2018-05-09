@@ -6,24 +6,8 @@ param (
     [int]$MaxUnique = 3,
     [int]$HD
 )
+. ./LoadClasses.ps1
 
-function Measure-CombatModifier {
-    param($damage)
-    $LineOutput = New-Object -TypeName System.Collections.ArrayList
-    foreach ($DmgLine in ($Damage -split(' and | or '))){
-        if ($DmgLine -match "(.*) \+(\d+) \((.*)\+(\d+)(.*)\)"){
-            $Weapon = "$($matches[1]): $($matches[3])+$([int]$matches[2] + [int]$matches[4])$($matches[5])"
-        }
-        elseif ($DmgLine -match "(.*) \+(\d+) \((\d+d\d+)(.*)$"){
-            $Weapon = "$($matches[1]): $($matches[3])+$([int]$matches[2])$($matches[4])"
-        }
-        $LineOutput.add($Weapon) | Out-Null
-    }
-    foreach ($line in $LineOutput){
-        [string]$Output += "$line, "
-    }
-    return [string]$Output -replace(", $|\)$","$")
-}
 if ($HD -ne $Null -and $HD -ne ""){
     $Response = Invoke-WebRequest -uri "https://donjon.bin.sh/m20/monster/rpc.cgi?HD=$HD&n=$MaxUnique"
     $CMModified = Measure-CombatModifier ($Response.content -split('","',"") -replace("\[|\]|`"",""))

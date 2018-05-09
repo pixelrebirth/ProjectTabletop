@@ -2,7 +2,7 @@
 param()
 DynamicParam {
     [Scriptblock]$List = {Get-Content $PSScriptRoot\Data\FantasyDescPhp.txt}
-    return ./Functions/Get-DynamicParam.ps1 -ParamName "SearchName" -ParamCode $List
+    return Get-DynamicParam -ParamName "SearchName" -ParamCode $List
 }
 
 begin {

@@ -1,4 +1,4 @@
-class vendor {
+class Vendor {
     $ShopName
     $ShopKeep
     $Location

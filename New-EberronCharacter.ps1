@@ -7,8 +7,9 @@ param(
 )
 
 DynamicParam {
+    . ./LoadClasses.ps1
     [Scriptblock]$ScriptBlock = {((Get-Content $PSScriptRoot\Data\Traits.txt) -split(",")).trim().tolower() | sort -unique}
-    return ./Functions/Get-DynamicParam.ps1 -ParamName Trait -ParamCode $ScriptBlock
+    return Get-DynamicParam -ParamName Trait -ParamCode $ScriptBlock
 }
 
 begin {

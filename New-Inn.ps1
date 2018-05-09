@@ -1,16 +1,14 @@
 param(
-    [Parameter(Mandatory=$true)]
     [ValidateSet(
         "Common",
         "Good",
         "Poor"
-    )]$InnType,
+    )]$InnType = "Common",
     
-    [Parameter(Mandatory=$true)]
     [ValidateSet(
         "Townsfolk",
         "Adventurers"
-    )]$PatronType
+    )]$PatronType = "Townsfolk"
 )
 . ./LoadClasses.ps1
 [Inn]::New($InnType,$PatronType)
