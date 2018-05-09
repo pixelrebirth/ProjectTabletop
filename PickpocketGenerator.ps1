@@ -1,0 +1,1 @@
+return (Invoke-WebRequest -uri 'https://donjon.bin.sh/m20/random/rpc.cgi?type=Purse&n=10').content  -split('","') -replace('\[|\]|"','') 

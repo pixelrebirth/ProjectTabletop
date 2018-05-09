@@ -3,7 +3,8 @@ param (
     [string]$CreatureType,
     [decimal]$MinCR,
     [decimal]$MaxCR,
-    [int]$MaxUnique
+    [int]$MaxUnique,
+    [int]$HD
 )
 
 function Measure-CombatModifier {
@@ -22,6 +23,10 @@ function Measure-CombatModifier {
         [string]$Output += "$line, "
     }
     return [string]$Output -replace(", $|\)$","")
+}
+if ($HD -ne $Null){
+    $Response = Invoke-WebRequest -uri "https://donjon.bin.sh/m20/monster/rpc.cgi?HD=$HD&n=$MaxUnique"
+    # return $Response.content  -split("","") -replace("\[|\]|`"","")
 }
 
 $content = Get-Content $PSScriptRoot\Data\DndMicroliteMonsters.txt

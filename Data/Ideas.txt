@@ -178,14 +178,15 @@ Speak with Animals
 Random Eberron Lore
 Random External Org
 20 Treasures
-Giants bag
 Monsters groups
 NPC groups
 4 Plot Emergencies
 10 quick NPCs
 Weather
+Random Inn
+One of each Vendor for expected town
+Giants bag
+
 20 Traps
 Ancient Tome
-Random Inn
 Castle
-One of each Vendor for expected town

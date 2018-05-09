@@ -1,8 +1,8 @@
 param (
-    [parameter(Mandatory=$true)]$type,
-    [parameter(Mandatory=$true)][ValidateSet("short","medium","long")]$length
+    $type = 'elf',
+    [ValidateSet("short","medium","long")]$length = 'medium'
 )
 
 $get = invoke-webrequest https://www.fantasynamegen.com/$type/$length
 ($get.ParsedHtml.body.outerText -split("\n") | where {$_ -match "\<name\> "}) -replace("\<name\>  ","")
-(($get.ParsedHtml.body.outerText) -split("\n") | ? {$_.length -lt 20 -and $_ -notmatch "tweet"})
+(($get.ParsedHtml.body.outerText) -split("\n") | ? {$_.length -gt 3 -and $_.length -lt 20 -and $_ -notmatch "tweet"})
