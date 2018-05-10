@@ -8,7 +8,17 @@ param(
     [ValidateSet(
         "Townsfolk",
         "Adventurers"
-    )]$PatronType = "Townsfolk"
+    )]$PatronType = "Townsfolk",
+    [ValidateSet(
+        "Thorp",
+        "Hamlet",
+        "Village",
+        "Small Town",
+        "Large Town",
+        "Small City",
+        "Large City",
+        "Metropolis"
+    )]$TownSize = "Large Town"
 )
 . ./LoadClasses.ps1
 [Inn]::New($InnType,$PatronType)

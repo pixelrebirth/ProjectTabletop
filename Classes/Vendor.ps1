@@ -1,4 +1,5 @@
 class Vendor {
+    $ShopType
     $ShopName
     $ShopKeep
     $Location
@@ -7,7 +8,8 @@ class Vendor {
 
     vendor ($TownSize, $ShopType) {
         $this.items = New-Object System.Collections.ArrayList
-
+        $this.shoptype = $ShopType
+        
         $this.shopname = (invoke-webrequest "https://donjon.bin.sh/d20/random/rpc.cgi?type=Magic+Shop+Name&n=1&shop_type=$ShopType").content -replace("`"|,|\[|\]","")
         $this.location = (invoke-webrequest "https://donjon.bin.sh/d20/random/rpc.cgi?type=Magic+Shop+Location&n=1&town_size=Thorp&shop_type=$ShopType").content -replace("`"|,|\[|\]","")
         $this.description = (invoke-webrequest "https://donjon.bin.sh/d20/random/rpc.cgi?type=Magic+Shop+Description&n=1&town_size=Thorp&shop_type=$ShopType").content -replace("`"|,|\[|\]","")

@@ -10,7 +10,7 @@ class Session {
         }
     }
 
-    [Void] GetCommonContent () {
+    [Void] GetRandomContent () {
         # Ally 2
         # Side Quest 2
         # Eberron Level Quest Lore 3
@@ -31,6 +31,13 @@ class Session {
         # Random Inn Generator
         # 6 Pickpocket Loot Generator
         # Castle
+    }
+
+    [Void] MainQuestObjective () {
+        # What is the main quest objective of this level?
+        # How will the party be impedded from getting this done?
+        # What advances will be made by the nemesis?
+        # What is the grand consequence of their action or inaction?
     }
 
     [Void] CreateIntroSession () {

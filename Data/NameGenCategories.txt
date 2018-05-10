@@ -20,8 +20,5 @@ mixed
 enames
 places
 titles
-operation
 super
 rockband
-
-https://www.fantasynamegen.com/titles/medium
