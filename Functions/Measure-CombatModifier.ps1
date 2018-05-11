@@ -13,5 +13,5 @@ function Measure-CombatModifier {
     foreach ($line in $LineOutput){
         [string]$Output += "$line, "
     }
-    return [string]$Output -replace(", $|\)$","$")
+    return [string]$Output -replace(", $|\)$","")
 }
