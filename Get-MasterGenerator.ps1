@@ -33,37 +33,28 @@ param(
 $Global:loadcount = 0
 Get-LoaderMessage
 $RandomContent = [RandomContent]::new()
-# Get-LoaderMessage
-# $RandomContent.Treasures = . {
-#     if ($level -ge 5){1..14 | % {($output = [treasure]::new($level-3)).DiceNumber = $_ ; $output}}
-#     if ($level -ge 4){15..29 | % {($output = [treasure]::new($level-2)).DiceNumber = $_ ; $output}}
-#     if ($level -ge 3){30..44 | % {($output = [treasure]::new($level-1)).DiceNumber = $_ ; $output}}
-#     if ($level -ge 2){45..59 | % {($output = [treasure]::new($level)).DiceNumber = $_ ; $output}}
-#     60..74 | % {($output = [treasure]::new($level+1)).DiceNumber = $_ ; $output}
-#     75..89 | % {($output = [treasure]::new($level+2)).DiceNumber = $_ ; $output}
-#     90..100 | % {($output = [treasure]::new($level+3)).DiceNumber = $_ ; $output}
-# }
+Get-LoaderMessage
+$RandomContent.Treasures = . {
+    if ($level -ge 5){1..14 | % {($output = [treasure]::new($level-3)).DiceNumber = $_ ; $output}}
+    if ($level -ge 4){15..29 | % {($output = [treasure]::new($level-2)).DiceNumber = $_ ; $output}}
+    if ($level -ge 3){30..44 | % {($output = [treasure]::new($level-1)).DiceNumber = $_ ; $output}}
+    if ($level -ge 2){45..59 | % {($output = [treasure]::new($level)).DiceNumber = $_ ; $output}}
+    60..74 | % {($output = [treasure]::new($level+1)).DiceNumber = $_ ; $output}
+    75..89 | % {($output = [treasure]::new($level+2)).DiceNumber = $_ ; $output}
+    90..100 | % {($output = [treasure]::new($level+3)).DiceNumber = $_ ; $output}
+}
 
-# Get-LoaderMessage
-# $RandomContent.PanicPlots = 1..3 | foreach {[plot]::new()}
-# Get-LoaderMessage
-# $RandomContent.SideQuests = 1..3 | foreach {[plot]::new($PlotType,$TagsFilter,$AdaptedToFilter)}
-# Get-LoaderMessage
-#  $RandomContent.NameVariants = . {
-#      $Categories = Get-Content $PSScriptRoot/data/NameGenCategories.txt
-#      try {
-#         foreach ($Category in $Categories){
-#             Get-LoaderMessage
-#             [Names]::new($Category)
-#         }
-#     }
-#     catch {"Error accessing servers..."}
-#  }
-# Get-LoaderMessage
-# $RandomContent.Weather = 1..3 | foreach {[Weather]::new()}
-# Get-LoaderMessage
-# $RandomContent.Inn = [Inn]::New($InnType,$PatronType)
-# Get-LoaderMessage
+Get-LoaderMessage
+$RandomContent.PanicPlots = 1..3 | foreach {[plot]::new()}
+Get-LoaderMessage
+$RandomContent.SideQuests = 1..3 | foreach {[plot]::new($PlotType,$TagsFilter,$AdaptedToFilter)}
+Get-LoaderMessage
+$RandomContent.NameVariants = Get-InternetNames
+Get-LoaderMessage
+$RandomContent.Weather = 1..3 | foreach {[Weather]::new()}
+Get-LoaderMessage
+$RandomContent.Inn = [Inn]::New($InnType,$PatronType)
+Get-LoaderMessage
 $RandomContent.Vendors = . {
     @("Trader","Armorer","Weaponsmith","Alchemist","Scribe","Wandwright") | foreach {
         Get-LoaderMessage

@@ -10,8 +10,6 @@ param (
 
 if ($HD -ne $Null -and $HD -ne ""){
     $Response = Invoke-WebRequest -uri "https://donjon.bin.sh/m20/monster/rpc.cgi?HD=$HD&n=$MaxUnique"
-    # $CMModified = Measure-CombatModifier ($Response.content -split('","') -replace("\[|\]|`"",""))
-    # return $CMModified
     return $Response.content -split('","') -replace("\[|\]|`"","")
 }
 

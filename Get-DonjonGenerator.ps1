@@ -11,7 +11,8 @@ param(
         "Tome",
         "Trap",
         "Monster",
-        "GiantBag"
+        "GiantBag",
+        "Name"
     )]$GeneratorType,
     [int]$HowMany = 4,
     [int]$Level = 1
@@ -32,6 +33,22 @@ switch ($GeneratorType) {
         $Random = Get-Random -Min 0 -Max $Giants.Count
         $RandomGiant = $Giants[$Random]
         $Response = Invoke-WebRequest "https://donjon.bin.sh/fantasy/random/rpc.cgi?type=Giant+Bag&giant_type=$RandomGiant+Giant&n=$HowMany"
+    }
+    "Name" {
+        $SpeciesArray = @(
+            "Human+Female",
+            "Human+Male",
+            "Dwarvish+Female",
+            "Dwarvish+Male",
+            "Elvish+Female",
+            "Elvish+Male",
+            "Halfling+Female",
+            "Halfling+Male"
+        )
+        $Random = Get-Random -Min 0 -Max $SpeciesArray.Count
+        $Species = $SpeciesArray[$Random]
+        
+        $Response = Invoke-WebRequest -uri "https://donjon.bin.sh/name/rpc.cgi?type=$Species&n=$HowMany"
     }
 }
 

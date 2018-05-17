@@ -16,7 +16,7 @@ function Get-DynamicParam {
 
         $arrSet = . $Scriptblock
         $ValidateSetAttribute = New-Object System.Management.Automation.ValidateSetAttribute($arrSet)
-        $AttributeCollection.Add($ValidateSetAttribute)
+        $AttributeCollection.Add($($ValidateSetAttribute))   
 
         $RuntimeParameter = New-Object System.Management.Automation.RuntimeDefinedParameter($ParameterName, [string], $AttributeCollection)
         $RuntimeParameterDictionary.Add($ParameterName, $RuntimeParameter)
