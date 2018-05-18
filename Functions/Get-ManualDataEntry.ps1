@@ -9,7 +9,7 @@ function Get-ManualDataEntry {
         try {
             switch -regex ($field){
                 "PlayerName"        {[ValidateLength(3,15)][string]$Entry = Read-Host "What is your own name"}
-                "WorthMoreThanGold" {[ValidateLength(5,36)][string]$Entry = Read-Host "What is worth more than wealth"}
+                "MostLikelyDo"      {[ValidateLength(5,36)][string]$Entry = Read-Host "What is worth more than wealth"}
                 "Hobby"             {[ValidateLength(5,36)][string]$Entry = Read-Host "What is a hobby you have"}
                 "Food"              {[ValidateLength(5,36)][string]$Entry = Read-Host "What is your favorite food"}
                 "DiscoverMagic"     {[ValidateLength(5,36)][string]$Entry = Read-Host "How did you first discover you had magic"}
@@ -17,6 +17,7 @@ function Get-ManualDataEntry {
                 "Amulet"            {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have an amulet (ex. Amulet of Hunting + 2)"}
                 "Ring"              {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have a ring (ex. Ring of Shadow + 1)"}
                 "Helm"              {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have a helm (ex. Winged Helm of Brilliance + 3)"}
+                "Shield"            {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have armor (ex. Bucklet of Power + 1 [2])"}
                 "ArmorSet"          {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have armor (ex. ScaleMail of Endurance + 1 [4])"}
                 "SideArm"           {[ValidateLength(0,30)][ValidateScript({$_ -match $WeaponPattern})][string]$Entry = Read-Host "Do you have a side arm (ex. Dagger of Wisdom + 1 [1d6])"}
                 "MainRanged"        {[ValidateLength(0,30)][ValidateScript({$_ -match $WeaponPattern})][string]$Entry = Read-Host "Do you have a melee weapon (ex. Masterful Bastard Sword of Power + 4 [1d6]"}

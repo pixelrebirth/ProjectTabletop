@@ -1,0 +1,2 @@
+Armor/Shield AC lower Dex score by 1/2 total amount so Full Plate with a Tower Shield = -12 HP and -6 Dex
+HP = str+3d4/lvl

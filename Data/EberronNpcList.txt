@@ -1,0 +1,159 @@
+CR 7; Ashaya d'Lyrandar; half-elf; sorcerer 4/dragonmark heir 3; LN; Eberron Campaign Setting p. 74
+CR 9; Gathan Warden; human; ranger 5/warden of the wood Eldeen Ranger 4; N; Eberron Campaign Setting p. 76
+CR 10; Davienne of Sigilstar; halfling; cleric5/exorcist of the silver flame 5 ; LG; Eberron Campaign Setting p. 78
+CR 9; Rous; chengeling; rogue 6/extreme explorer 3; LN; Eberron Campaign Setting p. 80
+CR 14; Rurik d'Kundarak; dwarf; fighter 12/heir os Siberys 2; N; Eberron Campaign Setting p. 81
+CR 8; Creilath Movanek; half-elf; bard 4/master inquisitive 4; N; Eberron Campaign Setting p. 83
+CR 9; Battering Ram; warforged; fighter 5/warforged juggernaut 4; N; Eberron Campaign Setting p. 84
+CR 10; Gwentan the Bear; shifter; barbarian 3/ranger 2/weretouched master 5; CN; Eberron Campaign Setting p. 87
+CR 4 Typical Aurum Concordian; dwarf; aristocrat 5; LE; Eberron Campaign Setting p. 227
+CR 7; Ashaya d'Lyrandar; half-elf; sorcerer 4/dragonmark heir 3; LN; Eberron Campaign Setting p. 74
+CR 5; Typical Blood of Vol Priest; half-elf; cleric 5; LE; Eberron Campaign Setting p. 228
+CR 4; Typical Silver Flame Priest; human; cleric 4; LG; Eberron Campaign Setting p. 230
+CR 4; Typical Dragon Below Cultist; human; rogue 2/cleric 2; NE; Eberron Campaign Setting p. 231
+CR 2; Typical House Cannith Magewright; human; magewright 3; NG; Eberron Campaign Setting p. 232
+CR 5; Typical House Deneith Sentinel Marshal; human; paladin 5; LG; Eberron Campaign Setting p. 233
+CR 3; Typical House Ghallanda Innkeeper; halfling; rogue 2/expert 2; NG; Eberron Campaign Setting p. 233
+CR 2; Typical House Jorasco Healer; halfling; adept 3; NG; Eberron Campaign Setting p. 233
+CR 2; Typical House Kundarak Banker; dwarf; expert 3; LN; Eberron Campaign Setting p. 234
+CR 3; Typical House Lyrandar Windwright; half-elf; expert 4; CG; Eberron Campaign Setting p. 235
+CR 3; Typical House Medani Sentry; half-elf; expert 3/fighter 1; LG; Eberron Campaign Setting p. 235
+CR 5; Typical House Orien Courier; human; rogue 3/expert 3; N; Eberron Campaign Setting p. 236
+CR 4; Typical House Phiarlan Entertainer/Spy; elf; bard 4; CN; Eberron Campaign Setting p. 236
+CR 5; Typical House Sivis Scribe; gnome; expert 6; N; Eberron Campaign Setting p. 238
+CR 4; Typical House Tharashk Bounty Hunter; half-orc; ranger 4; NE; Eberron Campaign Setting p. 238
+CR 7; Typical House Thuranni Assassin; elf; rogue 6/assassin 1; CE; Eberron Campaign Setting p. 239
+CR 2; Typical House Vadalis Handler; human; commoner 5; NG; Eberron Campaign Setting p. 240
+CR 8; Typical Dreaming Dark Spy; inspired; psion (seer) 4/rogue 3; LE; Eberron Campaign Setting p. 240
+CR 4; Typical Gatekeeper Initiate; half-orc; druid 4; N; Eberron Campaign Setting p. 241
+CR 5; Typical Library Clerk; gnome; expert 6; LN; Eberron Campaign Setting p. 242
+CR 13; Typical Lords of Dust Member; zakya rakshasa; fighter 5; LE; Eberron Campaign Setting p. 243
+CR 3; Typical Morgrave Professor; dwarf; expert 4; LG; Eberron Campaign Setting p. 244
+CR 1; Typical Emerald Claw Soldier; human; warrior 2; LE; Eberron Campaign Setting p. 245
+CR 3; Typical Royal Scion; human; aristocrat 3; LG; Eberron Campaign Setting p. 245
+CR 8; Typical Artificer of the Twelve; human; artificer 8; NG; Eberron Campaign Setting p. 246
+CR 5; Typical Warden of the Wood; human; druid 6; LN; Eberron Campaign Setting p. 247
+CR 8; Typical Wayfinder Explorer; changeling; rogue 5/ranger 1/extreme explorer 2; CN; Eberron Campaign Setting p. 247
+CR 4; Demise (4th level); elf; artificer1/necromancer 3; NE; Eberron Campaign Setting p. 252
+CR 4; Demise (8th level); elf; artificer1/necromancer 3; NE; Eberron Campaign Setting p. 252
+CR 5; Halas Martain (5th level); half-elf; rogue 3/ranger 2; N; Eberron Campaign Setting p. 253
+CR 9; Halas Martain (9th level); half-elf; rogue 3/ranger 2; N; Eberron Campaign Setting p. 253
+CR 1; Cutter; warforged; barbarian 1; CN; Eberron Campaign Setting p. 308
+CR 3; Sgt. Dolom; dwarf; fighter 3; LG; Eberron Campaign Setting p. 309
+CR 1; Watch Guards; human; warrior 2; LN; Eberron Campaign Setting p. 310
+CR 1; Skakan; goblin; expert 3; NE; Eberron Campaign Setting p. 311
+CR 1; Warforged; warforged; rogue 2; LE; Eberron Campaign Setting p. 312
+CR 3; Saber; warforged; fighter 3; LE; Eberron Campaign Setting p. 317
+CR 7; Queen Aurala; human; aristocrat 8; NG; Five Nations p. 22
+CR 10; Prince Jurian ir/Wynarn; human; rogue 5/fighter 4; CG; Five Nations p. 23
+CR 11; Margana Corleis; human; wizard 11; N; Five Nations p. 24
+CR 10; Lieutenant bara Mernu; human; fighter 1/wizard 5/knight phantom 4; LE; Five Nations p. 44
+CR 10; King Boranel; human; aristocrat 3/fighter 8; CG; Five Nations p. 58
+CR 4; Kor ir/Wynarn Commander of the Citadel; human; aristocrat 3/fighter 3; NG; Five Nations p. 58
+CR 8; Three; warforged; fighter 3/paladin 5; LG; Five Nations p. 59
+CR 1/2; Haydith ir'Wynarn; human; aristocrat 1; CG; Five Nations p. 60
+CR 10; Aron â€œSharpswordâ€ Fain; human; rogue 2/fighter 4/dark lantern 4; LG; Five Nations p. 73
+CR 12; The Lord of Blades; warforged; fighter 2/artificer 5/warforged juggernaut 5; LE; Five Nations p. 84
+CR 9; Mirasandra ir'Thavar; half-elf; aristocrat 4/ranger 2/Cyran avenger 3; CG; Five Nations p. 90
+CR 16; King Kaius; human vampire; aristocrat 2/fighter 11; LE; Five Nations p. 104
+CR 12; Malevanor High Priest of Vol; mummy; cleric 8; LE; Five Nations p. 106
+CR 10; Madox Kaminarr; human; paladin 4/bone knight 6; LN; Five Nations p. 121
+CR 4; Sample Madborn; half-elf; ranger 3; N; Five Nations p. 124
+CR 3; Jaela Daran Keeper of the Flame; human; cleric 3; LG; Five Nations p. 138
+CR 18; Jaela Daran (Inside the Cathedral in Flamekeep); human; cleric 18; LG; Five Nations p. 138
+CR 3; Queen Daini ir'Wynarn; human; aristocrat 4; NG; Five Nations p. 140
+CR 8; Dzarro Silvervein; dwarf; fighter 8; NG; Five Nations p. 141
+CR 8; Captain Malik Otherro; human; paladin 8; LG; Five Nations p. 141
+CR 12; High Cardinal Krozen; human; cleric 12; LE; Five Nations p. 142
+CR 8; Kievan ir'Talar; human; wizard 5/cleric 1/silver pyromancer 2; LG; Five Nations p. 154
+CR 1; Typical Lyrandar Travel Official; half-elf; expert 1/magewright 1; LN; Explorer's Handbook p. 16
+CR 4; Typical Orien Secret Courier; human; ranger 3/rogue 1; N; Explorer's Handbook p. 17
+CR 5; Longstrider Border Guard (Shifted); shifter; ranger 4/wizard 1; LN; Explorer's Handbook p. 44
+CR 1; Typical Lyrandar Travel Official; half-elf; expert 1/magewright 1; LN; Explorer's Handbook p. 16
+CR 6; Imre Levalle Corrupt Trustee; dwarf; rogue 6; LE; Explorer's Handbook p. 51
+CR 5; Arek Islecarn Explorer; half-elf; ranger 4/extreme explorer 1; NG; Explorer's Handbook p. 53
+CR 4; Mina Islecarn Explorer; half-elf; rogue 4; NG; Explorer's Handbook p. 53
+CR 8; Shellek; changeling; rogue 6/extreme explorer 2; NE; Explorer's Handbook p. 57
+CR 8; Vaalissek; human; wizard 5/cataclysm mage 3; NG; Explorer's Handbook p. 63
+CR 7; Thrush Xivdrad; human; fighter 4/thunder guide 3; NE; Explorer's Handbook p. 69
+CR 8; Syrina d'Lyrandar; half-elf; bard 4/dragonmark heir 3/windwright captain 1; CN; Explorer's Handbook p. 74
+CR 13; Deerian Black; half-elf; artificer 8/windwright captain 5; LN; Explorer's Handbook p. 75
+CR 1; Typical Airship Stevedore; half-elf; expert 2; NG; Explorer's Handbook p. 81
+CR 7; Nicolette d'Lyrandar Docging Tower Master; half-elf; aristocrat 2/monk 6; LG; Explorer's Handbook p. 81
+CR 1/2; Typical Rail Hand; human; commoner 1; LN; Explorer's Handbook p. 84
+CR 3; Hazel d'Orien House Courier; human; expert 6; CG; Explorer's Handbook p. 85
+CR 5; Katal Hazath patrol; githyanki; ranger 2/fighter 2; N; Explorer's Handbook p. 95
+CR 5; Katal Hazath Patrol Psion; githyanki; psion (telepath) 4; N; Explorer's Handbook p. 95
+CR 7; Khyber Scout; githyanki; ranger 6; N; Explorer's Handbook p. 95
+CR 2; Typical Seren Brave; human; barbarian 2; CN; Explorer's Handbook p. 98
+CR 6; Typical Shroud of Scales; human; sorcerer 6; N; Explorer's Handbook p. 98
+CR 1/2; Petty Cultist; orc; warrior 1; NE; Explorer's Handbook p. 101
+CR 7; Tilbor the Divine; goblin; cleric 5; NE; Explorer's Handbook p. 101
+CR 4; Cultist of the Dragon Below; human; ranger 4; NE; Explorer's Handbook p. 103
+CR 9; Typical Priest of Transition; elf; cleric 9; LG; Explorer's Handbook p. 106
+CR 7; Carrion Tribe Rot Lord; human; barbarian 7; NE; Explorer's Handbook p. 111
+CR 18; Ethon Panjilcuttra; rakshasa; artificer 8; LE; Explorer's Handbook p. 113
+CR 7; Arthan d'Bentalle; dust-stuffed human; aristocrat 3/rogue 3; LE; Explorer's Handbook p. 114
+CR 28; Tyrass; very old gold dragon; loremaster 6; LN; Explorer's Handbook p. 118
+CR 14; Jeeryth Ritaal; ghost; necromancer 13; LE; Explorer's Handbook p. 125
+CR 6; Marauders of Hakatorvhak; half-black dragon human; fighter 4; CE; Explorer's Handbook p. 146
+CR 6; Mid-Level Enforcer; warforged; fighter 5/warforged juggernaut 1; N; Secrets of Zen'drik p. 54
+CR 13; High-Level Enforcer; warforged; fighter 8/warforged juggernaut 5; N; Secrets of Zen'drik p. 55CR 3; Low-Level Caster; half-elf; druid 3; N; Secrets of Zen'drik p. 55
+CR 15; Mid-Level Caster; half-elf; druid 15; LE; Secrets of Zen'drik p. 55
+CR 8; Mid-Level Leader; shifter; ranger 5/horizon walker 3; N; Secrets of Zen'drik p. 56
+CR 15; High-Level Leader; shifter; ranger 5/horizon walker 10; LE; Secrets of Zen'drik p. 57
+CR 8; Blackscale Lizardfolk Leader; blackscale lizardfolk; barbarian 5; N; Secrets of Zen'drik p. 63
+CR 4; Sahuagin Spy; sahuagin (malenti); expert 1/rogue 2; NE; Secrets of Zen'drik p. 64
+CR 10; Yak Folk Puppeteer; yak folk; sorcerer 2/stone giant vesssel; NE; Secrets of Zen'drik p. 66
+CR 1; Drow Lookout; drow; warrior 1; NE; Secrets of Zen'drik p. 68
+CR 2; Drow Disciple; drow; adept 2; CE; Secrets of Zen'drik p. 69
+CR 3; Drow Hunter; drow; ranger 2; NE; Secrets of Zen'drik p. 69
+CR 5; Drow Raider; drow; ranger 2/fighter 2; N; Secrets of Zen'drik p. 70
+CR 8; Drow Firebringer; drow; sorcerer 7; NE; Secrets of Zen'drik p. 71
+CR 7; Drow Poisoner; drow; rogue 5/assassin 1; CE; Secrets of Zen'drik p. 71
+CR 8; Drow Shaman; drow; cleric 7; CE; Secrets of Zen'drik p. 71
+CR 10; Drow Kaxat; drow; fighter 6/ranger 3; NE; Secrets of Zen'drik p. 72
+CR 14; Drow Aquasa; drow; fighter 8/ranger 5; NE; Secrets of Zen'drik p. 73
+CR 17; Primordial Sun Giant Warlock; sun giant; warlock 5; NE; Secrets of Zen'drik p. 79
+CR 4; Quorcraft Warforged Barbarian; warforged; dbarbarian 4; CN; Secrets of Zen'drik p. 84
+CR 8; Greenbody; warforged; druid 5/landforged walker 3; NG; Secrets of Zen'drik p. 126
+CR 10; Silayuss; human; wizard 7/primal scholar 3; NG; Secrets of Zen'drik p. 129
+CR 11; Ax'ayuma Tokazz; drow; ranger 6/scorpion wraith 4; N; Secrets of Zen'drik p. 132
+CR 7; Vurlaak D'Tharashk; half-orc; rogue 4/dragonmark heir 3; N; Magic of Eberron p. 33
+CR 8; Roywin Garrick; gnome; wizard 5/elemental savant (cold) 3; N; Magic of Eberron p. 35
+CR 3; Daelkyr Half-Blood Rogue; daelkyr half-blood; rogue 3; LN; Magic of Eberron p. 39
+CR 3; Daelkyr Half-Blood Wizard; daelkyr half-blood; wizard 3; LN; Magic of Eberron p. 39
+CR 3; Psiforged Psychic Warrior; psiforged; psychic warrior 3; LN; Magic of Eberron p. 41
+CR 5; Psiforged Telepath; psiforged; psion (telepath) 5; LE; Magic of Eberron p. 41
+CR 10; Harthan d'Cannith; human; artificer 8/alchemist savant 2; LN; Magic of Eberron p. 57
+CR 9; Akanna Lightwind; halfling; rogue 2/paladin 4/deadgrim 3; LG; Magic of Eberron p. 63
+CR 9; Yesrin Lieng; human; sorcerer 6/dragon prophet 3; LN; Magic of Eberron p. 68
+CR 10; Shae-ahm Rhen Skyshadow; gnome; rogue 7/elemental scion 3; N; Magic of Eberron p. 73
+CR 9; Aldred Enduru; halfling; ranger 4/rogue 1/impure prince 3; LN; Magic of Eberron p. 76
+CR 9; Whalin; human; psychic warrior 6/quori mindhunter 3; CG; Magic of Eberron p. 81
+CR 8; Thalas; human; artificer 7/renegade mastermaker 1; LN; Magic of Eberron p. 85
+CR 7; Jabreki Osluuhn; elf; rogue 5/viligant sentinel of Aerenal; CG; Magic of Eberron p. 89
+CR 14; Gath; human lich; cleric 14; NE; Sharn City of Towers p. 104
+CR 9; Hruit; shifter lich; druid 6/sharn skymage 3; NE; Sharn City of Towers p. 104
+CR 10; Tarya d'Cannith; human; artificer 10; N; Sharn City of Towers p. 113
+CR 12; Menya d'Cannith; human; artificer 9/Cannith wand adept 3; N; Sharn City of Towers p. 113
+CR 4; Karg; ogre; expert 2; N; Sharn City of Towers p. 120
+CR 12; Madra Sil Sarin; gnome; rogue 7/assassin 5; LE; Sharn City of Towers p. 123
+CR 1/2; Watch Patrol; human; warrior 1; N; Sharn City of Towers p. 136
+CR 3; Watch Sergeant; dwarf; fighter 3; LN; Sharn City of Towers p. 136
+CR 5; Watch Captain; human; fighter 5; LN; Sharn City of Towers p. 137
+CR 1; Elite Watch Guard; human; warrior 2; LN; Sharn City of Towers p. 137
+CR 12; Knight-Marshal of the Citadel Sir Banarak Tithon; human; fighter 7/citadel elite 5; LN; Sharn City of Towers p. 139
+CR 3; Citadel Agent; human; expert 2/rogue 2; LN; Sharn City of Towers p. 140
+CR 13; Lieutenant Meira; shifter; warrior 8/ranger 6; N; Sharn City of Towers p. 141
+CR 8; Redcloak Soldier; human; warrior 7/fighter 2; LN; Sharn City of Towers p. 141
+CR 8; Redcloak Soldier; half-orc; warrior 7/barbarian 2; N; Sharn City of Towers p. 142
+CR 8; Redcloak Adept; elf; adept 9; N; Sharn City of Towers p. 142
+CR 8; Redcloak Countermage; dwarf; magewright 8/fighter 1; N; Sharn City of Towers p. 142
+CR 3; Guard Captain; human; fighter 3; LE; Sharn City of Towers p. 143
+CR 1; Elite Guard; half-orc; warrior 2; LE; Sharn City of Towers p. 143
+CR 3; Boromar Pickpocket; halfling; rogue 3; N; Sharn City of Towers p. 151
+CR 3; Cavallah; ogre mage; rogue 3; LE; Sharn City of Towers p. 152
+CR 5; Keshta; gnoll; ranger 4; LE; Sharn City of Towers p. 153
+CR 1/2; Low-Level Human Mugger; human; warrior 1; N; Sharn City of Towers p. 153
+CR 5; Sample Artificer; warforged; artificer 5; N; Sharn City of Towers p. 173

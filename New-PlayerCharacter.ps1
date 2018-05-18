@@ -10,7 +10,7 @@ DynamicParam {
         "Race",
         "CharacterName",
         "TalentName",
-        "WorthMoreThanGold",
+        "MostLikelyDo",
         "Hobby",
         "Food",
         "Idol",
@@ -28,7 +28,7 @@ DynamicParam {
     [Scriptblock]$ScriptRace = {Get-Content $PSScriptRoot\Data\Character\Race.txt}
     [Scriptblock]$ScriptCharacterName = {Get-Content $PSScriptRoot\Data\Character\CharacterName.txt}
     [Scriptblock]$ScriptTalentName = {Get-Content $PSScriptRoot\Data\Character\TalentName.txt}
-    [Scriptblock]$ScriptWorthMoreThanGold = {Get-Content $PSScriptRoot\Data\Character\WorthMoreThanGold.txt}
+    [Scriptblock]$ScriptMostLikelyDo = {Get-Content $PSScriptRoot\Data\Character\MostLikelyDo.txt}
     [Scriptblock]$ScriptHobby = {Get-Content $PSScriptRoot\Data\Character\Hobby.txt}
     [Scriptblock]$ScriptFood = {Get-Content $PSScriptRoot\Data\Character\Food.txt}
     [Scriptblock]$ScriptIdol = {Get-Content $PSScriptRoot\Data\Character\Idol.txt}
@@ -47,7 +47,7 @@ DynamicParam {
         $ScriptRace,
         $ScriptCharacterName,
         $ScriptTalentName,
-        $ScriptWorthMoreThanGold,
+        $ScriptMostLikelyDo,
         $ScriptHobby,
         $ScriptFood,
         $ScriptIdol,
@@ -69,7 +69,7 @@ begin {
     $Race = $PsBoundParameters['Race']
     $CharacterName = $PsBoundParameters['CharacterName']
     $TalentName = $PsBoundParameters['TalentName']
-    $WorthMoreThanGold = $PsBoundParameters['WorthMoreThanGold']
+    $MostLikelyDo = $PsBoundParameters['MostLikelyDo']
     $Hobby = $PsBoundParameters['Hobby']
     $Food = $PsBoundParameters['Food']
     $Idol = $PsBoundParameters['Idol']

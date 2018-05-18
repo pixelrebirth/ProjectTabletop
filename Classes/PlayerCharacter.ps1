@@ -3,6 +3,7 @@ class PlayerCharacter {
     $Amulet
     $Ring
     $Helm
+    $Shield
     $ArmorSet
     $SideArm
     $MainRanged
@@ -61,7 +62,7 @@ class PlayerCharacter {
     $BestFriend
     $LastWar
     $Organization
-    $WorthMoreThanGold
+    $MostLikelyDo
     $Hobby
     $Food
     $DiscoverMagic
