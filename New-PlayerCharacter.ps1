@@ -27,9 +27,12 @@ DynamicParam {
     
     [Scriptblock]$ScriptRace = {Get-Content $PSScriptRoot\Data\Character\Race.txt}
     [Scriptblock]$ScriptCharacterName = {
-        $AllNames = Get-Content $PSScriptRoot\Data\Character\CharacterName.txt | Sort {Get-Random}
-        $Random = Get-Random -min 0 -max $AllNames.count
-        $AllNames[$random..($random+100)]
+        if ($Global:Set -eq $null){
+            $AllNames = Get-Content $PSScriptRoot\Data\Character\CharacterName.txt
+            $Random = Get-Random -min 0 -max $AllNames.count
+            $Global:Set = $AllNames[$random..($random+100)]
+        }
+        $Global:Set
     }
     [Scriptblock]$ScriptTalentName = {Get-Content $PSScriptRoot\Data\Character\TalentName.txt}
     [Scriptblock]$ScriptMostLikelyDo = {Get-Content $PSScriptRoot\Data\Character\MostLikelyDo.txt}
@@ -91,34 +94,21 @@ begin {
 }
 
 process {
-    $DataEntryFields = @("PlayerName","Str","Dex","Mind","BankGold","Amulet","Ring","Helm","Shield","ArmorSet","SideArm","MainRanged","MainMelee","Vise","Virtue","GearSlot1","GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18")
     $PlayerCharacter = [PlayerCharacter]::new()
-    
+
+    $DataEntryFields = @("PlayerName","Str","Dex","Mind","BankGold","Amulet","Ring","Helm",
+        "Shield","ArmorSet","SideArm","MainRanged","MainMelee","Virtue","Vise","GearSlot1",
+        "GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7","GearSlot8",
+        "GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13","GearSlot14",
+        "GearSlot15","GearSlot16","GearSlot17","GearSlot18")
+        
     foreach ($field in $DataEntryFields){
         $Entry = Get-ManualDataEntry -field $field
         if ($field -match "GearSlot" -and $Entry -eq $null){break}
         $PlayerCharacter."$field" = $Entry
     }
 
-# TODO Create calculations of stats
-# Calculate
-# -----
-# Level
-# Phys
-# Sub
-# Know
-# Comm
-# Surv
-# SideArmCM
-# RangedCM
-# MeleeCM
-# Heroism
-# Fortitude
-# Reflex
-# Will
-# SpellDC
-# AC
-# HP
+    $PlayerCharacter.FirstLevel()
 }
 
 end {

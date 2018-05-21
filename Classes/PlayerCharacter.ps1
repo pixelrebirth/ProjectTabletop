@@ -8,8 +8,8 @@ class PlayerCharacter {
     $SideArm
     $MainRanged
     $MainMelee
-    $Vise
     $Virtue
+    $Vise
     $Mind
     $Str
     $Dex
@@ -67,4 +67,93 @@ class PlayerCharacter {
     $Food
     $DiscoverMagic
     $WhatSeek
+
+    FirstLevel () {
+        $this.Level = 1
+        $AllStats = @(
+            "STR:Power",
+            "DEX:Speed",
+            "MIND:Wisdom"
+        )
+        $AllSkills = @(
+            "Phys:Endurance",
+            "Sub:Shadow",
+            "Know:Brilliance",
+            "Comm:Tongues",
+            "Surv:Hunting"
+        )
+        $AllEquipmentTypes = @(
+            "Amulet",
+            "Ring",
+            "Helm",
+            "Shield",
+            "ArmorSet",
+            "SideArm",
+            "MainRanged",
+            "MainMelee"
+        )
+
+        Foreach ($Skill in $AllSkills){
+            $Skill = ($Skill).split(":")
+            $this."$($Skill[0])" = $this.Level
+            if ($this.Race -eq "Human"){
+                $this."$($Skill[0])"++
+            }
+            if ($this.Virtue -match "$($Skill[0])"){
+                $this."$($Skill[0])" = $this."$($Skill[0])" + 2
+            }
+            if ($this.Vise -match "$($Skill[0])"){
+                $this."$($Skill[0])" = $this."$($Skill[0])" - 2
+            }
+            
+            Foreach ($Type in $AllEquipmentTypes){
+                if ($this."$Type" -match "$($Skill[1])"){
+                    $this."$Type" -match " \+ (\d+)"
+                    $PlusAttribute = $matches[1]
+                    $CurrentAttribute = $this."$($Skill[0])"
+                    $this."$($Skill[0])" = $CurrentAttribute + $PlusAttribute
+                }
+            }
+        }
+
+        Foreach ($Stat in $AllStats){
+            $Stat = ($Stat).split(":")
+            $StatName = $Stat[0]
+            $StatType = $Stat[1]
+            # if ($this.Race -eq "Human"){
+            #     $this."$($Stat[0])"++
+            # }
+            if ($this.Virtue -match "$($StatName)"){
+                $this."$($StatName)" = $this."$($StatName)" + 2
+            }
+            if ($this.Vise -match "$($StatName)"){
+                $this."$($StatName)" = $this."$($StatName)" - 2
+            }
+            
+            Foreach ($Type in $AllEquipmentTypes){
+                if ($this."$Type" -match "$($StatType)"){
+                    $this."$Type" -match " \+ (\d+)"
+                    $PlusAttribute = $matches[1]
+                    $CurrentAttribute = $this."$($StatName)"
+                    $this."$($StatName)" = $CurrentAttribute + $PlusAttribute
+                }
+            }
+        }
+
+
+
+    # TODO Create calculations of stats
+    # Calculate
+    # -----
+    # SideArmCM
+    # RangedCM
+    # MeleeCM
+    # Heroism
+    # Fortitude
+    # Reflex
+    # Will
+    # SpellDC
+    # AC
+    # HP
+    }
 }
