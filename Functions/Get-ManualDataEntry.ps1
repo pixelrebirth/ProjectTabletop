@@ -33,5 +33,3 @@ function Get-ManualDataEntry {
     }
     return $entry
 }
-
-Get-ManualDataEntry -field "SideArm" # FIXME remove this

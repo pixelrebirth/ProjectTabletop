@@ -26,7 +26,11 @@ DynamicParam {
     )
     
     [Scriptblock]$ScriptRace = {Get-Content $PSScriptRoot\Data\Character\Race.txt}
-    [Scriptblock]$ScriptCharacterName = {Get-Content $PSScriptRoot\Data\Character\CharacterName.txt}
+    [Scriptblock]$ScriptCharacterName = {
+        $AllNames = Get-Content $PSScriptRoot\Data\Character\CharacterName.txt | Sort {Get-Random}
+        $Random = Get-Random -min 0 -max $AllNames.count
+        $AllNames[$random..($random+100)]
+    }
     [Scriptblock]$ScriptTalentName = {Get-Content $PSScriptRoot\Data\Character\TalentName.txt}
     [Scriptblock]$ScriptMostLikelyDo = {Get-Content $PSScriptRoot\Data\Character\MostLikelyDo.txt}
     [Scriptblock]$ScriptHobby = {Get-Content $PSScriptRoot\Data\Character\Hobby.txt}
@@ -87,7 +91,7 @@ begin {
 }
 
 process {
-    $DataEntryFields = @("PlayerName","Str","Dex","Mind","BankGold","Amulet","Ring","Helm","ArmorSet","SideArm","MainRanged","MainMelee","Vise","Virtue","GearSlot1","GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18")
+    $DataEntryFields = @("PlayerName","Str","Dex","Mind","BankGold","Amulet","Ring","Helm","Shield","ArmorSet","SideArm","MainRanged","MainMelee","Vise","Virtue","GearSlot1","GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18")
     $PlayerCharacter = [PlayerCharacter]::new()
     
     foreach ($field in $DataEntryFields){
@@ -95,6 +99,8 @@ process {
         if ($field -match "GearSlot" -and $Entry -eq $null){break}
         $PlayerCharacter."$field" = $Entry
     }
+
+# TODO Create calculations of stats
 # Calculate
 # -----
 # Level
