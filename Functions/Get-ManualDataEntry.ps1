@@ -26,7 +26,7 @@ function Get-ManualDataEntry {
                 "Dex"               {[ValidateRange(3,18)][int]$Entry = Read-Host "What did you roll for DEX (4d6 drop lowest)"}
                 "Mind"              {[ValidateRange(3,18)][int]$Entry = Read-Host "What did you roll for MIND (4d6 drop lowest)"}
                 "BankGold"          {[int]$Entry = Read-Host "How much gold do you have in the bank"}
-                "GearSlot(\d+)"     {[ValidateLength(0,17)][string]$Entry = Read-Host "What is in gear slot $($Matches[1]), leave blank if none left"}
+                "GearSlot(\d+)"     {[ValidateLength(0,30)][string]$Entry = Read-Host "What is in gear slot $($Matches[1]), leave blank if none left"}
             }
         }
         catch {}

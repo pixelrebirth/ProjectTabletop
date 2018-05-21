@@ -90,15 +90,16 @@ class PlayerCharacter {
             "ArmorSet",
             "SideArm",
             "MainRanged",
-            "MainMelee"
+            "MainMelee",
+            "GearSlot1","GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7",
+            "GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13",
+            "GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18"
         )
 
         Foreach ($Skill in $AllSkills){
             $Skill = ($Skill).split(":")
             $this."$($Skill[0])" = $this.Level
-            if ($this.Race -eq "Human"){
-                $this."$($Skill[0])"++
-            }
+
             if ($this.Virtue -match "$($Skill[0])"){
                 $this."$($Skill[0])" = $this."$($Skill[0])" + 2
             }
@@ -120,9 +121,7 @@ class PlayerCharacter {
             $Stat = ($Stat).split(":")
             $StatName = $Stat[0]
             $StatType = $Stat[1]
-            # if ($this.Race -eq "Human"){
-            #     $this."$($Stat[0])"++
-            # }
+
             if ($this.Virtue -match "$($StatName)"){
                 $this."$($StatName)" = $this."$($StatName)" + 2
             }
