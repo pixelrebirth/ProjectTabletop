@@ -2,18 +2,13 @@ function Get-ManualDataEntry {
     param($field)
     $LongStrings = @("Amulet","Ring","Helm","ArmorSet","SideArm","MainRanged","MainMelee")
     $Entry = $null
-    $WeaponPattern = '^[A-Za-z ]+\[\d+d\d+\][string]|^[\w+ ]+ \+ \d+ \[\d+d\d+\][string]'
+    $WeaponPattern = '^[A-Za-z ]+\[\d+d\d+\]|^[\w+ ]+ \+ \d+ \[\d+d\d+\]'
     $VirtuePattern = '^\w+\\\w+$'
     while ($true){
         
         try {
             switch -regex ($field){
                 "PlayerName"        {[ValidateLength(3,15)][string]$Entry = Read-Host "What is your own name"}
-                "MostLikelyDo"      {[ValidateLength(5,36)][string]$Entry = Read-Host "What is worth more than wealth"}
-                "Hobby"             {[ValidateLength(5,36)][string]$Entry = Read-Host "What is a hobby you have"}
-                "Food"              {[ValidateLength(5,36)][string]$Entry = Read-Host "What is your favorite food"}
-                "DiscoverMagic"     {[ValidateLength(5,36)][string]$Entry = Read-Host "How did you first discover you had magic"}
-                "WhatSeek"          {[ValidateLength(5,36)][string]$Entry = Read-Host "What do you seek in this world"}
                 "Amulet"            {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have an amulet (ex. Amulet of Hunting + 2)"}
                 "Ring"              {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have a ring (ex. Ring of Shadow + 1)"}
                 "Helm"              {[ValidateLength(0,30)][string]$Entry = Read-Host "Do you have a helm (ex. Winged Helm of Brilliance + 3)"}
@@ -38,3 +33,5 @@ function Get-ManualDataEntry {
     }
     return $entry
 }
+
+Get-ManualDataEntry -field "SideArm" # FIXME remove this
