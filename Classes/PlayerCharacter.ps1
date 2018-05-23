@@ -164,7 +164,7 @@ class PlayerCharacter {
         if ($this.RaceBonus -match "$Bonus\+(\d+)"){
             $this."$Bonus" = [int]$this."$Bonus" + [int]$matches[1]
         }
-
+        
         Foreach ($Stat in $EquipStats){
             $Stat = ($Stat).split(":")
             $StatName = $Stat[0]
@@ -175,6 +175,15 @@ class PlayerCharacter {
             }
             if ($this.Vise -match "$($StatName)"){
                 $this."$($StatName)" = $this."$($StatName)" - 2
+            }
+
+            Foreach ($Type in $AllEquipmentTypes){
+                if ($this."$Type" -match "$($StatType)"){
+                    $this."$Type" -match " \+ (\d+)"
+                    $PlusAttribute = $matches[1]
+                    $CurrentAttribute = $this."$($StatName)"
+                    $this."$($StatName)" = $CurrentAttribute + $PlusAttribute
+                }
             }
         }
         
@@ -213,8 +222,9 @@ class PlayerCharacter {
                 $this.MainMelee = "Magic Fists + $FistBonus [1d8]"
                 $this.SideArm = "Magic Fists (Off-hand) + $FistBonus [1d6]"
             }
+            #TODO Add fighter talent here
         }
-
+        
 
         if ($this.dex -lt 10){$this.dex = 10}
         if ($this.str -lt 10){$this.str = 10}
@@ -245,5 +255,7 @@ class PlayerCharacter {
         $this.Fortitude = $this.StrMod + $this.Phys + 10
         $this.Reflex = $this.DexMod + $this.Sub + 10
         $this.Will = $this.MindMod + $this.Know + 10
+
+
     }
 }
