@@ -138,7 +138,8 @@ class PlayerCharacter {
             "Sub:Shadow",
             "Know:Brilliance",
             "Comm:Tongues",
-            "Surv:Hunting"
+            "Surv:Hunting",
+            "Hardening:AC"
             "CMBase:Gutting"
         )
        
