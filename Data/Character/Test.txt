@@ -6,16 +6,16 @@ str\surv
 dex\comm
 36
 Amulet of Power + 1
-Ring of Speed + 2
+Ring of Speed + 1
 Helm of Wisdom + 1
 Shield of Endurance + 1 [2]
 ScaleMale of Hardening + 1 [4]
-Dagger of Shadow + 3 [1d4]
+Dagger of Shadow + 1 [1d4]
 Staff of Brilliance + 1 [1d8]
 ShortBow of Hunting + 1 [1d6]
 Trinket of Power + 1
 Thing of Tongues + 1
-Sock of Gutting + 3
+Sock of Gutting + 1
 
 
 
