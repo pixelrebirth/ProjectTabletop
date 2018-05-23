@@ -128,10 +128,9 @@ process {
     while ($XPRemain - $Level*10 -ge 0){   
         $PlayerCharacter.LevelUp()
         $Level++
-        # if ($Level -gt 1){$ReplaceMode = $true}    
         $XPRemain = $XPRemain - $Level*10
     }
-    
+
     $PlayerCharacter.UpdateStats()
 }
 
