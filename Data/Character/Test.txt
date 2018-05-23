@@ -2,19 +2,64 @@ Kelcey
 16
 12
 11
+str\surv
+dex\comm
 36
 Amulet of Power + 1
 Ring of Speed + 2
 Helm of Wisdom + 1
 Shield of Endurance + 1 [2]
 ScaleMale of Hardening + 1 [4]
-Dagger of Shadow + 3 [1d6]
-Staff of Brilliance + 1 [1d6]
+Dagger of Shadow + 3 [1d4]
+Staff of Brilliance + 1 [1d8]
 ShortBow of Hunting + 1 [1d6]
-str\surv
-dex\comm
 Trinket of Power + 1
 Thing of Tongues + 1
+Sock of Gutting + 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

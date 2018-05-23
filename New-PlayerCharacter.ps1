@@ -1,6 +1,6 @@
 [cmdletbinding()]
 param(    
-    [int]$XP = 0
+    [int]$XP = 50
 )
 
 DynamicParam {
@@ -90,50 +90,49 @@ begin {
     $Organization = $PsBoundParameters['Organization']
 
     . ./LoadClasses.ps1
+    $Level = 0
 }
 
 process {
     $PlayerCharacter = [PlayerCharacter]::new()
 
-    $PlayerCharacter.Race = $Race | % {if ($_ -eq $null){. $ScriptRace | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.CharacterName = $CharacterName | % {if ($_ -eq $null){. $ScriptCharacterName | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.TalentName = $TalentName | % {if ($_ -eq $null){. $scriptTalentName | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.MostLikelyDo = $MostLikelyDo | % {if ($_ -eq $null){. $scriptMostLikelyDo | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.Hobby = $Hobby | % {if ($_ -eq $null){. $scriptHobby | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.Food = $Food | % {if ($_ -eq $null){. $scriptFood | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.Idol = $Idol | % {if ($_ -eq $null){. $scriptIdol | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.DiscoverMagic = $DiscoverMagic | % {if ($_ -eq $null){. $scriptDiscoverMagic | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.Foe = $Foe | % {if ($_ -eq $null){. $scriptFoe | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.WhatSeek = $WhatSeek | % {if ($_ -eq $null){. $scriptWhatSeek | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.Lover = $Lover | % {if ($_ -eq $null){. $scriptLover | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.Family = $Family | % {if ($_ -eq $null){. $scriptFamily | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.WhereFrom = $WhereFrom | % {if ($_ -eq $null){. $scriptWhereFrom | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.BestFriend = $BestFriend | % {if ($_ -eq $null){. $scriptBestFriend | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.LastWar = $LastWar | % {if ($_ -eq $null){. $scriptLastWar | Sort {Get-Random} | select -first 1}}
-    $PlayerCharacter.Organization = $Organization | % {if ($_ -eq $null){. $scriptOrganization | Sort {Get-Random} | select -first 1}}
+    $PlayerCharacter.Race = $Race | % {if ($_ -eq $null){. $ScriptRace | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.CharacterName = $CharacterName | % {if ($_ -eq $null){. $ScriptCharacterName | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.TalentName = $TalentName | % {if ($_ -eq $null){. $scriptTalentName | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.MostLikelyDo = $MostLikelyDo | % {if ($_ -eq $null){. $scriptMostLikelyDo | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.Hobby = $Hobby | % {if ($_ -eq $null){. $scriptHobby | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.Food = $Food | % {if ($_ -eq $null){. $scriptFood | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.Idol = $Idol | % {if ($_ -eq $null){. $scriptIdol | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.DiscoverMagic = $DiscoverMagic | % {if ($_ -eq $null){. $scriptDiscoverMagic | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.Foe = $Foe | % {if ($_ -eq $null){. $scriptFoe | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.WhatSeek = $WhatSeek | % {if ($_ -eq $null){. $scriptWhatSeek | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.Lover = $Lover | % {if ($_ -eq $null){. $scriptLover | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.Family = $Family | % {if ($_ -eq $null){. $scriptFamily | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.WhereFrom = $WhereFrom | % {if ($_ -eq $null){. $scriptWhereFrom | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.BestFriend = $BestFriend | % {if ($_ -eq $null){. $scriptBestFriend | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.LastWar = $LastWar | % {if ($_ -eq $null){. $scriptLastWar | Sort {Get-Random} | select -first 1} else {$_}}
+    $PlayerCharacter.Organization = $Organization | % {if ($_ -eq $null){. $scriptOrganization | Sort {Get-Random} | select -first 1} else {$_}}
 
     $PlayerCharacter.RaceBonus = $PlayerCharacter.Race.split(";")[1]
     $PlayerCharacter.Race = $PlayerCharacter.Race.split(";")[0]
     
     $PlayerCharacter.TalentBonus = $PlayerCharacter.TalentName.split(";")[1]
     $PlayerCharacter.TalentName = $PlayerCharacter.TalentName.split(";")[0]
-
-    if ($PlayerCharacter.XP -eq $null){$PlayerCharacter.XP = 0}
-    $PlayerCharacter.AC = 
-
-    $DataEntryFields = @("PlayerName","Str","Dex","Mind","BankGold","Amulet","Ring","Helm",
-        "Shield","ArmorSet","SideArm","MainRanged","MainMelee","Virtue","Vise","GearSlot1",
-        "GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7","GearSlot8",
-        "GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13","GearSlot14",
-        "GearSlot15","GearSlot16","GearSlot17","GearSlot18")
-        
-    foreach ($field in $DataEntryFields){
-        $Entry = Get-ManualDataEntry -field $field
-        if ($field -match "GearSlot" -and $Entry -eq $null){break}
-        $PlayerCharacter."$field" = $Entry
-    }
-
+    $PlayerCharacter.XP = $XP
+  
+    
+    # $ReplaceMode = $False
     $PlayerCharacter.FirstLevel()
+    
+    $XPRemain = $XP
+    while ($XPRemain - $Level*10 -ge 0){   
+        $PlayerCharacter.LevelUp()
+        $Level++
+        # if ($Level -gt 1){$ReplaceMode = $true}    
+        $XPRemain = $XPRemain - $Level*10
+    }
+    
+    $PlayerCharacter.UpdateStats()
 }
 
 end {
