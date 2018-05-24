@@ -62,7 +62,7 @@ class PlayerCharacter {
     $RaceBonus
     $CharacterName
     $TalentName
-    $TalentBonus
+    $TalentAbility
     $Idol
     $Foe
     $Lover

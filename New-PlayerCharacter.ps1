@@ -116,7 +116,7 @@ process {
     $PlayerCharacter.RaceBonus = $PlayerCharacter.Race.split(";")[1]
     $PlayerCharacter.Race = $PlayerCharacter.Race.split(";")[0]
     
-    $PlayerCharacter.TalentBonus = $PlayerCharacter.TalentName.split(";")[1]
+    $PlayerCharacter.TalentAbility = $PlayerCharacter.TalentName.split(";")[1]
     $PlayerCharacter.TalentName = $PlayerCharacter.TalentName.split(";")[0]
     $PlayerCharacter.XP = $XP
   
@@ -135,5 +135,10 @@ process {
 }
 
 end {
-    $PlayerCharacter
+    $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation
+    Format-PhotoshopExport -PlayerCharacter $PlayerCharacter
+    Set-SheetGraphics
+    Move-Item "E:\temp\PSExport.png" "E:\www\characters\$($PlayerCharacter.PlayerName).png" -Force
+    
+    return $PlayerCharacter
 }
