@@ -78,6 +78,8 @@ class PlayerCharacter {
     $WhatSeek
     
     FirstLevel () {
+        . ./LoadClasses.ps1
+
         $StatData = @("PlayerName","Str","Dex","Mind","Virtue","Vise")
         foreach ($field in $StatData){
             $Entry = Get-ManualDataEntry -field $field -ReplaceMode $False
@@ -98,6 +100,7 @@ class PlayerCharacter {
     }
     
     LevelUp () {
+        . ./LoadClasses.ps1
         $this.Level++
         $DataEntryFields = @("BankGold","Amulet","Ring","Helm",
             "Shield","ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1",
@@ -193,7 +196,7 @@ class PlayerCharacter {
         if ($this.Shield -match "\[(\d+)\]"){$ShieldAC = $matches[1]}
         else {$ShieldAC = 0}
 
-        $this.Dex = [int]$this.Dex - (([int]$ArmorAC + [int]$ShieldAC)/2)
+        $this.Dex = [int]$this.Dex - ([math]::floor(([int]$ArmorAC + [int]$ShieldAC)/2))
 
         switch ($this.TalentName){
             "Talented"{
@@ -222,7 +225,9 @@ class PlayerCharacter {
                 $this.MainMelee = "Magic Fists + $FistBonus [1d8]"
                 $this.SideArm = "Magic Fists (Off-hand) + $FistBonus [1d6]"
             }
-            #TODO Add fighter talent here
+            "Combat Training" {
+                $this.CMBase + ([math]::floor(.2 * $this.level)) + 1
+            }
         }
         
 
@@ -243,9 +248,9 @@ class PlayerCharacter {
         $MeleeCMBase = $this.strmod + $this.CMBase
         $RangedCMBase = $this.DexMod + $this.CMBase
 
-        if ($this.SideArm -match "Masterful"){$SideArmCMBase = $SideArmCMBase + 2}
-        if ($this.MainMelee -match "Masterful"){$MeleeCMBase = $MeleeCMBase + 2}
-        if ($this.MainRanged -match "Masterful"){$RangedCMBase = $RangedCMBase + 2}
+        if ($this.SideArm -match "^Masterful|^M "){$SideArmCMBase = $SideArmCMBase + 2}
+        if ($this.MainMelee -match "^Masterful|^M "){$MeleeCMBase = $MeleeCMBase + 2}
+        if ($this.MainRanged -match "^Masterful|^M "){$RangedCMBase = $RangedCMBase + 2}
         
         $this.SideArmCM = If ($this.SideArm -match "\[(.*)\]"){"$($Matches[1]) + $MeleeCMBase" }
         $this.MeleeCM = If ($this.MainMelee -match "\[(.*)\]"){"$($Matches[1]) + $MeleeCMBase" }

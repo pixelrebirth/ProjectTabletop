@@ -1,6 +1,6 @@
 function Format-PhotoshopExport {
     param (
-        [PlayerCharacter]$PlayerCharacter
+        $PlayerCharacter
     )
 
     $ExportArray = @("CharacterName","TalentName","PlayerName","GearSlot18","GearSlot17","GearSlot16",

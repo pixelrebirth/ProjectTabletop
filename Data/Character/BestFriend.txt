@@ -1,53 +1,53 @@
-Drow Lookout
-Drow Disciple
-Drow Hunter
-Drow Firebringer
-Drow Poisoner
-Drow Shaman
-Drow Kaxat
-Drow Aquasa
-Primordial Sun Giant Warlock
-Psiforged Telepath
-Gath
-Hruit
-Madra Sil Sarin
-Guard Captain
-Elite Guard
-Cavallah
-Keshta
-Gathan Warden
-Rurik d'Kundarak
-Creilath Movanek
-Battering Ram
-Typical House Orien Courier
-Typical House Sivis Scribe
-Typical Gatekeeper Initiate
-Halas Martain (5th level)
-Halas Martain (9th level)
-Margana Corleis
-Sample Madborn
-Typical Orien Secret Courier
-Katal Hazath patrol
-Katal Hazath Patrol Psion
-Khyber Scout
-Typical Shroud of Scales
-Mid-Level Enforcer
-High-Level Enforcer
-Mid-Level Leader
-Blackscale Lizardfolk Leader
-Drow Raider
-Ax'ayuma Tokazz
-Vurlaak D'Tharashk
-Roywin Garrick
-Shae-ahm Rhen Skyshadow
-Tarya d'Cannith
-Menya d'Cannith
-Karg
-Watch Patrol
-Lieutenant Meira
-Redcloak Soldier
-Redcloak Adept
-Redcloak Countermage
-Boromar Pickpocket
-Low-Level Human Mugger
-Sample Artificer
+Friends with a Drow Lookout
+Friends with a Drow Disciple
+Friends with a Drow Hunter
+Friends with a Drow Firebringer
+Friends with a Drow Poisoner
+Friends with a Drow Shaman
+Friends with a Drow Kaxat
+Friends with a Drow Aquasa
+Friends with a Sun Giant Warlock
+Friends with a Psiforged Telepath
+Friends with Gath
+Friends with Hruit
+Friends with Madra Sil Sarin
+Friends with Guard Captain
+Friends with Elite Guard
+Friends with Cavallah
+Friends with Keshta
+Friends with Gathan Warden
+Friends with Rurik d'Kundarak
+Friends with Creilath Movanek
+Friends with Battering Ram
+Friends with a Typical House Orien Courier
+Friends with a Typical House Sivis Scribe
+Friends with a Typical Gatekeeper Initiate
+Friends with Halas Martain (5th level)
+Friends with Halas Martain (9th level)
+Friends with Margana Corleis
+Friends with a Madborn
+Friends with a Typical Orien Secret Courier
+Friends with a Katal Hazath patrol
+Friends with a Katal Hazath Patrol Psion
+Friends with a Khyber Scout
+Friends with a Typical Shroud of Scales
+Friends with a Mid-Level Enforcer
+Friends with a High-Level Enforcer
+Friends with a Mid-Level Leader
+Friends with a Blackscale Lizardfolk Leader
+Friends with a Drow Raider
+Friends with Ax'ayuma Tokazz
+Friends with Vurlaak D'Tharashk
+Friends with Roywin Garrick
+Friends with Shae-ahm Rhen Skyshadow
+Friends with Tarya d'Cannith
+Friends with Menya d'Cannith
+Friends with Karg
+Friends with the Watch Patrol
+Friends with Lieutenant Meira
+Friends with Redcloak Soldier
+Friends with Redcloak Adept
+Friends with Redcloak Countermage
+Friends with Boromar Pickpocket
+Friends with a Low-Level Human Mugger
+Friends with an Artificer

@@ -32,6 +32,7 @@ DynamicParam {
             $Random = Get-Random -min 0 -max $AllNames.count
             $Global:Set = $AllNames[$random..($random+100)]
         }
+        $Global:Set += "Self"
         $Global:Set
     }
     [Scriptblock]$ScriptTalentName = {Get-Content $PSScriptRoot\Data\Character\TalentName.txt}
