@@ -90,6 +90,7 @@ begin {
     $LastWar = $PsBoundParameters['LastWar']
     $Organization = $PsBoundParameters['Organization']
 
+    if  ($CharacterName -eq "Self"){$CharacterName = Read-Host What is your name}
     . ./LoadClasses.ps1
     $Level = 0
 }
@@ -136,7 +137,7 @@ process {
 }
 
 end {
-    $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation
+    $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation
     Format-PhotoshopExport -PlayerCharacter $PlayerCharacter
     Set-SheetGraphics
     Move-Item "E:\temp\PSExport.png" "E:\www\characters\$($PlayerCharacter.PlayerName).png" -Force

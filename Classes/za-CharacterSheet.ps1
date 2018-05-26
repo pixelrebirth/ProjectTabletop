@@ -135,7 +135,7 @@ class CharacterSheet {
         $this.RangedCM = $this.Level + $this.RangedCM + $this.DexMod
         
         $this.AC = 10 + $this.DexMod + $this.AC
-        $this.HP = $this.STR + $($this.roll("$(3 * $this.Level)d4"))
+        $this.hp = (($this.str + $this.dex + $this.mind) / 3) + ($this.roll("$($this.level * 3)d4"))
         $this.SpellDC = $this.Level + $this.MindMod + 10
 
         foreach ($iteration in 1..([math]::floor($this.level / 3))) {

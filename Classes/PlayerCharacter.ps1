@@ -57,7 +57,7 @@ class PlayerCharacter {
     $AC
     $HP
     $XP
-    
+    hidden $Hardening
     $Race
     $RaceBonus
     $CharacterName
@@ -160,7 +160,12 @@ class PlayerCharacter {
             "GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18"
         )
         if ($this.level / 3 -is [int]){
-
+            $StatBump = $null
+            while ($StatBump -eq $null){
+                [ValidateSet("str","dex","mind")]$StatBump = Read-Host "What stat would you like to increase (str,dex,mind)"
+            }
+            $this."$StatBump"++
+            $this."$($StatBump)Base"++
         }
         
         $Bonus = (($this.RaceBonus) -split('\+'))[0]
@@ -241,7 +246,7 @@ class PlayerCharacter {
 
         $this.ac = $this.dexmod + $ArmorAC + $ShieldAC + 10 + $BaseAc
         
-        $this.hp = $this.str + ($this.roll("$($this.level * 3)d4"))
+        $this.hp = ([math]::floor(($this.str + $this.dex + $this.mind) / 3)) + ($this.roll("$($this.level * 3)d4"))
         $this.hp = $this.hp - ([int]$ArmorAC + [int]$ShieldAC)
         
         $SideArmCMBase = $this.strmod + $this.CMBase

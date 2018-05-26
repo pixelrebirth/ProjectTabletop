@@ -1,36 +1,37 @@
 param(
     $Level = 3,
-    $PlotType = "All",
-
+    
     [ValidateSet(
         "Common",
         "Good",
         "Poor"
-    )]$InnType = "Common",
-    
-    [ValidateSet(
-        "Townsfolk",
-        "Adventurers"
-    )]$PatronType = "Townsfolk",
-    
-    [ValidateSet(
-        "Thorp",
-        "Hamlet",
-        "Village",
-        "Small Town",
-        "Large Town",
-        "Small City",
-        "Large City",
-        "Metropolis"
-    )]$TownSize = "Large Town",
-    
-    [ValidateSet("Fantasy","Modern","SciFI")]$Genre = "Fantasy",
-
-    [int]$Difficulty = -2,
-    $SearchTerm = "Chamber"
+        )]$InnType = "Common",
+        
+        [ValidateSet(
+            "Townsfolk",
+            "Adventurers"
+        )]$PatronType = "Townsfolk",
+        
+        [ValidateSet(
+            "Thorp",
+            "Hamlet",
+            "Village",
+            "Small Town",
+            "Large Town",
+            "Small City",
+            "Large City",
+            "Metropolis"
+        )]$TownSize = "Large Town",
+        
+        [ValidateSet("Fantasy","Modern","SciFI")]$Genre = "Fantasy",
+        
+        [int]$Difficulty = -2,
+        $SearchTerm = "Chamber",
+        $PlotType = "All"
 )
 . ./LoadClasses.ps1
 $Global:loadcount = 0
+
 Get-LoaderMessage
 $RandomContent = [RandomContent]::new()
 Get-LoaderMessage
@@ -92,7 +93,7 @@ $RandomContent.MonsterKits = 1..5 | foreach {
     $MonsterOutput = [PSCustomObject]@{
         MonsterGroups = . {
             Get-LoaderMessage
-            ./Get-Monsters.ps1 -PartyLevel (($Level * 4) + $Difficulty) -MinCR ($Level + $Difficulty) -MaxCR ($Level + 2 + $Difficulty) -MaxUnique 4
+            ./Get-Monsters.ps1 -PartyLevel (($Level * 4) + $Difficulty) -MinCR ($Level + $Difficulty) -MaxCR ($Level + 2 + $Difficulty) -MaxUnique 3
         }
     }
     $MonsterOutput
@@ -126,54 +127,95 @@ $RandomContent.NPCKits = 1..5 | foreach {
 }
 
 
- Get-LoaderMessage
- $RandomContent.Prophecies = .\Get-DonjonGenerator.ps1 -GeneratorType Prophecy -HowMany 4
- Get-LoaderMessage
- $RandomContent.Omens = .\Get-DonjonGenerator.ps1 -GeneratorType Omen -HowMany 4
- Get-LoaderMessage
- $RandomContent.Graffiti = .\Get-DonjonGenerator.ps1 -GeneratorType Graffiti -HowMany 5
- Get-LoaderMessage
- $RandomContent.SecretDoors = .\Get-DonjonGenerator.ps1 -GeneratorType Secret -HowMany 10
- Get-LoaderMessage
- $RandomContent.Castles = .\Get-DonjonGenerator.ps1 -GeneratorType Castle -HowMany 4
- Get-LoaderMessage
- $RandomContent.LegendaryItems = .\Get-DonjonGenerator.ps1 -GeneratorType Legendary -HowMany 4
- Get-LoaderMessage
- $RandomContent.Pockets = .\Get-DonjonGenerator.ps1 -GeneratorType Pocket -HowMany 10
- Get-LoaderMessage
- $RandomContent.Tomes = .\Get-DonjonGenerator.ps1 -GeneratorType Tome -HowMany 5
- Get-LoaderMessage
- $RandomContent.Traps = .\Get-DonjonGenerator.ps1 -GeneratorType 'Trap' -HowMany 20
- Get-LoaderMessage
- $RandomContent.GiantBags = .\Get-DonjonGenerator.ps1 -GeneratorType GiantBag -HowMany 6
+Get-LoaderMessage
+$RandomContent.Prophecies = .\Get-DonjonGenerator.ps1 -GeneratorType Prophecy -HowMany 4
+Get-LoaderMessage
+$RandomContent.Omens = .\Get-DonjonGenerator.ps1 -GeneratorType Omen -HowMany 4
+Get-LoaderMessage
+$RandomContent.Graffiti = .\Get-DonjonGenerator.ps1 -GeneratorType Graffiti -HowMany 6
+Get-LoaderMessage
+$RandomContent.SecretDoors = .\Get-DonjonGenerator.ps1 -GeneratorType Secret -HowMany 10
+Get-LoaderMessage
+$RandomContent.Castles = .\Get-DonjonGenerator.ps1 -GeneratorType Castle -HowMany 4
+Get-LoaderMessage
+$RandomContent.LegendaryItems = .\Get-DonjonGenerator.ps1 -GeneratorType Legendary -HowMany 4
+Get-LoaderMessage
+$RandomContent.Pockets = .\Get-DonjonGenerator.ps1 -GeneratorType Pocket -HowMany 10
+Get-LoaderMessage
+$RandomContent.Tomes = .\Get-DonjonGenerator.ps1 -GeneratorType Tome -HowMany 6
+Get-LoaderMessage
+$RandomContent.Traps = .\Get-DonjonGenerator.ps1 -GeneratorType 'Trap' -HowMany 20
+Get-LoaderMessage
+$RandomContent.GiantBags = .\Get-DonjonGenerator.ps1 -GeneratorType GiantBag -HowMany 6
 
 Get-LoaderMessage
 $RandomContent.Lore = . {
-    1..5 | foreach {
-        Get-LoaderMessage
-        [Lore]::new($SearchTerm) 
-    }
-    1..3 | foreach {
-        Get-LoaderMessage
-        [Lore]::new()
-    }
+1..5 | foreach {
+    Get-LoaderMessage
+    [Lore]::new($SearchTerm) 
+}
+1..3 | foreach {
+    Get-LoaderMessage
+    [Lore]::new()
+}
 }
 
 Get-LoaderMessage
 $RandomContent.PanicLocations = 1..3 | foreach {
-    Get-LoaderMessage
-    [Location]::new()
+Get-LoaderMessage
+[Location]::new()
 }
 
- Get-LoaderMessage
- $RandomContent.Descriptions = . {
-     $List = Get-Content $PSScriptRoot\Data\FantasyDescPhp.txt
-     $List | foreach {
-         Get-LoaderMessage
-         @{
-             $_ = .\Get-FantasyGenerators.ps1 -SearchName $_
-         }
-     }
- }
- $RandomContent | Export-CliXml "./data/saves/level-$level-$((get-date).ticks)`.xml" -depth 10
+Get-LoaderMessage
+$RandomContent.Descriptions = . {
+    $List = Get-Content $PSScriptRoot\Data\FantasyDescPhp.txt
+    $List | foreach {
+        Get-LoaderMessage
+        @{
+            $_ = .\Get-FantasyGenerators.ps1 -SearchName $_
+        }
+    }
+}
+$filename = "level-$level-$((get-date).ticks)"
+$RandomContent | Export-CliXml "./data/saves/$filename`.xml" -depth 10
+
+. {($RandomContent.SideQuests[0]).title
+($RandomContent.SideQuests[0]).summary
+$RandomContent.Lore[0].lore
+$RandomContent.Allies[0]
+$RandomContent.Allies[0].CharacterSheet
+$RandomContent.Neutrals[0]
+$RandomContent.Neutrals[0].CharacterSheet
+$RandomContent.Villains[0]
+$RandomContent.Villains[0].CharacterSheet
+$RandomContent.MonsterKits[0].monstergroups | select CR,Name,Type,HP,AC,DamageCM,Speed | ft
+$RandomContent.MonsterKits[0].monstergroups | select Name,Image,SpecialAttacks,Notes | fl
+$RandomContent.NPCKits[0].npcgroups | select Level,Name,Race,Class,Vitals,Attack | ft
+$RandomContent.NPCKits[0].npcgroups | select Name,Appearance,Traits | fl
+} | out-file "./data/saves/$filename`Primary.txt"
+
+. {$RandomContent.Treasures | select DiceNumber,Gold,Items | fl
+$RandomContent.NameVariants | fl
+$RandomContent.PanicLocations
+$RandomContent.Vendors
+$RandomContent.Descriptions | fl
+$RandomContent.Prophecies
+$RandomContent.Omens
+$RandomContent.Graffiti
+$RandomContent.SecretDoors
+$RandomContent.Castles
+$RandomContent.LegendaryItems
+$RandomContent.Pockets
+$RandomContent.Tomes
+$RandomContent.Traps
+$RandomContent.GiantBags
+$RandomContent.PanicPlots
+$RandomContent.Weather
+$RandomContent.Inn | select Name,Location,Description,Keeper
+$RandomContent.Menu
+$RandomContent.Patrons
+$RandomContent.Rumors
+$RandomContent.ExtraMonsterKits.extramonsters
+} | out-file  "./data/saves/$filename`Secondary.txt"
+
 return $RandomContent

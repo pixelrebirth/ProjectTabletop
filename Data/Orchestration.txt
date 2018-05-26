@@ -1,0 +1,95 @@
+input | Level Purpose
+
+ | -----
+ | Session 1
+ | ---
+input | Introduction Scene
+.allies[0] | Introduce Eberron Charter Character Ally 1
+input | Level Quest Intro
+.villians[0] | Introduce the Villian (Level Boss)
+.sidequests[0] | Side Quest 1
+.lore[6] | Talk some mid dungeon random Eberron lore
+input | Epic 'Dungeon' (side quest) (Memorable Dungeon Descriptions and Layout, Projector Choosen Map)
+.monsterkits[0..1] | 2 monster groups (2 x treasure)
+.lore[0] | Talk about rumors of something specific (SearchTerm)
+.npckits[0] | 1 npc groups (treasure)
+input | Something Main Quest Happens
+tables, vendors, etc | Turn in- Banter/Shop
+
+Manual Todo List
+* Define Main Quest Level purpose
+* Write epic main quest introduction read, 2 paragraphs
+* Write Ally character introduction sequence with quest introduction (dialog Granter/Petitioner)
+* Write Villian introduction direct or indirect
+* Write the dungeon contents from generated contents
+* Write the main quest step towards level purpose
+
+
+ | -----
+ | Session 2
+ | ---
+ 
+input | Introduction Scene
+.allies[0] | Eberron Charter Character Ally 1
+.lore[1] | Talk about rumors of something specific (SearchTerm)
+.sidequests[1] | Side Quest 2
+.npckits[1] | 1 npc group (treasure)
+input | Random 'Dungeon' by Tiles (side quest)
+.lore[7] | Talk Eberron Lore
+input | Level Quest - Plot twist the villian, or make him/her directly affect the party
+npckits[2] | 1 npc group (treasure)
+monsterkits[2] | 1 monster group (treasure)
+input | Mini- Hoard (2x treasure)
+input | Something Epic Main Quest Happens
+nuetral[0] | Introduce Nuetral Character Somehow (consequence)
+tables, vendors, etc | Turn in- Banter/Shop
+ | 
+ | -----
+ | Session 3
+ | ---
+ | Introduction Scene
+ | Eberron Charter Character Ally 2 Intro - Dialog with Boss Build Up
+ | Gear Up!
+ | Something Epic Happens with Level Quest
+ | Talk Eberron Lore
+ | Simple 'Dungeon' (5 room dungeon, puzzles, magic, traps)
+ | Impeded or assisted by Nuetral Character's reaction to Party (consequence)
+ | 1 NPC group (treasure)
+ | 1 Monster group (treasure)
+ | Talk about rumors of other organizations of trouble
+ | Epic Boss Battle with 1 NPC Group 1 Monster Group 1 Villian
+ | Hoard (4x treasure)
+ | Turn in- Banter/Shop
+ | Eberron Charter Characters 1 and 2 each reward with a 'house' award (IE, Legendary Item (given to level roleplaying mvp as voted by table) or Intangable and GM Catered)
+ | Introduce Main Quest Reward and Lead
+ | Decide on next Main Quest action
+
+
+
+$Get.Treasures[0]
+$Get.NameVariants[0]
+$Get.PanicLocations[0]
+$Get.Vendors[0]
+$Get.Descriptions[0]
+$Get.Prophecies[0]
+$Get.Omens[0]
+$Get.Graffiti[0]
+$Get.SecretDoors[0]
+$Get.Castles[0]
+$Get.LegendaryItems[0]
+$Get.Pockets[0]
+$Get.Tomes[0]
+$Get.Traps[0]
+$Get.GiantBags[0]
+$Get.PanicPlots[0]
+$Get.Weather[0]
+$Get.Inn[0]
+$Get.ExtraMonsterKits[0]
+
+$Get.SideQuests[0]
+$Get.Lore[0]
+$Get.Allies[0]
+$Get.Neutrals[0]
+$Get.Villains[0]
+$Get.MonsterKits[0]
+$Get.NPCKits[0]
