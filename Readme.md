@@ -1,6 +1,5 @@
-<!-- TODO Finish printing the spell cards/list 0/1 -->
-<!-- TODO Finish the PC creation scripts -->
-<!-- TODO Level up mechanism with new items -->
+<!-- TODO Debug the PC creation gear -->
+<!-- TODO Level up mechanism with new items (remove awkward multiprompt) -->
 <!-- TODO Do the session by session data entry -->
 <!-- TODO Start .md view of generic campaign data -->
 <!-- TODO Create the .md view of the session data -->
