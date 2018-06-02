@@ -179,43 +179,6 @@ $RandomContent.Descriptions = . {
 $filename = "level-$level-$((get-date).ticks)"
 $RandomContent | Export-CliXml "./data/saves/$filename`.xml" -depth 10
 
-. {($RandomContent.SideQuests[0]).title
-($RandomContent.SideQuests[0]).summary
-$RandomContent.Lore[0].lore
-$RandomContent.Allies[0]
-$RandomContent.Allies[0].CharacterSheet
-$RandomContent.Neutrals[0]
-$RandomContent.Neutrals[0].CharacterSheet
-$RandomContent.Villains[0]
-$RandomContent.Villains[0].CharacterSheet
-$RandomContent.MonsterKits[0].monstergroups | select CR,Name,Type,HP,AC,DamageCM,Speed | ft
-$RandomContent.MonsterKits[0].monstergroups | select Name,Image,SpecialAttacks,Notes | fl
-$RandomContent.NPCKits[0].npcgroups | select Level,Name,Race,Class,Vitals,Attack | ft
-$RandomContent.NPCKits[0].npcgroups | select Name,Appearance,Traits | fl
-} | out-file "./data/saves/$filename`Primary.txt"
-
-. {$RandomContent.Treasures | select DiceNumber,Gold,Items | fl
-$RandomContent.NameVariants | fl
-$RandomContent.PanicLocations
-$RandomContent.Vendors
-$RandomContent.Descriptions | fl
-$RandomContent.Prophecies
-$RandomContent.Omens
-$RandomContent.Graffiti
-$RandomContent.SecretDoors
-$RandomContent.Castles
-$RandomContent.LegendaryItems
-$RandomContent.Pockets
-$RandomContent.Tomes
-$RandomContent.Traps
-$RandomContent.GiantBags
-$RandomContent.PanicPlots
-$RandomContent.Weather
-$RandomContent.Inn | select Name,Location,Description,Keeper
-$RandomContent.Menu
-$RandomContent.Patrons
-$RandomContent.Rumors
-$RandomContent.ExtraMonsterKits.extramonsters
-} | out-file  "./data/saves/$filename`Secondary.txt"
+Export-DungeonMasterSheet -InputObject $RandomContent
 
 return $RandomContent

@@ -142,7 +142,8 @@ class PlayerCharacter {
             "Know:Brilliance",
             "Comm:Tongues",
             "Surv:Hunting",
-            "Hardening:AC"
+            "Hardening:AC",
+            "Bravery:Heroism",
             "CMBase:Gutting"
         )
        
@@ -162,7 +163,7 @@ class PlayerCharacter {
         if ($this.level / 3 -is [int]){
             $StatBump = $null
             while ($StatBump -eq $null){
-                [ValidateSet("str","dex","mind")]$StatBump = Read-Host "What stat would you like to increase (str,dex,mind)"
+                [ValidateSet("str","dex","mind")]$StatBump = Read-Host "`nWhat stat would you like to increase (str,dex,mind)"
             }
             $this."$StatBump"++
             $this."$($StatBump)Base"++
