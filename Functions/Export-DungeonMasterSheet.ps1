@@ -13,7 +13,7 @@ function Export-DungeonMasterSheet {
 
         if ($count -eq 2){
             $count = 0
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | MAJOR PLOT</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |MAJOR PLOT</div>"
             "\page"
         }
         else {
@@ -22,20 +22,20 @@ function Export-DungeonMasterSheet {
         }
         $count++
     }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | MAJOR PLOT</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |MAJOR PLOT</div>"
     "\page"
 
     $onetime = $false
     foreach ($eachlore in $blobdata.lore){
         if ($eachlore.source -match "wikia" -and $onetime -eq $false){
             $onetime = $true
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | HISTORY LORE</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |HISTORY LORE</div>"
             "\page"
         }
         "### $($eachlore.source)"
         "$($eachlore.lore)"
     }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | WIKIA LORE</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |WIKIA LORE</div>"
     "\page"
     foreach ($type in @("Allies","Neutrals","Villains")){
         foreach ($character in $blobdata.$type){
@@ -64,7 +64,7 @@ function Export-DungeonMasterSheet {
             "##### Traits"
             "$($character.Traits)"
             "</div>"
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | $($Type.toupper())</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |$($Type.toupper())</div>"
             "\page"
         }
     }
@@ -99,6 +99,7 @@ function Export-DungeonMasterSheet {
         $MonsterCol = ""
         $kitcount++
     }
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MONSTER TABLES</div>"
     "\page"
 
     $count = 1
@@ -117,10 +118,12 @@ function Export-DungeonMasterSheet {
         "#### Image:"
         "$($monster.image.replace('E:\Other\PS_Scripts\Personal\DnDMicroliteTools',''))"
         if ($count -eq 5){
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MONSTER DESCRIPTION </div>"
             "\page"
         }
         $count++
     }
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MONSTER DESCRIPTION </div>"
     "\page"
 
     "<div class=`'wide`'>"
@@ -151,6 +154,7 @@ function Export-DungeonMasterSheet {
         $npcCol = ""
         $kitcount++
     }
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | NPC TABLES </div>"
     "\page"
 
     $count = 1
@@ -167,10 +171,12 @@ function Export-DungeonMasterSheet {
             "$($npc.Traits)"
         }
         if ($count -eq 11){
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | NPC DESCRIPTION </div>"
             "\page"
         }
         $count++
     }
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | NPC DESCRIPTION </div>"
     "\page"
     
     $Count = 0
@@ -182,7 +188,7 @@ function Export-DungeonMasterSheet {
     foreach ($treasure in $BlobData.Treasures){
         if ($Count -gt 40){
             "</div>"
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | TREASURE</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |TREASURE</div>"
             "\page"
             "<div class=`'wide`'>"
             "Roll | Items | Gold"
@@ -193,7 +199,7 @@ function Export-DungeonMasterSheet {
         $Count++
     }
     "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | TREASURE</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |TREASURE</div>"
     "\page"
 
     "# Names"
@@ -201,7 +207,7 @@ function Export-DungeonMasterSheet {
         "### $($NameType.NameType.ToUpper())"
         "$($NameType.names[0..9].trim() -join(", "))"
     }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | NAMES</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |NAMES</div>"
     "\page"
     
     "<div class=`'wide`'>"
@@ -222,7 +228,7 @@ function Export-DungeonMasterSheet {
         }
     }
     "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | LOCATIONS</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |LOCATIONS</div>"
     "\page"
 
     $count = 1
@@ -250,14 +256,14 @@ function Export-DungeonMasterSheet {
         
         if ($count -eq 3){
             "</div>"
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | VENDORS</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |VENDORS</div>"
             "\page"
             "<div class=`'wide`'>"
         }
         $count++
     }
     "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | VENDORS</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |VENDORS</div>"
     "\page"
     
     $Total = 0
@@ -268,7 +274,7 @@ function Export-DungeonMasterSheet {
             
             ""
             if ($total -gt 4500){
-                "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | DESCRIPTIONS</div>"
+                "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |DESCRIPTIONS</div>"
                 "\page"
                 $total = 0
             }
@@ -277,7 +283,7 @@ function Export-DungeonMasterSheet {
             "$value"
         }
     }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | DESCRIPTIONS</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |DESCRIPTIONS</div>"
     "\page"
     
     "<div class=`'wide`'>"
@@ -309,7 +315,7 @@ function Export-DungeonMasterSheet {
         "|$graf|"
     }
     "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | DONJON</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |DONJON</div>"
     "\page"
 
     "<div class=`'wide`'>"
@@ -334,7 +340,7 @@ function Export-DungeonMasterSheet {
         "|$Tome|"
     }    
     "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | DONJON </div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |DONJON </div>"
     "\page"
 
     "<div class=`'wide`'>"
@@ -367,7 +373,7 @@ function Export-DungeonMasterSheet {
         $Count++
     }
     "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | DICE ROLLS</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |DICE ROLLS</div>"
     "\page"
     
     "# Panic-Plots"
@@ -394,6 +400,7 @@ function Export-DungeonMasterSheet {
         $Count++
     }
     "</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | EXTRA MONSTERS </div>"
     "\page"
 
     "<div class=`'wide`'>"
@@ -431,5 +438,5 @@ function Export-DungeonMasterSheet {
     }
     ""
     "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | INN</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |INN</div>"
 }
