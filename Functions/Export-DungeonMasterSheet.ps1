@@ -1,20 +1,179 @@
 function Export-DungeonMasterSheet {
     param ($BlobData)
 
-    # . {($BlobData.SideQuests[0]).title
-    #     ($BlobData.SideQuests[0]).summary
-    #     $BlobData.Lore[0].lore
-    #     $BlobData.Allies[0]
-    #     $BlobData.Allies[0].CharacterSheet
-    #     $BlobData.Neutrals[0]
-    #     $BlobData.Neutrals[0].CharacterSheet
-    #     $BlobData.Villains[0]
-    #     $BlobData.Villains[0].CharacterSheet
-    #     $BlobData.MonsterKits[0].monstergroups | select CR,Name,Type,HP,AC,DamageCM,Speed | ft
-    #     $BlobData.MonsterKits[0].monstergroups | select Name,Image,SpecialAttacks,Notes | fl
-    #     $BlobData.NPCKits[0].npcgroups | select Level,Name,Race,Class,Vitals,Attack | ft
-    #     $BlobData.NPCKits[0].npcgroups | select Name,Appearance,Traits | fl
-    #     } 
+    $count = 1
+    foreach ($quest in $BlobData.SideQuests){
+        "### $($quest.Title)"
+        foreach ($line in $($quest.summary)){
+            if ($line -ne ""){
+                ""
+                "$($line -replace("^(\w)",'**$1**'))"
+            }
+        }
+
+        if ($count -eq 2){
+            $count = 0
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | MAJOR PLOT</div>"
+            "\page"
+        }
+        else {
+            '```'
+            '```'
+        }
+        $count++
+    }
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | MAJOR PLOT</div>"
+    "\page"
+
+    $onetime = $false
+    foreach ($eachlore in $blobdata.lore){
+        if ($eachlore.source -match "wikia" -and $onetime -eq $false){
+            $onetime = $true
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | HISTORY LORE</div>"
+            "\page"
+        }
+        "### $($eachlore.source)"
+        "$($eachlore.lore)"
+    }
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | WIKIA LORE</div>"
+    "\page"
+    foreach ($type in @("Allies","Neutrals","Villains")){
+        foreach ($character in $blobdata.$type){
+            "<div class=`'wide`'>"
+            "### $($character.name) ($($character.Title))"
+            "#### $($character.race) - $($character.class) - Level $($character.level)"
+            
+            "||"
+            "|:-----|"
+            "|$($character.vitals)|"
+            "|$($character.stats.replace('| ',''))|"
+            "|$($character.Attack)|"
+            
+            "##### Quote"
+            "$($character.Quote)"
+            "##### Appearance"
+            "$($character.Appearance)"
+            "##### Roleplaying"
+            "$($character.Roleplaying)"
+            "##### Personality"
+            "$($character.Personality)"
+            "##### Motivation"
+            "$($character.Motivation)"
+            "##### Background"
+            "$($character.Background)"
+            "##### Traits"
+            "$($character.Traits)"
+            "</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | $($Type.toupper())</div>"
+            "\page"
+        }
+    }
+
+
+    "<div class=`'wide`'>"
+    ""
+    $MonsterProperties = @("CR","Name","HP","AC","Speed","DamageCM")
+    $kitcount = 1
+    $count = 0
+    $AllGroups = @()
+    foreach ($monsterkit in $blobdata.monsterkits){
+        "### Monster Kit $kitcount"
+        foreach ($monster in $monsterkit.monstergroups){
+            $countgroup = $monster.count
+            foreach ($property in $MonsterProperties){
+                $MonsterProp += "|$property"
+                $MonsterCol += "|:-----"
+                $MonsterString += "|$($monster.$property)"
+            }
+            if ($count -eq 0){
+                "$MonsterProp|"
+                "$MonsterCol|"
+            }
+            "$MonsterString|"
+            
+            $MonsterString = ""
+            $count++
+        }
+        $count = 0
+        $MonsterProp = ""
+        $MonsterCol = ""
+        $kitcount++
+    }
+    "\page"
+
+    $count = 1
+    foreach ($monster in $blobdata.monsterkits.monstergroups | sort -property "Name" -unique){
+        "### $($monster.Name)"
+        "#### Stats:"
+        "##### STR $($monster.str), DEX $($monster.dex), MIND $($monster.mind)"
+        "#### Skills:"
+        "$($monster.skills)"
+        "#### Special Qualities:"
+        "$($monster.SpecialQualities)"
+        "#### Special Attacks:"
+        "$($monster.SpecialAttacks)"
+        "#### Notes:"
+        "$($monster.notes)"
+        "#### Image:"
+        "$($monster.image.replace('E:\Other\PS_Scripts\Personal\DnDMicroliteTools',''))"
+        if ($count -eq 5){
+            "\page"
+        }
+        $count++
+    }
+    "\page"
+
+    "<div class=`'wide`'>"
+    ""
+    $NPCProperties = @("Level","Name","Race","Class","Vitals","Attack")
+    $kitcount = 1
+    $count = 0
+    foreach ($npckit in $blobdata.npckits){
+        "### NPC Kit $kitcount"
+        foreach ($npcgroup in $npckit.npcgroups){
+            $countgroup = $npcgroup.count
+            foreach ($property in $NPCProperties){
+                $npcProp += "|$property"
+                $npcCol += "|:-----"
+                $npcString += "|$($npcgroup.$property)"
+            }
+            if ($count -eq 0){
+                "$npcProp|"
+                "$npcCol|"
+            }
+            "$npcString|"
+            
+            $npcString = ""
+            $count++
+        }
+        $count = 0
+        $npcProp = ""
+        $npcCol = ""
+        $kitcount++
+    }
+    "\page"
+
+    $count = 1
+    foreach ($npc in $blobdata.npckits.npcgroups | sort -property "Name" -unique){
+        $stats = $($npc.Stats) -split(', \| ')
+        "### $($npc.Name)"
+        "#### Skills:"
+        "##### $($stats[0])"
+        "###### $($stats[1])"
+        "#### Appearance:"
+        "$($npc.Appearance)"
+        if ($($npc.Traits) -ne $null){
+            "#### Traits:"
+            "$($npc.Traits)"
+        }
+        if ($count -eq 11){
+            "\page"
+        }
+        $count++
+    }
+    "\page"
+    
+    $Count = 0
     "<div class=`'wide`'>"
     '### Level 3 Treasure Rolls'
     "Roll | Items | Gold"
@@ -178,6 +337,7 @@ function Export-DungeonMasterSheet {
     "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | DONJON </div>"
     "\page"
 
+    "<div class=`'wide`'>"
     $Count = 1
     "### Pockets"
     "|Dice Roll|Pockets|"
@@ -188,7 +348,6 @@ function Export-DungeonMasterSheet {
     }
     
     $Count = 1
-    "<div class=`'wide`'>"
     "### GiantBags"
     "|Dice Roll|GiantBags|"
     "|:-----:|:-----|"
@@ -212,8 +371,7 @@ function Export-DungeonMasterSheet {
     "\page"
     
     "# Panic-Plots"
-    
-    foreach ($PanicPlot in $($BlobData.Inns)){
+    foreach ($PanicPlot in $($BlobData.PanicPlots)){
         "### $($PanicPlot.Title)"
         ""
         "##### Summary:"
@@ -222,6 +380,22 @@ function Export-DungeonMasterSheet {
         "##### Twist:"
         "$($PanicPlot.Twist)"
     }
+
+    '```'
+    '```'
+    $Count = 1
+    "<div class=`'wide`'>"
+    "# Spare Monsters"
+    "### Extra Monsters"
+    "|Dice Roll|Monster|"
+    "|:-----|:-----|"
+    foreach ($monster in $BlobData.ExtraMonsterKits.extramonsters){
+        "|$Count|$monster|"
+        $Count++
+    }
+    "</div>"
+    "\page"
+
     "<div class=`'wide`'>"
     "# Inn"
     $Inn = $BlobData.Inn
@@ -258,13 +432,4 @@ function Export-DungeonMasterSheet {
     ""
     "</div>"
     "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>LEVEL DATA | INN</div>"
-    "\page"
-    $Count = 1
-    "### Extra Monsters"
-    "|Dice Roll|Monster|"
-    "|:-----|:-----|"
-    foreach ($monster in $BlobData.ExtraMonsterKits.extramonsters){
-        "|$Count|$monster|"
-        $Count++
-    }
 }
