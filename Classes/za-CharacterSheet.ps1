@@ -3,9 +3,9 @@ class CharacterSheet {
     hidden [CharacterClass]$ClassInternal
     hidden [CharacterRace]$RaceInternal
     
-    hidden [int]$STR
-    hidden [int]$DEX
-    hidden [int]$MIND
+    [int]$STR
+    [int]$DEX
+    [int]$MIND
     
     hidden [int]$MeleeCM
     hidden [int]$RangedCM
@@ -23,6 +23,9 @@ class CharacterSheet {
     [int]$AC
     [int]$HP
     [int]$SpellDC
+    [int]$Reflex
+    [int]$Fortitude
+    [int]$Will
     [String]$Attack
     
     [int]$StrMod
@@ -137,6 +140,10 @@ class CharacterSheet {
         $this.AC = 10 + $this.DexMod + $this.AC
         $this.hp = (($this.str + $this.dex + $this.mind) / 3) + ($this.roll("$($this.level * 3)d4"))
         $this.SpellDC = $this.Level + $this.MindMod + 10
+
+        $this.Fortitude = $this.StrMod + $this.Phys + 7
+        $this.Reflex = $this.DexMod + $this.Sub + 7
+        $this.Will = $this.MindMod + $this.Know + 7
 
         foreach ($iteration in 1..([math]::floor($this.level / 3))) {
             $Random = Get-Random -Minimum 1 -Maximum 3

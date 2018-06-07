@@ -83,7 +83,6 @@ class PlayerCharacter {
         $StatData = @("PlayerName","Str","Dex","Mind","Virtue","Vise")
         foreach ($field in $StatData){
             $Entry = Get-ManualDataEntry -field $field -ReplaceMode $False
-            # if ($field -match "GearSlot" -and $Entry -eq $null){break}
             $this."$field" = $Entry
         }
 
@@ -163,7 +162,7 @@ class PlayerCharacter {
         if ($this.level / 3 -is [int]){
             $StatBump = $null
             while ($StatBump -eq $null){
-                [ValidateSet("str","dex","mind")]$StatBump = Read-Host "`nWhat stat would you like to increase (str,dex,mind)"
+                [ValidateSet("str","dex","mind")]$StatBump = Read-Host "`n!--!--!`nWhat stat would you like to increase (str,dex,mind)"
             }
             $this."$StatBump"++
             $this."$($StatBump)Base"++
@@ -201,8 +200,6 @@ class PlayerCharacter {
         
         if ($this.Shield -match "\[(\d+)\]"){$ShieldAC = $matches[1]}
         else {$ShieldAC = 0}
-
-        $this.Dex = [int]$this.Dex - ([math]::floor(([int]$ArmorAC + [int]$ShieldAC)/2))
 
         switch ($this.TalentName){
             "Talented"{
@@ -248,7 +245,6 @@ class PlayerCharacter {
         $this.ac = $this.dexmod + $ArmorAC + $ShieldAC + 10 + $BaseAc
         
         $this.hp = ([math]::floor(($this.str + $this.dex + $this.mind) / 3)) + ($this.roll("$($this.level * 3)d4"))
-        $this.hp = $this.hp - ([int]$ArmorAC + [int]$ShieldAC)
         
         $SideArmCMBase = $this.strmod + $this.CMBase
         $MeleeCMBase = $this.strmod + $this.CMBase
@@ -266,7 +262,5 @@ class PlayerCharacter {
         $this.Fortitude = $this.StrMod + $this.Phys + 10
         $this.Reflex = $this.DexMod + $this.Sub + 10
         $this.Will = $this.MindMod + $this.Know + 10
-
-
     }
 }

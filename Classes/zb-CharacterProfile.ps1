@@ -36,7 +36,7 @@ class CharacterProfile {
             $this.Race = $this.CharacterSheet.Race
             $this.Class = $this.CharacterSheet.Class
             $this.Attack = $this.CharacterSheet.Attack
-            $this.Vitals = "HP: $($this.CharacterSheet.HP), AC: $($this.CharacterSheet.AC)"
+            $this.Vitals = "HP:$($this.CharacterSheet.HP), AC:$($this.CharacterSheet.AC), F:$($this.CharacterSheet.fortitude), R:$($this.CharacterSheet.reflex), W:$($this.CharacterSheet.will), SDC:$($this.CharacterSheet.SpellDC)"
             $this.Stats = "StrMod: $($this.CharacterSheet.StrMod), DexMod: $($this.CharacterSheet.DexMod), MindMod: $($this.CharacterSheet.MindMod), | Phys: $($this.CharacterSheet.Phys), Sub: $($this.CharacterSheet.Sub), Know: $($this.CharacterSheet.Know), Comm: $($this.CharacterSheet.Comm), Surv: $($this.CharacterSheet.Surv)"
             $this.Quote = $matches[3]
             $this.Appearance = $matches[4]
@@ -60,7 +60,7 @@ class CharacterProfile {
             $this.Class = $this.CharacterSheet.Class
             $this.Level = $this.CharacterSheet.Level
             $this.Attack = $this.CharacterSheet.Attack
-            $this.Vitals = "HP: $($this.CharacterSheet.HP), AC: $($this.CharacterSheet.AC)"
+            $this.Vitals = "HP:$($this.CharacterSheet.HP), AC:$($this.CharacterSheet.AC), F:$($this.CharacterSheet.fortitude), R:$($this.CharacterSheet.reflex), W:$($this.CharacterSheet.will), SDC:$($this.CharacterSheet.SpellDC)"
             $this.Stats = "StrMod: $($this.CharacterSheet.StrMod), DexMod: $($this.CharacterSheet.DexMod), MindMod: $($this.CharacterSheet.MindMod), | Phys: $($this.CharacterSheet.Phys), Sub: $($this.CharacterSheet.Sub), Know: $($this.CharacterSheet.Know), Comm: $($this.CharacterSheet.Comm), Surv: $($this.CharacterSheet.Surv)"        
             $this.Appearance = $SplitNpc[3]
             $this.Traits = $SplitNpc[5]

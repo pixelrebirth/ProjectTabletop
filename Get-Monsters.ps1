@@ -17,6 +17,31 @@ $content = Get-Content $PSScriptRoot\Data\DndMicroliteMonsters.txt
 $AllCreatures = New-Object -typename System.Collections.ArrayList
 foreach ($row in $content) {
     $row -match "(.*) - (.*) Hit Dice: .*d \((\d)\) Speed: (.*) AC: (.*).* Attack\/Damage: (.*) Special Attacks: (.*) Special Qualities: (.*) Abilities: STR(.*), DEX(.*), MIND(.*) Skills: (.*) CR: (\.\d+|\d+)(.*)|(.*) - (.*) Hit Dice: .* \((.*)\) Speed: (.*) AC: (\d+).*Damage: (.*) Special Attacks: (.*) Special Qualities: (.*) Abilities: STR(.*), DEX(.*), MIND(.*) Skills: all @ (.*) CR: (\.\d+|\d+) (.*)" | Out-Null
+    
+    $split = $matches[23] -split(" \(|\(")
+    $str = $split[0]
+    if ($split[1] -eq $null){
+        $strmod = 0
+    } else {    
+        [int]$strmod = $split[1].replace(")","")
+    }
+
+    $split = $matches[24] -split(" \(|\(")
+    $dex = $split[0]
+    if ($split[1] -eq $null){
+        $dexmod = 0
+    } else {    
+        [int]$dexmod = $split[1].replace(")","")
+    }
+    
+    $split = $matches[25] -split(" \(|\(")
+    $mind = $split[0]
+    if ($split[1] -eq $null){
+        $mindmod = 0
+    } else {    
+        [int]$mindmod = $split[1].replace(")","")
+    }
+        
     $CurrentCreature = [PSCustomObject]@{
         Name = $Matches[15]
         Type = $Matches[16]
@@ -27,12 +52,20 @@ foreach ($row in $content) {
         DamageCM = Measure-CombatModifier -Damage $Matches[20]
         SpecialAttacks = $Matches[21]
         SpecialQualities = $Matches[22]
-        STR = $Matches[23]
-        DEX = $Matches[24]
-        MIND = $Matches[25]
+        STR = $str
+        DEX = $dex
+        MIND = $mind
+        STRmod = $strmod
+        DEXmod = $dexmod
+        MINDmod = $mindmod
         Skills = $Matches[26]
         CR = [decimal]$Matches[27]
         Notes = $Matches[28]
+        Fortitude = $StrMod + $matches[26] + 7
+        Reflex = $DexMod + $matches[26] + 7
+        Will = $MindMod + $matches[26] + 7
+        SpellDC = [decimal]$Matches[27] + $mindmod + 10
+        Vitals = "HP:$($Matches[17] -replace("hp",'')), AC:$($Matches[19]), F:$($StrMod + $matches[26] + 10), R:$($DexMod + $matches[26] + 10), W:$($MindMod + $matches[26] + 10), SDC:$([decimal]$Matches[27] + $mindmod + 10)"
         Image = if ((ls "$PSScriptRoot\Data\Images\$($Matches[15]).jpg" -ea 0) -ne $null){"$PSScriptRoot\Data\Images\$($Matches[15]).jpg"} else {"NaN"}
     }
     $AllCreatures.add($CurrentCreature) | Out-Null

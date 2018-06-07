@@ -179,6 +179,6 @@ $RandomContent.Descriptions = . {
 $filename = "level-$level-$((get-date).ticks)"
 $RandomContent | Export-CliXml "./data/saves/$filename`.xml" -depth 10
 
-Export-DungeonMasterSheet -InputObject $RandomContent
+Export-DungeonMasterSheet -BlobData $RandomContent | Set-Clipboard
 
 return $RandomContent
