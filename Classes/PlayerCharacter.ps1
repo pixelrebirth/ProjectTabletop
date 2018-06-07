@@ -76,19 +76,42 @@ class PlayerCharacter {
     $Food
     $DiscoverMagic
     $WhatSeek
+
+    hidden $Level3
+    hidden $Level6
+    hidden $Level9
+    hidden $Level12
+    hidden $Level15
+    hidden $Level18
+    hidden $Level20
     
+    [void] IfNullStats ($stat){
+        if ($this."$stat`Base" -eq $null -or $this."$stat`Base" -eq ''){
+            $this."$stat`Base" = $this."$stat"
+        } else {
+            $this."$stat" = $this."$stat`Base"
+        }
+    }
+
     FirstLevel () {
         . ./LoadClasses.ps1
+        
+        $this.IfNullStats('STR')
+        $this.IfNullStats('DEX')
+        $this.IfNullStats('MIND')
 
         $StatData = @("PlayerName","Str","Dex","Mind","Virtue","Vise")
         foreach ($field in $StatData){
-            $Entry = Get-ManualDataEntry -field $field -ReplaceMode $False
-            $this."$field" = $Entry
+            if ($this."$field" -eq '' -or $this."$field" -eq $null){
+                $Entry = Get-ManualDataEntry -field $field -ReplaceMode $False
+                $this."$field" = $Entry
+            }
         }
 
-        $this.StrBase = $this.Str
-        $this.DexBase = $this.Dex
-        $this.MindBase = $this.Mind
+        $this.IfNullStats('STR')
+        $this.IfNullStats('DEX')
+        $this.IfNullStats('MIND')
+
     }
 
     hidden [int] Roll ($dice) {
@@ -101,27 +124,26 @@ class PlayerCharacter {
     LevelUp () {
         . ./LoadClasses.ps1
         $this.Level++
-        $DataEntryFields = @("BankGold","Amulet","Ring","Helm",
-            "Shield","ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1",
-            "GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7","GearSlot8",
-            "GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13","GearSlot14",
-            "GearSlot15","GearSlot16","GearSlot17","GearSlot18"
-        )
         
-        foreach ($field in $DataEntryFields){
-            if ($this.level -eq 1){$ReplaceMode = $False} else {$ReplaceMode = $True}
-            $Entry = Get-ManualDataEntry -field $field -ReplaceMode $ReplaceMode
-            if ($field -match "GearSlot" -and $Entry -eq $null){break}
-            if ($Entry -ne ""){
-                $this."$field" = $Entry
+        if ($this.level / 3 -is [int]){
+            $DynamicLevel = $this."Level$($this.level)"
+            if ($DynamicLevel -ne '' -or $DynamicLevel -ne $null){
+                $this."$DynamicLevel"++
+            }
+            else {
+                $StatBump = $null
+                while ($StatBump -eq $null){
+                    [ValidateSet("str","dex","mind")]$StatBump = Read-Host "`n!--!--!`nWhat stat would you like to increase (str,dex,mind)"
+                }
+                $this."$StatBump"++
             }
         }
     }
 
     UpdateStats () {
-        $this.str = $this.StrBase
-        $this.dex = $this.DexBase
-        $this.mind = $this.MindBase
+        # $this.str = $this.StrBase
+        # $this.dex = $this.DexBase
+        # $this.mind = $this.MindBase
         $this.CMBase = $this.Level
         $this.Phys = $this.Level
         $this.Sub = $this.Level
@@ -141,8 +163,8 @@ class PlayerCharacter {
             "Know:Brilliance",
             "Comm:Tongues",
             "Surv:Hunting",
-            "Hardening:AC",
-            "Bravery:Heroism",
+            "AC:Hardening",
+            "Heroism:Bravery",
             "CMBase:Gutting"
         )
        
@@ -159,14 +181,6 @@ class PlayerCharacter {
             "GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13",
             "GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18"
         )
-        if ($this.level / 3 -is [int]){
-            $StatBump = $null
-            while ($StatBump -eq $null){
-                [ValidateSet("str","dex","mind")]$StatBump = Read-Host "`n!--!--!`nWhat stat would you like to increase (str,dex,mind)"
-            }
-            $this."$StatBump"++
-            $this."$($StatBump)Base"++
-        }
         
         $Bonus = (($this.RaceBonus) -split('\+'))[0]
         if ($this.RaceBonus -match "$Bonus\+(\d+)"){
@@ -224,7 +238,7 @@ class PlayerCharacter {
                 $BaseAC = ([math]::floor(.5 * $this.level)) + 1
                 $FistBonus = ([math]::floor(.5 * $this.level)) + 1
                 
-                Write-Host -ForegroundColor Yellow "Warning Dropping $($this.MainMelee) and $($this.SideArm)"
+                Write-Host -ForegroundColor Yellow "`nWarning Dropping $($this.MainMelee) and $($this.SideArm)`n"
                 $this.MainMelee = "Magic Fists + $FistBonus [1d8]"
                 $this.SideArm = "Magic Fists (Off-hand) + $FistBonus [1d6]"
             }
