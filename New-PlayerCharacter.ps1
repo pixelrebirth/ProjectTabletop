@@ -142,7 +142,7 @@ process {
     
     if ($PlayerCharacter.XP -eq '' -or $PlayerCharacter.XP -eq $null){
         while ($PlayerCharacter.XP -isnot [int]){
-            $PlayerCharacter.XP = Read-Host "Is your character supposed to have any XP, how much, try 0"
+            $PlayerCharacter.XP = Read-Host "Is your character supposed to have XP, how much, try 0"
         }
     }
 

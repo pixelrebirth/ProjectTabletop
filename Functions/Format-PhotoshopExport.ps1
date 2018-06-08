@@ -10,7 +10,8 @@ function Format-PhotoshopExport {
         "BestFriend","Family","LastWar","Organization","BankGold","Amulet","Ring","Shield","Helm",
         "ArmorSet","SideArm","MainRanged","MainMelee","TalentAbility","Vise","Virtue","XP","Race",
         "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","Heroism","Fortitude",
-        "Reflex","Will","SpellDC","AC","HP","Mind","Str","Dex","Level"
+        "Reflex","Will","SpellDC","AC","HP","Mind","Str","Dex","Level","Fail0","Fail1","Fail2","Fail3",
+        "Fail4","Fail5","Fail6","Fail7","Fail8","Fail9"
     )
 
     $PlayerCharacter.str = "$($PlayerCharacter.str) [$($PlayerCharacter.strmod)]"
