@@ -27,7 +27,7 @@ function Format-PhotoshopExport {
     $PlayerCharacter.BankGold = "Banked Gold: $($PlayerCharacter.BankGold)"
     
     $ExportArray | foreach {
-        if ($PlayerCharacter."$_" -eq $null){$PlayerCharacter."$_" = "None"}
+        if ($PlayerCharacter."$_" -eq $null -or $PlayerCharacter."$_" -eq ""){$PlayerCharacter."$_" = "None"}
     }
     $PlayerCharacter | select $ExportArray | Export-Csv -Encoding ASCII -Path 'E:\temp\PSImport.csv' -NoTypeInformation
 }
