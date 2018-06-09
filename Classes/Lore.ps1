@@ -29,6 +29,6 @@ class Lore {
         $random = Get-Random -min 0 -max $filtered.count
     
         $this.Lore = $filtered[$random]
-        $this.Source = "Eberron Histroy"
+        $this.Source = "Eberron history"
     }
 }
