@@ -141,7 +141,7 @@ process {
     $PlayerCharacter.TalentName = $PlayerCharacter.TalentName.split(";")[0]
     
     if ($PlayerCharacter.XP -eq '' -or $PlayerCharacter.XP -eq $null){
-        while ($PlayerCharacter.XP -isnot [int]){
+        while ([int]$PlayerCharacter.XP -isnot [int]){
             $PlayerCharacter.XP = Read-Host "Is your character supposed to have XP, how much, try 0"
         }
     }
