@@ -9,15 +9,17 @@ function Format-PhotoshopExport {
         "Foe","WhatSeek","Hobby","Food","WhereFrom","Idol","DiscoverMagic","MostLikelyDo","Lover",
         "BestFriend","Family","LastWar","Organization","BankGold","Amulet","Ring","Shield","Helm",
         "ArmorSet","SideArm","MainRanged","MainMelee","TalentAbility","Vise","Virtue","XP","Race",
-        "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","Heroism","Fortitude",
-        "Reflex","Will","SpellDC","AC","HP","Mind","Str","Dex","Level","Fail0","Fail1","Fail2","Fail3",
-        "Fail4","Fail5","Fail6","Fail7","Fail8","Fail9"
+        "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","Heroism","SpellResist",
+        "SpellCM","AC","HP","Mind","Str","Dex","Level","Fail0","Fail1","Fail2","Fail3","Fail4","Fail5",
+        "Fail6","Fail7","Fail8","Fail9","RaceBonus","Titles"
     )
 
     $PlayerCharacter.str = "$($PlayerCharacter.str) [$($PlayerCharacter.strmod)]"
     $PlayerCharacter.dex = "$($PlayerCharacter.dex) [$($PlayerCharacter.dexmod)]"
     $PlayerCharacter.mind = "$($PlayerCharacter.mind) [$($PlayerCharacter.mindmod)]"
     
+    $PlayerCharacter.spellcm = "+$($PlayerCharacter.spellcm)"
+
     $PlayerCharacter.virtue -match '^(\w+)\\(\w+)$|^(\w+)\/(\w+)$'
     $PlayerCharacter.virtue = "$($matches[1]) + 2 \ $($matches[2]) + 2"
     
@@ -25,7 +27,7 @@ function Format-PhotoshopExport {
     $PlayerCharacter.vise = "$($matches[1]) - 2 \ $($matches[2]) - 2"
 
     $PlayerCharacter.BankGold = "Banked Gold: $($PlayerCharacter.BankGold)"
-    
+    $PlayerCharacter.Titles = "`"$($PlayerCharacter.Titles)`""
     $ExportArray | foreach {
         if ($PlayerCharacter."$_" -eq $null -or $PlayerCharacter."$_" -eq ""){$PlayerCharacter."$_" = "None"}
     }

@@ -159,7 +159,7 @@ process {
 }
 
 end {
-    $YamlArray = @("PlayerName","CharacterName","Race","TalentName","StrBase","DexBase","MindBase",
+    $YamlArray = @("PlayerName","CharacterName","Race","TalentName","Titles","StrBase","DexBase","MindBase",
         "Virtue","Vise","Idol","Foe","Lover","Family","WhereFrom","BestFriend","LastWar","Organization",
         "MostLikelyDo","Hobby","Food","DiscoverMagic","WhatSeek","XP","Amulet","Ring","Helm","Shield",
         "ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1","GearSlot2","GearSlot3","GearSlot4",

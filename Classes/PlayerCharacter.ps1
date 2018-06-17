@@ -50,10 +50,8 @@ class PlayerCharacter {
     $RangedCM
     $MeleeCM
     $Heroism
-    $Fortitude
-    $Reflex
-    $Will
-    $SpellDC
+    $SpellResist
+    $SpellCM
     $AC
     $HP
     $XP
@@ -63,6 +61,7 @@ class PlayerCharacter {
     $CharacterName
     $TalentName
     $TalentAbility
+    $Titles
     $Idol
     $Foe
     $Lover
@@ -266,31 +265,26 @@ class PlayerCharacter {
 
         $this.ac = $this.dexmod + $ArmorAC + $ShieldAC + 10 + $BaseAc
         
-        $this.hp = ([math]::floor(($this.str + $this.dex + $this.mind) / 3)) + ($this.roll("$($this.level * 3)d4"))
+        $this.hp = $this.str + ($this.roll("$($this.level * 3)d4"))
         
         $SideArmCMBase = $this.strmod + $this.CMBase
         $MeleeCMBase = $this.strmod + $this.CMBase
-        $RangedCMBase = $this.DexMod + $this.CMBase
+        $RangedCMBase = $this.dexmod + $this.CMBase
 
-        if ($this.SideArm -match "^Masterful|^M "){$SideArmCMBase = $SideArmCMBase + 2}
-        if ($this.MainMelee -match "^Masterful|^M "){$MeleeCMBase = $MeleeCMBase + 2}
-        if ($this.MainRanged -match "^Masterful|^M "){$RangedCMBase = $RangedCMBase + 2}
+        if ($this.SideArm -match "^Masterwork|^M\. "){$SideArmCMBase = $SideArmCMBase + 2}
+        if ($this.MainMelee -match "^Masterwork|^M\. "){$MeleeCMBase = $MeleeCMBase + 2}
+        if ($this.MainRanged -match "^Masterwork|^M\. "){$RangedCMBase = $RangedCMBase + 2}
         
-        $this.SideArmCM = If ($this.SideArm -match "\[(.*)\]"){"$($Matches[1])+$MeleeCMBase" }
+        $this.SideArmCM = If ($this.SideArm -match "\[(.*)\]"){"$($Matches[1])+$SideArmCMBase" }
         $this.MeleeCM = If ($this.MainMelee -match "\[(.*)\]"){"$($Matches[1])+$MeleeCMBase" }
         $this.RangedCM = If ($this.MainRanged -match "\[(.*)\]"){"$($Matches[1])+$RangedCMBase" }
+        $this.SpellCM = $this.level + $this.MindMod
   
-        $this.SpellDC = $this.level + $this.MindMod + 10
-        $this.Fortitude = $this.StrMod + $this.Phys + 10
-        $this.Reflex = $this.DexMod + $this.Sub + 10
-        $this.Will = $this.MindMod + $this.Know + 10
-
+        $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
 
         $SpellLevel = [math]::floor($this.level / 2)
-       
-        $this.Fail0 = [math]::floor(40 - ($this.Mind - 10) - ($this.level * 5) + $ArmorAC + $ShieldAC)
-        if ($this."Fail0" -lt 0){$this."Fail0" = 0}
-
+        $this.Fail0 = [math]::floor(30 - ($this.Mind - 10) - ($this.level * 5) + $ArmorAC + $ShieldAC)
+        
         1..9 | foreach {
             $num = $_
             if ($SpellLevel -ge $num){
@@ -303,5 +297,6 @@ class PlayerCharacter {
                 $this."Fail$num" = "-"
             }
         }
+        if ($this.Fail0 -lt 0){$this.Fail0 = 0}
     }
 }
