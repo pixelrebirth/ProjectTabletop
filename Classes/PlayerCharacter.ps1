@@ -61,7 +61,7 @@ class PlayerCharacter {
     $CharacterName
     $TalentName
     $TalentAbility
-    $Titles
+    [string]$Titles
     $Idol
     $Foe
     $Lover

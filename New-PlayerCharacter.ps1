@@ -99,7 +99,7 @@ process {
     $PlayerCharacter = [PlayerCharacter]::new()
     
     try {
-        $CharacterImport = $CharacterImport = Get-ChildItem "$($PSScriptRoot)/data/saves/$PlayerName*.yaml" | where name -notmatch "\.old$" | select -first 1 | Get-Content | ConvertFrom-Yaml
+        $CharacterImport = Get-ChildItem "$($PSScriptRoot)/data/saves/$PlayerName*.yaml" | where name -notmatch "\.old$" | select -first 1 | Get-Content | ConvertFrom-Yaml
         foreach ($key in $CharacterImport.keys){
             $PlayerCharacter.$key = $CharacterImport.$key
         }
@@ -172,6 +172,7 @@ end {
     
     $YamlFile = "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.yaml"
     if (Test-Path $YamlFile){Copy-Item $YamlFile "$YamlFile.old" -Force}
+
     $PlayerCharacter | select $YamlArray | ConvertTo-Yaml | Out-File "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.yaml" -Force
     
     Format-PhotoshopExport -PlayerCharacter $PlayerCharacter

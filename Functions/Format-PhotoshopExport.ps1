@@ -27,7 +27,8 @@ function Format-PhotoshopExport {
     $PlayerCharacter.vise = "$($matches[1]) - 2 \ $($matches[2]) - 2"
 
     $PlayerCharacter.BankGold = "Banked Gold: $($PlayerCharacter.BankGold)"
-    $PlayerCharacter.Titles = "`"$($PlayerCharacter.Titles)`""
+    $PlayerCharacter.Titles = "$($PlayerCharacter.Titles -replace(';',"`n"))"
+
     $ExportArray | foreach {
         if ($PlayerCharacter."$_" -eq $null -or $PlayerCharacter."$_" -eq ""){$PlayerCharacter."$_" = "None"}
     }
