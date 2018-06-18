@@ -1,10 +1,11 @@
 param (
-    [int]$PartyLevel = 10,
+    [int]$PartyLevel,
     [string]$CreatureType,
-    [decimal]$MinCR = 1,
-    [decimal]$MaxCR = 5,
-    [int]$MaxUnique = 3,
-    [int]$HD
+    [decimal]$MinCR,
+    [decimal]$MaxCR,
+    [int]$MaxUnique,
+    [int]$HD,
+    [int]$HPCalibration
 )
 . ./LoadClasses.ps1
 
@@ -45,7 +46,7 @@ foreach ($row in $content) {
     $CurrentCreature = [PSCustomObject]@{
         Name = $Matches[15]
         Type = $Matches[16]
-        HP = $Matches[17] -replace("hp","")
+        HP = [int]($Matches[17] -replace("hp","")) * $HPCalibration
         Speed = $Matches[18]
         AC = $Matches[19]
         DamageOld = $Matches[20]
@@ -64,11 +65,13 @@ foreach ($row in $content) {
         Fortitude = $StrMod + $matches[26] + 7
         Reflex = $DexMod + $matches[26] + 7
         Will = $MindMod + $matches[26] + 7
-        SpellDC = [decimal]$Matches[27] + $mindmod + 10
-        Vitals = "HP:$($Matches[17] -replace("hp",'')), AC:$($Matches[19]), F:$($StrMod + $matches[26] + 10), R:$($DexMod + $matches[26] + 10), W:$($MindMod + $matches[26] + 10), SDC:$([decimal]$Matches[27] + $mindmod + 10)"
+        SpellCM = [decimal]$Matches[27] + $mindmod
+        Vitals = "HP:$($Matches[17] -replace("hp",'')), AC:$($Matches[19]), SR:$($strmod + $dexmod + $mindmod + 10), SCM:$([decimal]$Matches[27] + $mindmod)"
         Image = if ((ls "$PSScriptRoot\Data\Images\$($Matches[15]).jpg" -ea 0) -ne $null){"$PSScriptRoot\Data\Images\$($Matches[15]).jpg"} else {"NaN"}
     }
-    $AllCreatures.add($CurrentCreature) | Out-Null
+    if ($CurrentCreature.CR -le $MaxCR){
+        $AllCreatures.add($CurrentCreature) | Out-Null
+    }
 }
 $MonsterMatch = ""
 $MonsterCRTotal = 0
@@ -101,7 +104,7 @@ while ($MonsterCRTotal -lt $PartyLevel -OR $MonsterCRTotal -gt $PartyLevel){
         $ProperCR = $AllCreatures | where {$_.name -match "$MonsterMatch"}
     }
     if ($UniqueCount -lt $MaxUnique) {
-        $Filter = {$_.CR -le $CRRemaining -and $_.Type -match "$CreatureType" -and $_.CR -le $MaxCR -and $_.CR -gt $MinCR}
+        $Filter = {$_.CR -le $CRRemaining -and $_.Type -match "$CreatureType" -and $_.CR -le $MaxCR -and $_.CR -ge $MinCR}
         $ProperCR = $AllCreatures | where $Filter
     }
     if ($ProperCR -eq $Null){break}

@@ -17,11 +17,11 @@ class CharacterProfile {
     $CharacterSheet
     $GameNotes
     
-    CharacterProfile ($Genre,$Alignment,$Stature,$Trait,$Level) {
+    CharacterProfile ($Genre,$Alignment,$Stature,$Trait,$Level,$HPCalibration) {
         $Path = "$PSScriptRoot\..\Data\NPCRaw"
         $file = Get-ChildItem $Path | where {$_.name -match "$Genre-$Alignment"}
         $joinedNPC = Get-Content $Path\$file
-        $this.CharacterSheet = [CharacterSheet]::new($Level)
+        $this.CharacterSheet = [CharacterSheet]::new($Level,$HPCalibration)
         
         if ($Stature -eq "Memorable"){
             $NpcList = $joinedNPC.split('*') | where {$_ -match "^=.*Traits: .*$Trait"}
@@ -36,7 +36,7 @@ class CharacterProfile {
             $this.Race = $this.CharacterSheet.Race
             $this.Class = $this.CharacterSheet.Class
             $this.Attack = $this.CharacterSheet.Attack
-            $this.Vitals = "HP:$($this.CharacterSheet.HP), AC:$($this.CharacterSheet.AC), F:$($this.CharacterSheet.fortitude), R:$($this.CharacterSheet.reflex), W:$($this.CharacterSheet.will), SDC:$($this.CharacterSheet.SpellDC)"
+            $this.Vitals = "HP:$($this.CharacterSheet.HP), AC:$($this.CharacterSheet.AC), SR:$($this.CharacterSheet.SpellResist), SCM:$($this.CharacterSheet.SpellCM)"
             $this.Stats = "StrMod: $($this.CharacterSheet.StrMod), DexMod: $($this.CharacterSheet.DexMod), MindMod: $($this.CharacterSheet.MindMod), | Phys: $($this.CharacterSheet.Phys), Sub: $($this.CharacterSheet.Sub), Know: $($this.CharacterSheet.Know), Comm: $($this.CharacterSheet.Comm), Surv: $($this.CharacterSheet.Surv)"
             $this.Quote = $matches[3]
             $this.Appearance = $matches[4]
@@ -60,11 +60,11 @@ class CharacterProfile {
             $this.Class = $this.CharacterSheet.Class
             $this.Level = $this.CharacterSheet.Level
             $this.Attack = $this.CharacterSheet.Attack
-            $this.Vitals = "HP:$($this.CharacterSheet.HP), AC:$($this.CharacterSheet.AC), F:$($this.CharacterSheet.fortitude), R:$($this.CharacterSheet.reflex), W:$($this.CharacterSheet.will), SDC:$($this.CharacterSheet.SpellDC)"
+            $this.Vitals = "HP:$($this.CharacterSheet.HP), AC:$($this.CharacterSheet.AC), SR:$($this.CharacterSheet.SpellResist), SCM:$($this.CharacterSheet.SpellCM)"
             $this.Stats = "StrMod: $($this.CharacterSheet.StrMod), DexMod: $($this.CharacterSheet.DexMod), MindMod: $($this.CharacterSheet.MindMod), | Phys: $($this.CharacterSheet.Phys), Sub: $($this.CharacterSheet.Sub), Know: $($this.CharacterSheet.Know), Comm: $($this.CharacterSheet.Comm), Surv: $($this.CharacterSheet.Surv)"        
             $this.Appearance = $SplitNpc[3]
             $this.Traits = $SplitNpc[5]
-            $this.CharacterSheet = [CharacterSheet]::new($Level)
+            $this.CharacterSheet = [CharacterSheet]::new($Level,$HPCalibration)
         }
     }
 }

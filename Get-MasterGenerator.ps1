@@ -1,33 +1,22 @@
 param(
-    $Level = 3,
-    
+    [parameter(Mandatory=$true)][int]$Level,
+    [decimal]$HPCalibration = 1,
+    [ValidateSet("Common","Good","Poor")]$InnType = "Common",
+    [ValidateSet("Townsfolk","Adventurers")]$PatronType = "Townsfolk",
+    [ValidateSet("Fantasy","Modern","SciFI")]$Genre = "Fantasy",
     [ValidateSet(
-        "Common",
-        "Good",
-        "Poor"
-        )]$InnType = "Common",
-        
-        [ValidateSet(
-            "Townsfolk",
-            "Adventurers"
-        )]$PatronType = "Townsfolk",
-        
-        [ValidateSet(
-            "Thorp",
-            "Hamlet",
-            "Village",
-            "Small Town",
-            "Large Town",
-            "Small City",
-            "Large City",
-            "Metropolis"
-        )]$TownSize = "Large Town",
-        
-        [ValidateSet("Fantasy","Modern","SciFI")]$Genre = "Fantasy",
-        
-        [int]$Difficulty = -2,
-        $SearchTerm = "Chamber",
-        $PlotType = "All"
+        "Thorp",
+        "Hamlet",
+        "Village",
+        "Small Town",
+        "Large Town",
+        "Small City",
+        "Large City",
+        "Metropolis"
+    )]$TownSize = "Large Town",
+    [int]$Difficulty = 0,
+    $SearchTerm = "Chamber",
+    $PlotType = "All"
 )
 . ./LoadClasses.ps1
 $Global:loadcount = 0
@@ -36,23 +25,23 @@ Get-LoaderMessage
 $RandomContent = [RandomContent]::new()
 Get-LoaderMessage
 $RandomContent.Treasures = . {
-    if ($level -ge 5){1..14 | % {($output = [treasure]::new($level-3)).DiceNumber = $_ ; $output}}
-    if ($level -ge 4){15..29 | % {($output = [treasure]::new($level-2)).DiceNumber = $_ ; $output}}
-    if ($level -ge 3){30..44 | % {($output = [treasure]::new($level-1)).DiceNumber = $_ ; $output}}
-    if ($level -ge 2){45..59 | % {($output = [treasure]::new($level)).DiceNumber = $_ ; $output}}
-    60..74 | % {($output = [treasure]::new($level+1)).DiceNumber = $_ ; $output}
-    75..89 | % {($output = [treasure]::new($level+2)).DiceNumber = $_ ; $output}
-    90..100 | % {($output = [treasure]::new($level+3)).DiceNumber = $_ ; $output}
+    if ([int]$level -ge 5){1..14 | % {($output = [treasure]::new([int]$level-3)).DiceNumber = $_ ; $output}}
+    if ([int]$level -ge 4){15..29 | % {($output = [treasure]::new([int]$level-2)).DiceNumber = $_ ; $output}}
+    if ([int]$level -ge 3){30..44 | % {($output = [treasure]::new([int]$level-1)).DiceNumber = $_ ; $output}}
+    if ([int]$level -ge 2){45..59 | % {($output = [treasure]::new([int]$level)).DiceNumber = $_ ; $output}}
+    60..74 | % {($output = [treasure]::new([int]$level+1)).DiceNumber = $_ ; $output}
+    75..89 | % {($output = [treasure]::new([int]$level+2)).DiceNumber = $_ ; $output}
+    90..100 | % {($output = [treasure]::new([int]$level+3)).DiceNumber = $_ ; $output}
 }
 
 Get-LoaderMessage
-$RandomContent.PanicPlots = 1..3 | foreach {[plot]::new()}
+$RandomContent.PanicPlots = 1..5 | foreach {[plot]::new()}
 Get-LoaderMessage
-$RandomContent.SideQuests = 1..3 | foreach {[plot]::new($PlotType,$TagsFilter,$AdaptedToFilter)}
+$RandomContent.SideQuests = 1..2 | foreach {[plot]::new($PlotType,$TagsFilter,$AdaptedToFilter)}
 Get-LoaderMessage
 $RandomContent.NameVariants = Get-InternetNames
 Get-LoaderMessage
-$RandomContent.Weather = 1..3 | foreach {[Weather]::new()}
+$RandomContent.Weather = 1..4 | foreach {[Weather]::new()}
 Get-LoaderMessage
 $RandomContent.Inn = [Inn]::New($InnType,$PatronType)
 Get-LoaderMessage
@@ -69,9 +58,9 @@ $Trait = '.*'
 $LevelMod = 0
 $Alignment = "Allies"
 Get-LoaderMessage
-$RandomContent.Allies = 1..3 | foreach {
+$RandomContent.Allies = 1..2 | foreach {
     Get-LoaderMessage
-    [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,($Level+$LevelMod))
+    [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,([int]$Level+$LevelMod),$HPCalibration)
     $LevelMod += 2
 }
 
@@ -80,31 +69,38 @@ $Alignment = "Neutrals"
 Get-LoaderMessage
 $RandomContent.Neutrals = 1..2 | foreach {
     Get-LoaderMessage
-    [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,($Level+$LevelMod))
+    [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,([int]$Level+$LevelMod),$HPCalibration)
     $LevelMod += 2
 }
 
 $Alignment = "Villains"
 Get-LoaderMessage
-$RandomContent.Villains = [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,($Level+3))
+$RandomContent.Villains = [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,([int]$Level+3),$HPCalibration)
 
 Get-LoaderMessage
-$RandomContent.MonsterKits = 1..5 | foreach {
+$RandomContent.MonsterKits = 1..5| foreach {
     $MonsterOutput = [PSCustomObject]@{
         MonsterGroups = . {
             Get-LoaderMessage
-            ./Get-Monsters.ps1 -PartyLevel (($Level * 4) + $Difficulty) -MinCR ($Level + $Difficulty) -MaxCR ($Level + 2 + $Difficulty) -MaxUnique 3
+            $Splat = @{
+                PartyLevel = (([int]$Level * 4) + [int]$Difficulty)
+                MinCR = ([int]$Level - 2 + [int]$Difficulty)
+                MaxCR = ([int]$Level + 2 + [int]$Difficulty)
+                MaxUnique = 3
+                HPCalibration = $HPCalibration
+            }
+            ./Get-Monsters.ps1 @Splat
         }
     }
     $MonsterOutput
 }
 
 Get-LoaderMessage
-$RandomContent.ExtraMonsterKits = 1..3 | foreach {
+$RandomContent.ExtraMonsterKits = 1..2 | foreach {
     $ExtraOutput = [PSCustomObject]@{
         ExtraMonsters = . {
             Get-LoaderMessage
-            ./Get-Monsters.ps1 -HD ($Level + $Difficulty) -MaxUnique 4
+            ./Get-Monsters.ps1 -HD ([int]$Level + $Difficulty) -MaxUnique 4
         }
     }
     $ExtraOutput
@@ -119,7 +115,7 @@ $RandomContent.NPCKits = 1..5 | foreach {
     $Output = [PSCustomObject]@{
         NPCGroups = 1..4 | foreach {
             Get-LoaderMessage
-            [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,($Level+[int]$LevelMod))
+            [CharacterProfile]::new($Genre,$Alignment,$Stature,$Trait,([int]$level+[int]$LevelMod),$HPCalibration)
             [decimal]$LevelMod += [decimal](.65)
         }
     }
@@ -150,14 +146,14 @@ $RandomContent.GiantBags = .\Get-DonjonGenerator.ps1 -GeneratorType GiantBag -Ho
 
 Get-LoaderMessage
 $RandomContent.Lore = . {
-1..5 | foreach {
-    Get-LoaderMessage
-    [Lore]::new($SearchTerm) 
-}
-1..3 | foreach {
-    Get-LoaderMessage
-    [Lore]::new()
-}
+    1..4 | foreach {
+        Get-LoaderMessage
+        [Lore]::new($SearchTerm) 
+    }
+    1..4 | foreach {
+        Get-LoaderMessage
+        [Lore]::new()
+    }
 }
 
 Get-LoaderMessage

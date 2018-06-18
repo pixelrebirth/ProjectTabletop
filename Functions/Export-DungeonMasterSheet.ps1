@@ -13,7 +13,7 @@ function Export-DungeonMasterSheet {
 
         if ($count -eq 2){
             $count = 0
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |MAJOR PLOT</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MAJOR PLOT</div>"
             "\page"
         }
         else {
@@ -22,20 +22,20 @@ function Export-DungeonMasterSheet {
         }
         $count++
     }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |MAJOR PLOT</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MAJOR PLOT</div>"
     "\page"
 
     $onetime = $false
     foreach ($eachlore in $blobdata.lore){
         if ($eachlore.source -match "wikia" -and $onetime -eq $false){
             $onetime = $true
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |HISTORY LORE</div>"
+            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | HISTORY LORE</div>"
             "\page"
         }
         "### $($eachlore.source)"
         "$($eachlore.lore)"
     }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE |WIKIA LORE</div>"
+    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | WIKIA LORE</div>"
     "\page"
     foreach ($type in @("Allies","Neutrals","Villains")){
         foreach ($character in $blobdata.$type){
