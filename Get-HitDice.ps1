@@ -6,9 +6,9 @@ $output = new-object system.collections.arraylist
         $sides = $_
         "$number`d$sides = $number-$($number * $sides)"
         $here.dice = "$number`d$sides"
-        $here.min = $number
+        $here.min = $number * -1
         $here.max = $($number * $sides)
         $output.add($here)
     }
 }
-$output
+$output | sort max,min | select dice

@@ -22,7 +22,8 @@ Races are simple in Nanolite, all the information you need is on the following t
 
 ## Classless
 There are none. Classes can cause odd identity riffs with players. 
-We found in developing the game the having a classless system really focused our energy on defining oneself by ones' actions. We believe ones actions make who you are, not what you are told you are
+We found in developing the game the having a classless system really focused our energy on defining oneself by ones' actions.
+We believe ones actions make who you are, not what you are told you are
 
 ## Building a Character
 * STR: 4d6 drop lowest + 10
