@@ -55,7 +55,6 @@ class PlayerCharacter {
     $AC
     $HP
     $XP
-    hidden $Hardening
     $Race
     $RaceBonus
     $CharacterName
@@ -172,7 +171,8 @@ class PlayerCharacter {
             "Surv:Hunting",
             "AC:Hardening",
             "Heroism:Bravery",
-            "CMBase:Gutting"
+            "CMBase:Gutting",
+            "SpellCM:Elements"
         )
        
         $AllEquipmentTypes = @(
@@ -283,7 +283,7 @@ class PlayerCharacter {
         $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
 
         $SpellLevel = [math]::floor($this.level / 2)
-        $this.Fail0 = [math]::floor(30 - ($this.Mind - 10) - ($this.level * 5) + $ArmorAC + $ShieldAC)
+        $this.Fail0 = [math]::floor(20 - ($this.Mind - 10) - ($this.level * 5) + (2 * $ArmorAC) + (2 * $ShieldAC))
         
         1..9 | foreach {
             $num = $_

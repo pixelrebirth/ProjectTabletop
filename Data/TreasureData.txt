@@ -122,7 +122,8 @@
 11:12:of Brilliance*
 13:14:of Tongues*
 15:16:of Hunting*
-17:18:of Hardening*
+17:17:of Elements*
+18:18:of Hardening*
 19:19:of Bravery*
 20:20:of Gutting
 -----
