@@ -83,7 +83,10 @@ class PlayerCharacter {
     hidden $Level18
     hidden $Level20
 
-    hidden $Fail0
+    $MeleeFail
+    $RangedFail
+    $Fail0
+
     hidden $Fail1
     hidden $Fail2
     hidden $Fail3
@@ -274,21 +277,29 @@ class PlayerCharacter {
         if ($this.SideArm -match "^Masterwork|^M\. "){$SideArmCMBase = $SideArmCMBase + 2}
         if ($this.MainMelee -match "^Masterwork|^M\. "){$MeleeCMBase = $MeleeCMBase + 2}
         if ($this.MainRanged -match "^Masterwork|^M\. "){$RangedCMBase = $RangedCMBase + 2}
+        if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
+        if ($this.Shield -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
+
+        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.strmod * 2) - 2)
+        $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.strmod * 2)
+        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dexmod * 2)
+
+        $this.SideArmCM = "$SideArmDmg+$SideArmCMBase"
+        $this.MeleeCM = "$MeleeDmg+$MeleeCMBase"
+        $this.RangedCM = "$RangedDmg+$RangedCMBase"
         
-        $this.SideArmCM = If ($this.SideArm -match "\[(.*)\]"){"$($Matches[1])+$SideArmCMBase" }
-        $this.MeleeCM = If ($this.MainMelee -match "\[(.*)\]"){"$($Matches[1])+$MeleeCMBase" }
-        $this.RangedCM = If ($this.MainRanged -match "\[(.*)\]"){"$($Matches[1])+$RangedCMBase" }
         $this.SpellCM = $this.level + $this.MindMod
-  
         $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
 
         $SpellLevel = [math]::floor($this.level / 2)
-        $this.Fail0 = [math]::floor(20 - ($this.Mind - 10) - ($this.level * 5) + (2 * $ArmorAC) + (2 * $ShieldAC))
-        
+        $this.MeleeFail = [math]::floor(30 - (($this.Str - 10) * 2) - $this.level + $ArmorAC + $ShieldAC)
+        $this.RangedFail = [math]::floor(30 - (($this.Dex - 10) * 2) - $this.level + $ArmorAC + $ShieldAC)
+        $this.Fail0 = [math]::floor(30 - (($this.Mind - 10) * 2) - $this.level + $ArmorAC + $ShieldAC)
+
         1..9 | foreach {
             $num = $_
             if ($SpellLevel -ge $num){
-                $this."Fail$num" = [math]::floor($this."Fail$($num-1)" + 10)
+                $this."Fail$num" = [math]::floor($this."Fail$($num-1)" + 5)
                 if ($this."Fail$num" -lt 0){
                     $this."Fail$num" = 0
                 }
