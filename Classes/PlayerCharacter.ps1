@@ -280,9 +280,9 @@ class PlayerCharacter {
         if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
         if ($this.Shield -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
 
-        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.strmod * 2) - 2)
-        $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.strmod * 2)
-        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dexmod * 2)
+        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.strmod) - 2)
+        $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.strmod)
+        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dexmod)
 
         $this.SideArmCM = "$SideArmDmg+$SideArmCMBase"
         $this.MeleeCM = "$MeleeDmg+$MeleeCMBase"
@@ -292,14 +292,14 @@ class PlayerCharacter {
         $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
 
         $SpellLevel = [math]::floor($this.level / 2)
-        $this.MeleeFail = [math]::floor(30 - (($this.Str - 10) * 2) - $this.level + $ArmorAC + $ShieldAC)
-        $this.RangedFail = [math]::floor(30 - (($this.Dex - 10) * 2) - $this.level + $ArmorAC + $ShieldAC)
-        $this.Fail0 = [math]::floor(30 - (($this.Mind - 10) * 2) - $this.level + $ArmorAC + $ShieldAC)
+        $this.MeleeFail = [math]::floor((20 - $this.Str) + $ArmorAC + $ShieldAC)
+        $this.RangedFail = [math]::floor((20 - $this.Dex) + $ArmorAC + $ShieldAC)
+        $this.Fail0 = [math]::floor((20 - $this.Mind) + $ArmorAC + $ShieldAC)
 
         1..9 | foreach {
             $num = $_
             if ($SpellLevel -ge $num){
-                $this."Fail$num" = [math]::floor($this."Fail$($num-1)" + 5)
+                $this."Fail$num" = [math]::floor($this."Fail$($num-1)" + 3)
                 if ($this."Fail$num" -lt 0){
                     $this."Fail$num" = 0
                 }

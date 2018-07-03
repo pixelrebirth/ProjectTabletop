@@ -1,6 +1,8 @@
 [cmdletbinding()]
 param(    
-    [parameter(Mandatory=$true)]$PlayerName
+    [parameter(Mandatory=$true)]$PlayerName,
+    [switch]$NoPhotoshop,
+    [int]$XP
 )
 
 DynamicParam {
@@ -140,6 +142,8 @@ process {
     $PlayerCharacter.TalentAbility = $PlayerCharacter.TalentName.split(";")[1]
     $PlayerCharacter.TalentName = $PlayerCharacter.TalentName.split(";")[0]
     
+    if (-NOT !$XP){$PlayerCharacter.XP = $XP}
+
     if ($PlayerCharacter.XP -eq '' -or $PlayerCharacter.XP -eq $null){
         while ([int]$PlayerCharacter.XP -isnot [int]){
             $PlayerCharacter.XP = Read-Host "Is your character supposed to have XP, how much, try 0"
@@ -175,9 +179,11 @@ end {
 
     $PlayerCharacter | select $YamlArray | ConvertTo-Yaml | Out-File "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.yaml" -Force
     
-    Format-PhotoshopExport -PlayerCharacter $PlayerCharacter
-    Set-SheetGraphics
-    Move-Item "E:\temp\PSExport.png" "E:\www\characters\$($PlayerCharacter.PlayerName).png" -Force
+    if ($NoPhotoshop -eq $false){
+        Format-PhotoshopExport -PlayerCharacter $PlayerCharacter
+        Set-SheetGraphics
+        Move-Item "E:\temp\PSExport.png" "E:\www\characters\$($PlayerCharacter.PlayerName).png" -Force
+    }
     
     return $PlayerCharacter
 }

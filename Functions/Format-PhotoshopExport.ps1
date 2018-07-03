@@ -10,8 +10,8 @@ function Format-PhotoshopExport {
         "BestFriend","Family","LastWar","Organization","BankGold","Amulet","Ring","Shield","Helm",
         "ArmorSet","SideArm","MainRanged","MainMelee","TalentAbility","Vise","Virtue","XP","Race",
         "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","Heroism","SpellResist",
-        "SpellCM","AC","HP","Mind","Str","Dex","Level","Fail0","Fail1","Fail2","Fail3","Fail4","Fail5",
-        "Fail6","Fail7","Fail8","Fail9","RaceBonus","Titles"
+        "SpellCM","AC","HP","Mind","Str","Dex","Level","MeleeFail","RangedFail","Fail0","Fail1","Fail2",
+        "Fail3","Fail4","Fail5","Fail6","Fail7","Fail8","Fail9","RaceBonus","Titles"
     )
 
     $PlayerCharacter.str = "$($PlayerCharacter.str) [$($PlayerCharacter.strmod)]"
@@ -28,6 +28,9 @@ function Format-PhotoshopExport {
 
     $PlayerCharacter.BankGold = "Banked Gold: $($PlayerCharacter.BankGold)"
     $PlayerCharacter.Titles = "$($PlayerCharacter.Titles -replace(';',"`n"))"
+
+    $PlayerCharacter.MeleeFail = "$($PlayerCharacter.MeleeFail)%"
+    $PlayerCharacter.RangedFail = "$($PlayerCharacter.RangedFail)%"
 
     $ExportArray | foreach {
         if ($PlayerCharacter."$_" -eq $null -or $PlayerCharacter."$_" -eq ""){$PlayerCharacter."$_" = "None"}
