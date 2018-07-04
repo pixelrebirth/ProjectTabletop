@@ -85,17 +85,18 @@ class PlayerCharacter {
 
     $MeleeFail
     $RangedFail
-    $Fail0
+    $SpellFail
 
-    hidden $Fail1
-    hidden $Fail2
-    hidden $Fail3
-    hidden $Fail4
-    hidden $Fail5
-    hidden $Fail6
-    hidden $Fail7
-    hidden $Fail8
-    hidden $Fail9
+    hidden $Points0
+    hidden $Points1
+    hidden $Points2
+    hidden $Points3
+    hidden $Points4
+    hidden $Points5
+    hidden $Points6
+    hidden $Points7
+    hidden $Points8
+    hidden $Points9
     
     [void] IfNullStats ($stat){
         if ($this."$stat`Base" -eq $null -or $this."$stat`Base" -eq ''){
@@ -249,15 +250,14 @@ class PlayerCharacter {
                 $FistBonus = ([math]::floor(.5 * $this.level)) + 1
                 
                 Write-Host -ForegroundColor Yellow "`nWarning Dropping $($this.MainMelee) and $($this.SideArm)`n"
-                $this.MainMelee = "Magic Fists + $FistBonus [1d8]"
-                $this.SideArm = "Magic Fists (Off-hand) + $FistBonus [1d6]"
+                $this.MainMelee = "Magic Fists + $FistBonus"
+                $this.SideArm = "Magic Fists (Off-hand) + $FistBonus"
             }
             "Combat Training" {
                 $this.CMBase + ([math]::floor(.2 * $this.level)) + 1
             }
         }
         
-
         if ($this.dex -lt 10){$this.dex = 10}
         if ($this.str -lt 10){$this.str = 10}
         if ($this.mind -lt 10){$this.mind = 10}
@@ -268,7 +268,7 @@ class PlayerCharacter {
 
         $this.ac = $this.dexmod + $ArmorAC + $ShieldAC + 10 + $BaseAc
         
-        $this.hp = $this.str + ($this.roll("$($this.level * 3)d4"))
+        $this.hp = $this.str + ($this.level * 6)
         
         $SideArmCMBase = $this.strmod + $this.CMBase
         $MeleeCMBase = $this.strmod + $this.CMBase
@@ -291,23 +291,22 @@ class PlayerCharacter {
         $this.SpellCM = $this.level + $this.MindMod
         $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
 
-        $SpellLevel = [math]::floor($this.level / 2)
-        $this.MeleeFail = [math]::floor((20 - $this.Str) + $ArmorAC + $ShieldAC)
-        $this.RangedFail = [math]::floor((20 - $this.Dex) + $ArmorAC + $ShieldAC)
-        $this.Fail0 = [math]::floor((20 - $this.Mind) + $ArmorAC + $ShieldAC)
+        $this.MeleeFail = [math]::floor((25 - $this.Str) + $ArmorAC + $ShieldAC)
+        $this.RangedFail = [math]::floor((25 - $this.Dex) + $ArmorAC + $ShieldAC)
+        $this.SpellFail = [math]::floor((25 - $this.Mind) + $ArmorAC + $ShieldAC)
 
-        1..9 | foreach {
+        $SpellLevel = [math]::floor($this.level / 2)
+        0..9 | foreach {
             $num = $_
             if ($SpellLevel -ge $num){
-                $this."Fail$num" = [math]::floor($this."Fail$($num-1)" + 3)
-                if ($this."Fail$num" -lt 0){
-                    $this."Fail$num" = 0
-                }
+                $this."Points$num" = (($num * 2) + 1) * 3
             }
             else {
-                $this."Fail$num" = "-"
+                $this."Points$num" = "-"
             }
         }
-        if ($this.Fail0 -lt 0){$this.Fail0 = 0}
+        if ($this.MeleeFail -lt 0){$this.MeleeFail = 0}
+        if ($this.RangedFail -lt 0){$this.RangedFail = 0}
+        if ($this.SpellFail -lt 0){$this.SpellFail = 0}
     }
 }
