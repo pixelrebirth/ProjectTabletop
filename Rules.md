@@ -4,8 +4,9 @@ The rules are heavily based on Eberron and what I saw Eberron being about, namel
 
 ## Races
 Races are simple in Nanolite, all the information you need is on the following table.
+For other systems, simple change the name Human into Spaghetti Monster (or whatever you want)
 
-|Race|Effect|Eberron Relevance|
+|Race|Effect|Lore Relevance|
 |:-----|:-----:|:-----|
 |Warforged|AC+2|
 |Human|HEROISM+2|
@@ -22,29 +23,42 @@ Races are simple in Nanolite, all the information you need is on the following t
 
 ## Classless
 There are none. Classes can cause odd identity riffs with players. 
-We found in developing the game that having a classless system really focused our energy on defining oneself by ones' actions.
-We believe ones actions make who you are, not what you are told you are
+We found in developing the game that having a classless system really focused our energy on defining oneself by ones' actions. We believe ones actions make who you are, not what you are told you are.
 
 ## Building a Character
 ### Stats
-Roll 3d8, write down the numbers
+Stats are derived from a point system. At level 1 you start with 16 points. Each point costs as much as the spoint you are trying to achieve. You must assign this to each of the stats STR/DEX/MIND.
 
-Roll 3d8, write down the numbers again
+Ex. from 0 to 1 STR would cost 1 point, from 5 to 6 STR would cost 6 points more.
 
-Take the higher of the two sets and add 10 for STR, DEX and MIND
-You may choose the order they go in. 
+At first level. if you want an STR of 4, it will cost a total of 10 points, leaving you just 4 points for dex and mind.
 
-Example:
-* 7/3/4
-* 3/2/6
-* Becomes: 
-    * Str: 13
-    * Dex: 14
-    * Mind: 17
+|Stat|Point Cost|
+|-----|-----|
+|1|1|
+|2|3|
+|3|6|
+|4|10|
+|5|15|
+|6|21|
+|7|28|
+|8|36|
+|9|45|
+|10|55|
+
+When leveling up, if you have a str of 5 and want to make it 6 you need to have 6 points to spend, you can save them between levels. You will get 2 points to spend per level and start at 16.
+
+Stat Direct Effect:
+
+|Stat|Directly Effects|
+|-----|-----|
+|STR|HP, MELEE DAMAGE, MELEE %, MELEE CM, SR|
+|DEX|AC, RANGED DAMAGE, RANGED %, RANGED CM, SR|
+|MIND|SPELL %, Spell CM, SR|
 
 ### Skills
 
-All skills are set to the level your character is at, there are other modifiers like equipment or ability that can modify this beyond the level amount. The skills are:
+All skills are set to the level your character is at, there are other modifiers like equipment or abilities that can modify this beyond the level amount. The skills are:
 
 * PHYS - Physical
 * SUB  - Subterfuge
@@ -53,23 +67,23 @@ All skills are set to the level your character is at, there are other modifiers 
 * SURV - Survival
 
 ### Vise/Virtue:
-Choose one Stat and one Skill to be your Vise (-2) and Virtue (+2) 
+Choose one Stat and one Skill to be your Vise (-1) and Virtue (+1) 
 
 Example:
 
-* STR/KNOW as a Virtue (gives +2 to each)
-* MIND/COMM as a Vise (gives -2 to each)
-
-### Set stat modifiers
-* STRMOD: (STR - 10) / 2 round down
-* DEXMOD: (DEX - 10) / 2 round down
-* MINDMOD: (MIND - 10) / 2 round down
+* STR/KNOW as a Virtue (gives +1 to each)
+* MIND/COMM as a Vise (gives -1 to each)
 
 ### Hit Points, Armor Class (AC), Spell Resistance (SR), Heroism
-* HP: STR + 6/level
-* AC: DEXMOD + Armor + Shield
-* SR: STRMOD + DEXMOD + MINDMOD + 10
+* HP: STR * 5 + 6/level
+* AC: DEX + Armor + Shield + 10
+* SR: STR + DEX + MIND + 10
 * HEROISM: level
+
+### Melee and Ranged damage
+Damage is determined by taking the correlated stat score, looking at the roll chart below and locating the amound of melee/ranged damage you can do.
+
+Ex.
 
 ### Roll Chart:
 
