@@ -1,7 +1,4 @@
-<!-- TODO Debug the PC creation gear -->
-<!-- TODO Level up mechanism with new items (remove awkward multi prompt) -->
-<!-- TODO Do the session by session data entry -->
-<!-- TODO Start .md view of generic campaign data -->
-<!-- TODO Create the .md view of the session data -->
+<!-- TODO Automated session writer with randomized section ideas, write until your depleted, then random -->
+<!-- TODO Clean up the DMGuide to be better overall quality -->
 <!-- TODO Write rule book -->
 <!-- TODO Create a flask page for data entry on PCs -->

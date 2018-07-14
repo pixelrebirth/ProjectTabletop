@@ -1,4 +1,2 @@
-param (
-    [ValidateRange(1,39)]$test = (read-host Test parameter)
-)
-$test
+# (.\New-EberronCharacter.ps1 -level 3).charactersheet | select *
+.\Get-Monsters.ps1

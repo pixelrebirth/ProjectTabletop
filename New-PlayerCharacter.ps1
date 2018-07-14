@@ -1,6 +1,8 @@
 [cmdletbinding()]
 param(    
-    [int]$XP = 50
+    [parameter(Mandatory=$true)]$PlayerName,
+    [switch]$NoPhotoshop,
+    [int]$XP
 )
 
 DynamicParam {
@@ -90,57 +92,98 @@ begin {
     $LastWar = $PsBoundParameters['LastWar']
     $Organization = $PsBoundParameters['Organization']
 
-    if  ($CharacterName -eq "Self"){$CharacterName = Read-Host What is your name}
+    Import-Module powershell-yaml
     . ./LoadClasses.ps1
-    $Level = 0
+    $Level = 1
 }
 
 process {
     $PlayerCharacter = [PlayerCharacter]::new()
+    
+    try {
+        $CharacterImport = Get-ChildItem "$($PSScriptRoot)/data/saves/$PlayerName*.yaml" | where name -notmatch "\.old$" | select -first 1 | Get-Content | ConvertFrom-Yaml
+        foreach ($key in $CharacterImport.keys){
+            $PlayerCharacter.$key = $CharacterImport.$key
+        }
+    }
+    catch {
+        Write-Verbose "There is no character YAML file in Get-ChildItem $($PSScriptRoot)/data/saves/$PlayerName*.yaml"
+        Write-Debug "$($Error[0].Exception.Message)"
+    }
 
-    $PlayerCharacter.Race = $Race | % {if ($_ -eq $null){. $ScriptRace | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.CharacterName = $CharacterName | % {if ($_ -eq $null){. $ScriptCharacterName | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.TalentName = $TalentName | % {if ($_ -eq $null){. $scriptTalentName | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.MostLikelyDo = $MostLikelyDo | % {if ($_ -eq $null){. $scriptMostLikelyDo | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.Hobby = $Hobby | % {if ($_ -eq $null){. $scriptHobby | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.Food = $Food | % {if ($_ -eq $null){. $scriptFood | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.Idol = $Idol | % {if ($_ -eq $null){. $scriptIdol | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.DiscoverMagic = $DiscoverMagic | % {if ($_ -eq $null){. $scriptDiscoverMagic | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.Foe = $Foe | % {if ($_ -eq $null){. $scriptFoe | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.WhatSeek = $WhatSeek | % {if ($_ -eq $null){. $scriptWhatSeek | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.Lover = $Lover | % {if ($_ -eq $null){. $scriptLover | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.Family = $Family | % {if ($_ -eq $null){. $scriptFamily | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.WhereFrom = $WhereFrom | % {if ($_ -eq $null){. $scriptWhereFrom | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.BestFriend = $BestFriend | % {if ($_ -eq $null){. $scriptBestFriend | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.LastWar = $LastWar | % {if ($_ -eq $null){. $scriptLastWar | Sort {Get-Random} | select -first 1} else {$_}}
-    $PlayerCharacter.Organization = $Organization | % {if ($_ -eq $null){. $scriptOrganization | Sort {Get-Random} | select -first 1} else {$_}}
-
+    Set-PlayerPropertyNull -PropName Race
+    Set-PlayerPropertyNull -PropName CharacterName
+    Set-PlayerPropertyNull -PropName TalentName
+    Set-PlayerPropertyNull -PropName MostLikelyDo
+    Set-PlayerPropertyNull -PropName Hobby
+    Set-PlayerPropertyNull -PropName Food
+    Set-PlayerPropertyNull -PropName Idol
+    Set-PlayerPropertyNull -PropName DiscoverMagic
+    Set-PlayerPropertyNull -PropName Foe
+    Set-PlayerPropertyNull -PropName WhatSeek
+    Set-PlayerPropertyNull -PropName Lover
+    Set-PlayerPropertyNull -PropName Family
+    Set-PlayerPropertyNull -PropName WhereFrom
+    Set-PlayerPropertyNull -PropName BestFriend
+    Set-PlayerPropertyNull -PropName LastWar
+    Set-PlayerPropertyNull -PropName Organization
+    
+    if ($PlayerCharacter.Race -ne $null -and $PlayerCharacter.race -notmatch "\;"){
+        $RaceFull = Get-Content "$PSScriptRoot\data\character\race.txt" | where {$_ -match "^$($PlayerCharacter.race);"}
+        $PlayerCharacter.Race = $RaceFull
+    }
     $PlayerCharacter.RaceBonus = $PlayerCharacter.Race.split(";")[1]
     $PlayerCharacter.Race = $PlayerCharacter.Race.split(";")[0]
     
+    if ($PlayerCharacter.TalentName -ne $null -and $PlayerCharacter.TalentName -notmatch "\;"){
+        $TalentNameFull = Get-Content "$PSScriptRoot\data\character\TalentName.txt" | where {$_ -match "^$($PlayerCharacter.TalentName);"}
+        $PlayerCharacter.TalentName = $TalentNameFull
+    }
     $PlayerCharacter.TalentAbility = $PlayerCharacter.TalentName.split(";")[1]
     $PlayerCharacter.TalentName = $PlayerCharacter.TalentName.split(";")[0]
-    $PlayerCharacter.XP = $XP
-  
     
-    # $ReplaceMode = $False
+    if (-NOT !$XP){$PlayerCharacter.XP = $XP}
+
+    if ($PlayerCharacter.XP -eq '' -or $PlayerCharacter.XP -eq $null){
+        while ([int]$PlayerCharacter.XP -isnot [int]){
+            $PlayerCharacter.XP = Read-Host "Is your character supposed to have XP, how much, try 0"
+        }
+    }
+
     $PlayerCharacter.FirstLevel()
     
-    $XPRemain = $XP
-    while ($XPRemain - $Level*10 -ge 0){   
-        $PlayerCharacter.LevelUp()
-        $Level++
+    $XPRemain = $PlayerCharacter.XP
+    while ($XPRemain -ge 0){   
         $XPRemain = $XPRemain - $Level*10
+        $Level++
+        $PlayerCharacter.LevelUp()
     }
 
     $PlayerCharacter.UpdateStats()
 }
 
 end {
+    $YamlArray = @("PlayerName","CharacterName","Race","TalentName","Titles","StrBase","DexBase","MindBase",
+        "Virtue","Vise","Idol","Foe","Lover","Family","WhereFrom","BestFriend","LastWar","Organization",
+        "MostLikelyDo","Hobby","Food","DiscoverMagic","WhatSeek","XP","Amulet","Ring","Helm","Shield",
+        "ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1","GearSlot2","GearSlot3","GearSlot4",
+        "GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12",
+        "GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18","BankGold","Level3",
+        "Level6","Level9","Level12","Level15","Level18","Level20"
+    )
+
     $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation
-    Format-PhotoshopExport -PlayerCharacter $PlayerCharacter
-    Set-SheetGraphics
-    Move-Item "E:\temp\PSExport.png" "E:\www\characters\$($PlayerCharacter.PlayerName).png" -Force
+    
+    $YamlFile = "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.yaml"
+    if (Test-Path $YamlFile){Copy-Item $YamlFile "$YamlFile.old" -Force}
+
+    $PlayerCharacter | select $YamlArray | ConvertTo-Yaml | Out-File "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.yaml" -Force
+    
+    if ($NoPhotoshop -eq $false){
+        Format-PhotoshopExport -PlayerCharacter $PlayerCharacter
+        Set-SheetGraphics
+        Move-Item "E:\temp\PSExport.png" "E:\www\characters\$($PlayerCharacter.PlayerName).png" -Force
+    }
     
     return $PlayerCharacter
 }

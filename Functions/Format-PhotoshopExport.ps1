@@ -9,14 +9,17 @@ function Format-PhotoshopExport {
         "Foe","WhatSeek","Hobby","Food","WhereFrom","Idol","DiscoverMagic","MostLikelyDo","Lover",
         "BestFriend","Family","LastWar","Organization","BankGold","Amulet","Ring","Shield","Helm",
         "ArmorSet","SideArm","MainRanged","MainMelee","TalentAbility","Vise","Virtue","XP","Race",
-        "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","Heroism","Fortitude",
-        "Reflex","Will","SpellDC","AC","HP","Mind","Str","Dex","Level"
+        "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","Heroism","SpellResist",
+        "SpellCM","AC","HP","Mind","Str","Dex","Level","MeleeFail","RangedFail","SpellFail","RaceBonus",
+        "Titles","Points0","Points1","Points2","Points3","Points4","Points5","Points6","Points7","Points8","Points9"
     )
 
     $PlayerCharacter.str = "$($PlayerCharacter.str) [$($PlayerCharacter.strmod)]"
     $PlayerCharacter.dex = "$($PlayerCharacter.dex) [$($PlayerCharacter.dexmod)]"
     $PlayerCharacter.mind = "$($PlayerCharacter.mind) [$($PlayerCharacter.mindmod)]"
     
+    $PlayerCharacter.spellcm = "+$($PlayerCharacter.spellcm)"
+
     $PlayerCharacter.virtue -match '^(\w+)\\(\w+)$|^(\w+)\/(\w+)$'
     $PlayerCharacter.virtue = "$($matches[1]) + 2 \ $($matches[2]) + 2"
     
@@ -24,9 +27,14 @@ function Format-PhotoshopExport {
     $PlayerCharacter.vise = "$($matches[1]) - 2 \ $($matches[2]) - 2"
 
     $PlayerCharacter.BankGold = "Banked Gold: $($PlayerCharacter.BankGold)"
-    
+    $PlayerCharacter.Titles = "$($PlayerCharacter.Titles -replace(';',"`n"))"
+
+    $PlayerCharacter.MeleeFail = "$($PlayerCharacter.MeleeFail)%"
+    $PlayerCharacter.RangedFail = "$($PlayerCharacter.RangedFail)%"
+    $PlayerCharacter.SpellFail = "$($PlayerCharacter.SpellFail)%"
+
     $ExportArray | foreach {
-        if ($PlayerCharacter."$_" -eq $null){$PlayerCharacter."$_" = "None"}
+        if ($PlayerCharacter."$_" -eq $null -or $PlayerCharacter."$_" -eq ""){$PlayerCharacter."$_" = "None"}
     }
     $PlayerCharacter | select $ExportArray | Export-Csv -Encoding ASCII -Path 'E:\temp\PSImport.csv' -NoTypeInformation
 }

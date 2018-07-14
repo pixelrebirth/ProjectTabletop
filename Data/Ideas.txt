@@ -190,3 +190,13 @@ Giants bag
 20 Traps
 Ancient Tome
 Castle
+
+
+
+Write a story pattern randomizer
+Magic
+Dialog
+Information
+Task
+Environments
+Senses

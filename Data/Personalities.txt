@@ -1,0 +1,16 @@
+INTJ:ARCHITECT:Imaginative and strategic thinkers, with a plan for everything.
+INTP:LOGICIAN:Innovative inventors with an unquenchable thirst for knowledge.
+ENTJ:COMMANDER:Bold, imaginative and strong-willed leaders, always finding a way – or making one.
+ENTP:DEBATER:Smart and curious thinkers who cannot resist an intellectual challenge.
+INFJ:ADVOCATE:Quiet and mystical, yet very inspiring and tireless idealists.
+INFP:MEDIATOR:Poetic, kind and altruistic people, always eager to help a good cause.
+ENFJ:PROTAGONIST:Charismatic and inspiring leaders, able to mesmerize their listeners.
+ENFP:CAMPAIGNER:Enthusiastic, creative and sociable free spirits, who can always find a reason to smile.
+ISTJ:LOGISTICIAN:Practical and fact-minded individuals, whose reliability cannot be doubted.
+ISFJ:DEFENDER:Very dedicated and warm protectors, always ready to defend their loved ones.
+ESTJ:EXECUTIVE:Excellent administrators, unsurpassed at managing things – or people.
+ESFJ:CONSUL:Extraordinarily caring, social and popular people, always eager to help.
+ISTP:VIRTUOSO:Bold and practical experimenters, masters of all kinds of tools.
+ISFP:ADVENTURER:Flexible and charming artists, always ready to explore and experience something new.
+ESTP:ENTREPRENEUR:Smart, energetic and very perceptive people, who truly enjoy living on the edge.
+ESFP:ENTERTAINER:Spontaneous, energetic and enthusiastic people – life is never boring around them.

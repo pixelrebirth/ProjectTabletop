@@ -1,10 +1,11 @@
 param (
-    [int]$PartyLevel = 10,
+    [int]$PartyLevel,
     [string]$CreatureType,
-    [decimal]$MinCR = 1,
-    [decimal]$MaxCR = 5,
-    [int]$MaxUnique = 3,
-    [int]$HD
+    [decimal]$MinCR,
+    [decimal]$MaxCR,
+    [int]$MaxUnique,
+    [int]$HD,
+    [int]$HPCalibration
 )
 . ./LoadClasses.ps1
 
@@ -17,25 +18,60 @@ $content = Get-Content $PSScriptRoot\Data\DndMicroliteMonsters.txt
 $AllCreatures = New-Object -typename System.Collections.ArrayList
 foreach ($row in $content) {
     $row -match "(.*) - (.*) Hit Dice: .*d \((\d)\) Speed: (.*) AC: (.*).* Attack\/Damage: (.*) Special Attacks: (.*) Special Qualities: (.*) Abilities: STR(.*), DEX(.*), MIND(.*) Skills: (.*) CR: (\.\d+|\d+)(.*)|(.*) - (.*) Hit Dice: .* \((.*)\) Speed: (.*) AC: (\d+).*Damage: (.*) Special Attacks: (.*) Special Qualities: (.*) Abilities: STR(.*), DEX(.*), MIND(.*) Skills: all @ (.*) CR: (\.\d+|\d+) (.*)" | Out-Null
+    
+    $split = $matches[23] -split(" \(|\(")
+    $str = $split[0]
+    if ($split[1] -eq $null){
+        $strmod = 0
+    } else {    
+        [int]$strmod = $split[1].replace(")","")
+    }
+
+    $split = $matches[24] -split(" \(|\(")
+    $dex = $split[0]
+    if ($split[1] -eq $null){
+        $dexmod = 0
+    } else {    
+        [int]$dexmod = $split[1].replace(")","")
+    }
+    
+    $split = $matches[25] -split(" \(|\(")
+    $mind = $split[0]
+    if ($split[1] -eq $null){
+        $mindmod = 0
+    } else {    
+        [int]$mindmod = $split[1].replace(")","")
+    }
+        
     $CurrentCreature = [PSCustomObject]@{
         Name = $Matches[15]
         Type = $Matches[16]
-        HP = $Matches[17] -replace("hp","")
+        HP = [int]($Matches[17] -replace("hp","")) * $HPCalibration
         Speed = $Matches[18]
         AC = $Matches[19]
         DamageOld = $Matches[20]
         DamageCM = Measure-CombatModifier -Damage $Matches[20]
         SpecialAttacks = $Matches[21]
         SpecialQualities = $Matches[22]
-        STR = $Matches[23]
-        DEX = $Matches[24]
-        MIND = $Matches[25]
+        STR = $str
+        DEX = $dex
+        MIND = $mind
+        STRmod = $strmod
+        DEXmod = $dexmod
+        MINDmod = $mindmod
         Skills = $Matches[26]
         CR = [decimal]$Matches[27]
         Notes = $Matches[28]
+        Fortitude = $StrMod + $matches[26] + 7
+        Reflex = $DexMod + $matches[26] + 7
+        Will = $MindMod + $matches[26] + 7
+        SpellCM = [decimal]$Matches[27] + $mindmod
+        Vitals = "HP:$($Matches[17] -replace("hp",'')), AC:$($Matches[19]), SR:$($strmod + $dexmod + $mindmod + 10), SCM:$([decimal]$Matches[27] + $mindmod)"
         Image = if ((ls "$PSScriptRoot\Data\Images\$($Matches[15]).jpg" -ea 0) -ne $null){"$PSScriptRoot\Data\Images\$($Matches[15]).jpg"} else {"NaN"}
     }
-    $AllCreatures.add($CurrentCreature) | Out-Null
+    if ($CurrentCreature.CR -le $MaxCR){
+        $AllCreatures.add($CurrentCreature) | Out-Null
+    }
 }
 $MonsterMatch = ""
 $MonsterCRTotal = 0
@@ -68,7 +104,7 @@ while ($MonsterCRTotal -lt $PartyLevel -OR $MonsterCRTotal -gt $PartyLevel){
         $ProperCR = $AllCreatures | where {$_.name -match "$MonsterMatch"}
     }
     if ($UniqueCount -lt $MaxUnique) {
-        $Filter = {$_.CR -le $CRRemaining -and $_.Type -match "$CreatureType" -and $_.CR -le $MaxCR -and $_.CR -gt $MinCR}
+        $Filter = {$_.CR -le $CRRemaining -and $_.Type -match "$CreatureType" -and $_.CR -le $MaxCR -and $_.CR -ge $MinCR}
         $ProperCR = $AllCreatures | where $Filter
     }
     if ($ProperCR -eq $Null){break}

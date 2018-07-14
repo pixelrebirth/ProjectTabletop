@@ -3,9 +3,9 @@ class CharacterSheet {
     hidden [CharacterClass]$ClassInternal
     hidden [CharacterRace]$RaceInternal
     
-    hidden [int]$STR
-    hidden [int]$DEX
-    hidden [int]$MIND
+    [int]$STR
+    [int]$DEX
+    [int]$MIND
     
     hidden [int]$MeleeCM
     hidden [int]$RangedCM
@@ -22,7 +22,8 @@ class CharacterSheet {
     [string]$Class
     [int]$AC
     [int]$HP
-    [int]$SpellDC
+    [int]$SpellCM
+    [int]$SpellResist
     [String]$Attack
     
     [int]$StrMod
@@ -39,8 +40,10 @@ class CharacterSheet {
     
     [String]$Traits
     [String]$Description
+    hidden [decimal]$HPCalibration
 
-    CharacterSheet ([int]$Level) {
+    CharacterSheet ([int]$Level,[decimal]$HPCalibration) {
+        $this.HPCalibration = $HPCalibration
         $this.Level = $Level
         $this.GetClass()
         $this.GetRace()
@@ -135,8 +138,10 @@ class CharacterSheet {
         $this.RangedCM = $this.Level + $this.RangedCM + $this.DexMod
         
         $this.AC = 10 + $this.DexMod + $this.AC
-        $this.hp = (($this.str + $this.dex + $this.mind) / 3) + ($this.roll("$($this.level * 3)d4"))
-        $this.SpellDC = $this.Level + $this.MindMod + 10
+        $this.hp = ((($this.str + $this.dex + $this.mind) / 3) + ($this.roll("$($this.level * 3)d4"))) * $this.HPCalibration
+        $this.SpellCM = $this.Level + $this.MindMod
+
+        $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
 
         foreach ($iteration in 1..([math]::floor($this.level / 3))) {
             $Random = Get-Random -Minimum 1 -Maximum 3
