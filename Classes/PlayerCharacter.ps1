@@ -3,9 +3,6 @@ class PlayerCharacter {
     $Str
     $Dex
     $Mind
-    $StrMod
-    $DexMod
-    $MindMod
     $StrBase
     $DexBase
     $MindBase
@@ -243,7 +240,7 @@ class PlayerCharacter {
                 if ($this.str -lt $Low){$Low = $this.str ; $LowName = "str"}
                 if ($this.dex -lt $Low){$Low = $this.dex ; $LowName = "dex"}
                 if ($this.mind -lt $Low){$Low = $this.mind ; $LowName = "mind"}
-                $this."$($LowName)" = $this."$($LowName)" + 2
+                $this."$($LowName)" = $this."$($LowName)" + 1
             }
             "Martial Arts" {
                 $BaseAC = ([math]::floor(.5 * $this.level)) + 1
@@ -258,21 +255,17 @@ class PlayerCharacter {
             }
         }
         
-        if ($this.dex -lt 10){$this.dex = 10}
-        if ($this.str -lt 10){$this.str = 10}
-        if ($this.mind -lt 10){$this.mind = 10}
+        if ($this.dex -lt 0){$this.dex = 0}
+        if ($this.str -lt 0){$this.str = 0}
+        if ($this.mind -lt 0){$this.mind = 0}
 
-        $this.STRMod = [math]::floor(($this.STR - 10) / 2)
-        $this.MINDMod = [math]::floor(($this.MIND - 10) / 2)
-        $this.DEXMod = [math]::floor(($this.DEX - 10 ) / 2)
-
-        $this.ac = $this.dexmod + $ArmorAC + $ShieldAC + 10 + $BaseAc
+        $this.ac = $this.dex + $ArmorAC + $ShieldAC + 10 + $BaseAc
         
-        $this.hp = $this.str + ($this.level * 6)
+        $this.hp = ($this.str * 5) + ($this.level * 6)
         
-        $SideArmCMBase = $this.strmod + $this.CMBase
-        $MeleeCMBase = $this.strmod + $this.CMBase
-        $RangedCMBase = $this.dexmod + $this.CMBase
+        $SideArmCMBase = $this.str + $this.CMBase - 2
+        $MeleeCMBase = $this.str + $this.CMBase
+        $RangedCMBase = $this.dex + $this.CMBase
 
         if ($this.SideArm -match "^Masterwork|^M\. "){$SideArmCMBase = $SideArmCMBase + 2}
         if ($this.MainMelee -match "^Masterwork|^M\. "){$MeleeCMBase = $MeleeCMBase + 2}
@@ -280,16 +273,16 @@ class PlayerCharacter {
         if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
         if ($this.Shield -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
 
-        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.strmod) - 2)
-        $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.strmod)
-        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dexmod)
+        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 2)
+        $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
+        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex)
 
         $this.SideArmCM = "$SideArmDmg+$SideArmCMBase"
         $this.MeleeCM = "$MeleeDmg+$MeleeCMBase"
         $this.RangedCM = "$RangedDmg+$RangedCMBase"
         
-        $this.SpellCM = $this.level + $this.MindMod
-        $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
+        $this.SpellCM = $this.level + $this.mind
+        $this.SpellResist = $this.str + $this.dex + $this.mind + 10
 
         $this.MeleeFail = [math]::floor((25 - $this.Str) + $ArmorAC + $ShieldAC)
         $this.RangedFail = [math]::floor((25 - $this.Dex) + $ArmorAC + $ShieldAC)
