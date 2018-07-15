@@ -75,11 +75,14 @@ class PlayerCharacter {
     $DiscoverMagic
     $WhatSeek
 
-    hidden $Level3
+    hidden $Level2
+    hidden $Level4
     hidden $Level6
-    hidden $Level9
+    hidden $Level8
+    hidden $Level10
     hidden $Level12
-    hidden $Level15
+    hidden $Level14
+    hidden $Level16
     hidden $Level18
     hidden $Level20
 
@@ -138,7 +141,7 @@ class PlayerCharacter {
         . ./LoadClasses.ps1
         $this.Level++
         
-        if ($this.level / 3 -is [int]){
+        if ($this.level / 2 -is [int]){
             $DynamicLevel = $this."Level$($this.level)"
             if ($DynamicLevel -ne '' -or $DynamicLevel -ne $null){
                 $this."$DynamicLevel"++
@@ -291,9 +294,9 @@ class PlayerCharacter {
         $this.SpellCM = $this.level + $this.MindMod
         $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
 
-        $this.MeleeFail = [math]::floor((25 - $this.Str) + $ArmorAC + $ShieldAC)
-        $this.RangedFail = [math]::floor((25 - $this.Dex) + $ArmorAC + $ShieldAC)
-        $this.SpellFail = [math]::floor((25 - $this.Mind) + $ArmorAC + $ShieldAC)
+        $this.MeleeFail = [math]::floor((30 - $this.Str) + $ArmorAC + $ShieldAC)
+        $this.RangedFail = [math]::floor((30 - $this.Dex) + $ArmorAC + $ShieldAC)
+        $this.SpellFail = [math]::floor((30 - $this.Mind) + $ArmorAC + $ShieldAC)
 
         $SpellLevel = [math]::floor($this.level / 2)
         0..9 | foreach {

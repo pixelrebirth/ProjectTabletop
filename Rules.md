@@ -27,20 +27,11 @@ We believe ones actions make who you are, not what you are told you are
 
 ## Building a Character
 ### Stats
-Roll 3d8, write down the numbers
+Setting stats at level 1 is simple, STR/DEX/MIND start with the values 12/14/16 and the points can be redistributed down to 10 and up to 18.
+Having a good balance between stats goes a long way to having a complete character. Every stat has monumental effect on your character.
 
-Roll 3d8, write down the numbers again
-
-Take the higher of the two sets and add 10 for STR, DEX and MIND
-You may choose the order they go in. 
-
-Example:
-* 7/3/4
-* 3/2/6
-* Becomes: 
-    * Str: 13
-    * Dex: 14
-    * Mind: 17
+Example: STR 11 DEX 18 MIND 13
+The sum of the numbers should be 42.
 
 ### Skills
 
