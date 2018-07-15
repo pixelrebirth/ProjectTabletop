@@ -168,8 +168,8 @@ end {
         "MostLikelyDo","Hobby","Food","DiscoverMagic","WhatSeek","XP","Amulet","Ring","Helm","Shield",
         "ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1","GearSlot2","GearSlot3","GearSlot4",
         "GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12",
-        "GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18","BankGold","Level3",
-        "Level6","Level9","Level12","Level15","Level18","Level20"
+        "GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18","BankGold","Level2",
+        "Level4","Level6","Level8","Level10","Level12","Level14","Level16","Level18","Leve20"
     )
 
     $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation

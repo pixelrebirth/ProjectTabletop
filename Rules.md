@@ -33,6 +33,14 @@ Having a good balance between stats goes a long way to having a complete charact
 Example: STR 11 DEX 18 MIND 13
 The sum of the numbers should be 42.
 
+You will gain another skill point every EVEN level.
+
+|Stat|Directly Effects|
+|-----|-----|
+|STR|HP, MELEE DAMAGE, MELEE %, MELEE CM, SR|
+|DEX|AC, RANGED DAMAGE, RANGED %, RANGED CM, SR|
+|MIND|SPELL %, Spell CM, SR|
+
 ### Skills
 
 All skills are set to the level your character is at, there are other modifiers like equipment or ability that can modify this beyond the level amount. The skills are:
@@ -61,6 +69,51 @@ Example:
 * AC: DEXMOD + Armor + Shield
 * SR: STRMOD + DEXMOD + MINDMOD + 10
 * HEROISM: level
+
+
+### Melee and Ranged damage
+Damage is determined by your stats. We realized people would just take a Greatsword because it did the most damage, not because it fit the character they were building.
+
+There are three classes of melee weapons, two-handed, single-handed, and side arm. Of them, a single primary and secondary weapon can be chosen. The secondary should be a side arm type @ str minus 2 (see below). The weapons, remember, are purely aesthetic and a creative element to your character.
+
+Damage is determined by taking the correlated stat score, looking at the roll chart below and locating the amount of melee/ranged damage you can do.
+
+Ex.
+At level 2 with STR and DEX both at 3, you could get say:
+
+|Slot|Weapon|Damage|Combat Modifier|
+|-|-|-|-|
+|Primary Melee|Rapier|2d4|+5|
+|Secondary Melee|Dagger|1d4|+3|
+|Ranged|Shortbow|2d4|+5|
+
+### Combat Modifiers
+You will notice combat modifier in the table above, this is added statically to your damage when you roll.
+To calculate Combat Modifier (CM) you do:
+
+|CM Slot|CM Calculation|
+|-|-|
+Primary Melee|STR + Level
+Secondary Melee|STR + Level - 2
+Ranged|DEX + Level
+Spells (SCM)|MIND + Level
+
+### Spell Combat Modifier
+Spell Combat Modifier (SCM) is a different stat because it is affected slightly differently in the system. More on that later.
+
+### Armor
+Armor is what counters Melee and Ranged Combat Rolls.
+
+Armor total is Armor + Shields + DEX
+Armor can be bought, found or stolen. Whatever it may be it should have a range of 1-9 for balance sake. Shields also can give you armor bonus.
+
+Splint Mail - 6 for example would give you 6 armor.
+Small Shield - 2 would be 2 armor bonus
+
+Armor has a direct correlation with failure percentages, meaning if you have a armor with 6 and a shield with 2, you will have 8% higher failure rate on melee, ranged and spells. This offers some level of balance for tank style characters. (more on failure rates later)
+
+### Spell Resist
+Spell resistance is what counters Spell Combat Rolls and is calculated at (10 + STR + DEX + MIND)
 
 ### Roll Chart:
 

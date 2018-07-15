@@ -273,7 +273,7 @@ class PlayerCharacter {
         
         $this.hp = $this.str + ($this.level * 6)
         
-        $SideArmCMBase = $this.strmod + $this.CMBase
+        $SideArmCMBase = $this.strmod + $this.CMBase - 2
         $MeleeCMBase = $this.strmod + $this.CMBase
         $RangedCMBase = $this.dexmod + $this.CMBase
 

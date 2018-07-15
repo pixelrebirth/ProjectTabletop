@@ -1,2 +1,1 @@
-# (.\New-EberronCharacter.ps1 -level 3).charactersheet | select *
-.\Get-Monsters.ps1
+.\New-PlayerCharacter.ps1 -PlayerName Kelcey -NoPhotoshop
