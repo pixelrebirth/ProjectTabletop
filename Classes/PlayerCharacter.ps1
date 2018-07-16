@@ -3,9 +3,7 @@ class PlayerCharacter {
     $Str
     $Dex
     $Mind
-    $StrMod
-    $DexMod
-    $MindMod
+
     $StrBase
     $DexBase
     $MindBase
@@ -76,16 +74,25 @@ class PlayerCharacter {
     $WhatSeek
 
     hidden $Level2
+    hidden $Level3
     hidden $Level4
+    hidden $Level5
     hidden $Level6
+    hidden $Level7
     hidden $Level8
+    hidden $Level9
     hidden $Level10
+    hidden $Level11
     hidden $Level12
+    hidden $Level13
     hidden $Level14
+    hidden $Level15
+    hidden $Level17
     hidden $Level16
     hidden $Level18
+    hidden $Level19
     hidden $Level20
-
+    
     $MeleeFail
     $RangedFail
     $SpellFail
@@ -119,7 +126,7 @@ class PlayerCharacter {
         $StatData = @("PlayerName","Str","Dex","Mind","Virtue","Vise")
         foreach ($field in $StatData){
             if ($this."$field" -eq '' -or $this."$field" -eq $null){
-                $Entry = Get-ManualDataEntry -field $field -ReplaceMode $False
+                $Entry = Get-ManualDataEntry -field $field -Replacee $False
                 $this."$field" = $Entry
             }
         }
@@ -141,23 +148,15 @@ class PlayerCharacter {
         . ./LoadClasses.ps1
         $this.Level++
         
-        if ($this.level / 2 -is [int]){
-            $DynamicLevel = $this."Level$($this.level)"
-            if ($DynamicLevel -ne '' -or $DynamicLevel -ne $null){
-                $this."$DynamicLevel"++
-            }
-            else {
-                $StatBump = $null
-                while ($StatBump -eq $null){
-                    [ValidateSet("str","dex","mind")]$StatBump = Read-Host "`n!--!--!`nWhat stat would you like to increase (str,dex,mind)"
-                }
-                $this."$StatBump"++
-            }
+        $DynamicLevel = $this."Level$($this.level)"
+        if ($DynamicLevel -ne '' -or $DynamicLevel -ne $null){
+            $this."$DynamicLevel"++
+            $this."$DynamicLevel"++
         }
     }
 
     UpdateStats () {
-        $this.CMBase = $this.Level
+        $this.CMBase = 0
         $this.Phys = $this.Level
         $this.Sub = $this.Level
         $this.Know = $this.Level
@@ -248,34 +247,24 @@ class PlayerCharacter {
                 if ($this.mind -lt $Low){$Low = $this.mind ; $LowName = "mind"}
                 $this."$($LowName)" = $this."$($LowName)" + 2
             }
-            "Martial Arts" {
-                $BaseAC = ([math]::floor(.5 * $this.level)) + 1
-                $FistBonus = ([math]::floor(.5 * $this.level)) + 1
-                
-                Write-Host -ForegroundColor Yellow "`nWarning Dropping $($this.MainMelee) and $($this.SideArm)`n"
-                $this.MainMelee = "Magic Fists + $FistBonus"
-                $this.SideArm = "Magic Fists (Off-hand) + $FistBonus"
-            }
             "Combat Training" {
                 $this.CMBase + ([math]::floor(.2 * $this.level)) + 1
             }
         }
         
-        if ($this.dex -lt 10){$this.dex = 10}
-        if ($this.str -lt 10){$this.str = 10}
-        if ($this.mind -lt 10){$this.mind = 10}
+        if ($this.dex -lt 0){$this.dex = 0}
+        if ($this.str -lt 0){$this.str = 0}
+        if ($this.mind -lt 0){$this.mind = 0}
 
-        $this.STRMod = [math]::floor(($this.STR - 10) / 2)
-        $this.MINDMod = [math]::floor(($this.MIND - 10) / 2)
-        $this.DEXMod = [math]::floor(($this.DEX - 10 ) / 2)
 
-        $this.ac = $this.dexmod + $ArmorAC + $ShieldAC + 10 + $BaseAc
+        $this.hp = ($this.str * 5) + ($this.level * 5)
+        $this.ac = $this.dex + $ArmorAC + $ShieldAC + $this.level
+        $this.SpellResist = $this.Mind + $this.level
         
-        $this.hp = $this.str + ($this.level * 6)
         
-        $SideArmCMBase = $this.strmod + $this.CMBase - 2
-        $MeleeCMBase = $this.strmod + $this.CMBase
-        $RangedCMBase = $this.dexmod + $this.CMBase
+        $SideArmCMBase = $this.str + $this.CMBase - 2
+        $MeleeCMBase = $this.str + $this.CMBase
+        $RangedCMBase = $this.dex + $this.CMBase
 
         if ($this.SideArm -match "^Masterwork|^M\. "){$SideArmCMBase = $SideArmCMBase + 2}
         if ($this.MainMelee -match "^Masterwork|^M\. "){$MeleeCMBase = $MeleeCMBase + 2}
@@ -283,16 +272,15 @@ class PlayerCharacter {
         if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
         if ($this.Shield -match "^Masterwork|^M\. "){$this.ac = $this.ac + 2}
 
-        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.strmod) - 2)
-        $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.strmod)
-        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dexmod)
+        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 2)
+        $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
+        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex)
 
         $this.SideArmCM = "$SideArmDmg+$SideArmCMBase"
         $this.MeleeCM = "$MeleeDmg+$MeleeCMBase"
         $this.RangedCM = "$RangedDmg+$RangedCMBase"
         
-        $this.SpellCM = $this.level + $this.MindMod
-        $this.SpellResist = $this.StrMod + $this.DexMod + $this.MindMod + 10
+        $this.SpellCM = $this.Mind
 
         $this.MeleeFail = [math]::floor((30 - $this.Str) + $ArmorAC + $ShieldAC)
         $this.RangedFail = [math]::floor((30 - $this.Dex) + $ArmorAC + $ShieldAC)

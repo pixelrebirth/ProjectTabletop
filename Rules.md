@@ -2,23 +2,30 @@
 Take Dnd, but lose the rule books. Microlite20 inspired Nanolite is an incredibly easy role playing game.
 The rules are heavily based on Eberron and what I saw Eberron being about, namely swashbuckling and magic heavy.
 
-## Races
-Races are simple in Nanolite, all the information you need is on the following table.
+## Upbringing
+Upbringing is like races in most systems, all the information you need is on the following table.
 
-|Race|Effect|Eberron Relevance|
+|Upbringing|Effect|Lore Relevance|
 |:-----|:-----:|:-----|
-|Warforged|AC+2|
-|Human|HEROISM+2|
-|Half-Orc|CMBase+2|
-|Changeling|SpellCM+2|
-|Shifter|PHYS+2|
-|Half-Elf|SUB+2|
-|Aerenal Elf|KNOW+2|
-|Valenar Elf|SURV+2|
-|Gnome|COMM+2|
-|Dwarf|STR+2|
-|Halfling|DEX+2|
-|Kalashtar|MIND+2|
+|Body Hardened|AC+2|
+|Heroic|HEROISM+2|
+|Combat Grown|CMBase+2|
+|Magic Infused|SpellCM+2|
+|Athletic|PHYS+2|
+|Sneaky|SUB+2|
+|Well Read|KNOW+2|
+|Survivalist|SURV+2|
+|Well Spoken|COMM+2|
+|Weight Trained|STR+2|
+|Flexible|DEX+2|
+|Intelligent|MIND+2|
+
+## Races
+Races are intended to be purely aesthetic and creative, this is also how we can use any system.
+We found in developing the game that having a race as an aesthetic element people would make more thoughtful choices on race.
+
+For example people would not take a half-orc simply because they wanted +2 strength, they could take an elf with Weight Training.
+Now you have a far more creative super buff elf, rather then a half-orc for strength sake.
 
 ## Classless
 There are none. Classes can cause odd identity riffs with players. 
@@ -101,7 +108,7 @@ Spells (SCM)|MIND + Level
 ### Spell Combat Modifier
 Spell Combat Modifier (SCM) is a different stat because it is affected slightly differently in the system. More on that later.
 
-### Armor
+### Armor (Physical Resist)
 Armor is what counters Melee and Ranged Combat Rolls.
 
 Armor total is Armor + Shields + DEX
