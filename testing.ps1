@@ -1,1 +1,1 @@
-.\New-PlayerCharacter.ps1 -PlayerName Test -NoPhotoshop -xp 2000 | select hp,mr,rr,sr,meleecm,sidearmcm,rangedcm,spellcm,str,dex,mind,meleefail,rangedfail,spellfail
+.\New-PlayerCharacter.ps1 -PlayerName Test -NoPhotoshop -xp 1 | select hp,mr,rr,sr,meleecm,sidearmcm,rangedcm,spellcm,str,dex,mind,meleefail,rangedfail,spellfail | export-clixml ./level1.xml
