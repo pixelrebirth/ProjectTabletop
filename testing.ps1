@@ -1,1 +1,2 @@
-.\New-PlayerCharacter.ps1 -PlayerName Test -NoPhotoshop -xp 1 | select hp,mr,rr,sr,meleecm,sidearmcm,rangedcm,spellcm,str,dex,mind,meleefail,rangedfail,spellfail | export-clixml ./level1.xml
+$(.\Get-NewMonsters.ps1 -Level 30 -Type Standard -Style Generalist),$(.\New-PlayerCharacter.ps1 -PlayerName test -NoPhotoshop) | ft *
+$(.\Get-NewMonsters.ps1 -Level 3 -Type Standard -Style Defender),$(.\New-PlayerCharacter.ps1 -PlayerName mytest -NoPhotoshop) | ft *

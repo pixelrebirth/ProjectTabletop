@@ -128,7 +128,7 @@ process {
     Set-PlayerPropertyNull -PropName LastWar
     Set-PlayerPropertyNull -PropName Organization
 
-    if (!$PlayerCharacter.Upbringing-and $PlayerCharacter.Upbringing -notmatch "\;"){
+    if (!$PlayerCharacter.Upbringing -or $PlayerCharacter.Upbringing -notmatch "\;"){
         $UpbringingFull = Get-Content "$PSScriptRoot\data\character\Upbringing.txt" | where {$_ -match "^$($PlayerCharacter.Upbringing);"}
         $PlayerCharacter.Upbringing = $UpbringingFull
     }

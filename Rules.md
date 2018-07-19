@@ -34,13 +34,8 @@ We believe ones actions make who you are, not what you are told you are
 
 ## Building a Character
 ### Stats
-Setting stats at level 1 is simple, STR/DEX/MIND start with the values 12/14/16 and the points can be redistributed down to 10 and up to 18.
-Having a good balance between stats goes a long way to having a complete character. Every stat has monumental effect on your character.
-
-Example: STR 11 DEX 18 MIND 13
-The sum of the numbers should be 42.
-
-You will gain another skill point every EVEN level.
+Setting stats at level 1 is simple, STR/DEX/MIND start with the values 3/3/3.
+Every level you get a point to spend
 
 |Stat|Directly Effects|
 |-----|-----|
@@ -66,15 +61,10 @@ Example:
 * STR/KNOW as a Virtue (gives +2 to each)
 * MIND/COMM as a Vise (gives -2 to each)
 
-### Set stat modifiers
-* STRMOD: (STR - 10) / 2 round down
-* DEXMOD: (DEX - 10) / 2 round down
-* MINDMOD: (MIND - 10) / 2 round down
-
 ### Hit Points, Armor Class (AC), Spell Resistance (SR), Heroism
 * HP: STR + 6/level
-* AC: DEXMOD + Armor + Shield
-* SR: STRMOD + DEXMOD + MINDMOD + 10
+* AC: DEX + Armor + Shield
+* SR: STR + DEX + MIND + 10
 * HEROISM: level
 
 

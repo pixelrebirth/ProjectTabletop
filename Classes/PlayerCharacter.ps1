@@ -264,7 +264,7 @@ class PlayerCharacter {
 
         $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 4)
         $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
-        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex)
+        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex - 1)
 
         $this.SideArmCM = "$SideArmDmg+$SideArmCMBase"
         $this.MeleeCM = "$MeleeDmg+$MeleeCMBase"
