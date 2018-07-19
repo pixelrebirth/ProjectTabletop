@@ -8,15 +8,15 @@ function Format-PhotoshopExport {
         "GearSlot8","GearSlot7","GearSlot6","GearSlot5","GearSlot4","GearSlot3","GearSlot2","GearSlot1",
         "Foe","WhatSeek","Hobby","Food","WhereFrom","Idol","DiscoverMagic","MostLikelyDo","Lover",
         "BestFriend","Family","LastWar","Organization","BankGold","Amulet","Ring","Shield","Helm",
-        "ArmorSet","SideArm","MainRanged","MainMelee","TalentAbility","Vise","Virtue","XP","Race",
-        "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","Heroism","SpellResist",
-        "SpellCM","AC","HP","Mind","Str","Dex","Level","MeleeFail","RangedFail","SpellFail","RaceBonus",
+        "ArmorSet","SideArm","MainRanged","MainMelee","TalentAbility","Vise","Virtue","XP","Upbringing",
+        "Phys","Sub","Know","Comm","Surv","SideArmCM","RangedCM","MeleeCM","SpellCM","Heroism",
+        "SD","MD","RD","HP","Mind","Str","Dex","Level","MeleeFail","RangedFail","SpellFail","UpbringingBonus",
         "Titles","Points0","Points1","Points2","Points3","Points4","Points5","Points6","Points7","Points8","Points9"
     )
 
-    $PlayerCharacter.str = "$($PlayerCharacter.str) [$($PlayerCharacter.strmod)]"
-    $PlayerCharacter.dex = "$($PlayerCharacter.dex) [$($PlayerCharacter.dexmod)]"
-    $PlayerCharacter.mind = "$($PlayerCharacter.mind) [$($PlayerCharacter.mindmod)]"
+    $PlayerCharacter.str = "$($PlayerCharacter.str)"
+    $PlayerCharacter.dex = "$($PlayerCharacter.dex)"
+    $PlayerCharacter.mind = "$($PlayerCharacter.mind)"
     
     $PlayerCharacter.spellcm = "+$($PlayerCharacter.spellcm)"
 

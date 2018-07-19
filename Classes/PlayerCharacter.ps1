@@ -48,9 +48,9 @@ class PlayerCharacter {
     $RangedCM
     $MeleeCM
     $Heroism
-    $MR
-    $RR
-    $SR
+    $MD
+    $RD
+    $SD
     $SpellCM
     $HP
     $XP
@@ -248,9 +248,9 @@ class PlayerCharacter {
         if ($this.mind -lt 0){$this.mind = 0}
 
         $this.HP = $this.level * 5
-        $this.MR = $this.str + $ArmorPR + $ShieldPR
-        $this.RR = $this.dex + $ArmorPR + $ShieldPR
-        $this.SR = $this.mind * 2
+        $this.MD = $this.str + $ArmorPR + $ShieldPR
+        $this.RD = $this.dex + $ArmorPR + $ShieldPR
+        $this.SD = $this.mind * 2
 
         $SideArmCMBase = ($this.str) + $this.CMBase - 4
         $MeleeCMBase = ($this.str) + $this.CMBase
@@ -281,6 +281,9 @@ class PlayerCharacter {
             $num = $_
             if ($SpellLevel -ge $num){
                 $this."Points$num" = ($num * 4)
+                if ($this."Points$num" -eq 0){
+                    $this."Points$num" = 1
+                }
             }
             else {
                 $this."Points$num" = "-"

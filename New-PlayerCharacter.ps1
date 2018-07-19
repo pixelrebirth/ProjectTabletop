@@ -135,7 +135,7 @@ process {
     $PlayerCharacter.UpbringingBonus = $PlayerCharacter.Upbringing.split(";")[1]
     $PlayerCharacter.Upbringing = $PlayerCharacter.Upbringing.split(";")[0]
 
-    if (!$PlayerCharacter.TalentName -and $PlayerCharacter.TalentName -notmatch "\;"){
+    if (!$PlayerCharacter.TalentName -or $PlayerCharacter.TalentName -notmatch "\;"){
         $TalentNameFull = Get-Content "$PSScriptRoot\data\character\TalentName.txt" | where {$_ -match "^$($PlayerCharacter.TalentName);"}
         $PlayerCharacter.TalentName = $TalentNameFull
     }
