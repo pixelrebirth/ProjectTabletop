@@ -99,7 +99,8 @@ begin {
 
 process {
     $PlayerCharacter = [PlayerCharacter]::new()
-
+    $PlayerCharacter.PlayerName = $PlayerName
+    
     try {
         $CharacterImport = Get-ChildItem "$($PSScriptRoot)/data/saves/$PlayerName*.yaml" | where name -notmatch "\.old$" | select -first 1 | Get-Content | ConvertFrom-Yaml
         foreach ($key in $CharacterImport.keys){
@@ -163,13 +164,13 @@ process {
 }
 
 end {
-    $YamlArray = @("PlayerName","CharacterName","Upbringing","TalentName","Titles","StrBase","DexBase","MindBase",
+    $YamlArray = @("PlayerName","CharacterName","Upbringing","TalentName","Titles",
         "Virtue","Vise","Idol","Foe","Lover","Family","WhereFrom","BestFriend","LastWar","Organization",
         "MostLikelyDo","Hobby","Food","DiscoverMagic","WhatSeek","XP","Amulet","Ring","Helm","Shield",
         "ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1","GearSlot2","GearSlot3","GearSlot4",
         "GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12",
         "GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18","BankGold","StrLevel",
-        "DexLevel","MindLevel"
+        "DexLevel","MindLevel","PhysLevel","SubLevel","KnowLevel","CommLevel","SurvLevel"
     )
 
     $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation

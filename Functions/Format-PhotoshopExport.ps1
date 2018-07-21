@@ -17,8 +17,6 @@ function Format-PhotoshopExport {
     $PlayerCharacter.str = "$($PlayerCharacter.str)"
     $PlayerCharacter.dex = "$($PlayerCharacter.dex)"
     $PlayerCharacter.mind = "$($PlayerCharacter.mind)"
-    
-    $PlayerCharacter.spellcm = "+$($PlayerCharacter.spellcm)"
 
     $PlayerCharacter.virtue -match '^(\w+)\\(\w+)$|^(\w+)\/(\w+)$'
     $PlayerCharacter.virtue = "$($matches[1]) + 2 \ $($matches[2]) + 2"

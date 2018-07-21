@@ -3,10 +3,6 @@ class PlayerCharacter {
     $Str
     $Dex
     $Mind
-
-    $StrBase
-    $DexBase
-    $MindBase
     $Virtue
     $Vise
     $Amulet
@@ -77,6 +73,11 @@ class PlayerCharacter {
     hidden $strlevel
     hidden $dexlevel
     hidden $mindlevel
+    hidden $physlevel
+    hidden $sublevel
+    hidden $knowlevel
+    hidden $commlevel
+    hidden $survlevel
 
     $MeleeFail
     $RangedFail
@@ -93,33 +94,16 @@ class PlayerCharacter {
     hidden $Points8
     hidden $Points9
 
-    [void] IfNullStats ($stat){
-        if (!$this."$stat`Base"){
-            $this."$stat`Base" = $this."$stat"
-        } else {
-            $this."$stat" = $this."$stat`Base"
-        }
-    }
-
     FirstLevel () {
         . ./LoadClasses.ps1
 
-        $this.IfNullStats('STR')
-        $this.IfNullStats('DEX')
-        $this.IfNullStats('MIND')
-
-        $StatData = @("PlayerName","Str","Dex","Mind","Virtue","Vise")
+        $StatData = @("Virtue","Vise")
         foreach ($field in $StatData){
             if (!$this."$field"){
                 $Entry = Get-ManualDataEntry -field $field -Replace $False
                 $this."$field" = $Entry
             }
         }
-
-        $this.IfNullStats('STR')
-        $this.IfNullStats('DEX')
-        $this.IfNullStats('MIND')
-
     }
 
     hidden [int] Roll ($dice) {
@@ -135,26 +119,37 @@ class PlayerCharacter {
 
     UpdateStats () {
         $this.CMBase = 0
-        $this.Phys = $this.Level
-        $this.Sub = $this.Level
-        $this.Know = $this.Level
-        $this.Comm = $this.Level
-        $this.Surv = $this.Level
         $this.Heroism = $this.Level
-
-
+        
+        
         $AllPoints = $this.strlevel + $this.dexlevel + $this.mindlevel
         if ($AllPoints -le ($this.level - 1)){
-            $this.str = $this.StrBase + $this.strlevel
-            $this.dex = $this.DexBase + $this.dexlevel
-            $this.mind = $this.MindBase + $this.mindlevel
+            $this.str = 3 + $this.strlevel
+            $this.dex = 3 + $this.dexlevel
+            $this.mind = 3 + $this.mindlevel
         }
         else {
-            throw "Error in Level Points amount, currently at $AllPoints total and should be at $($this.level - 1)"
+            throw "Error in Stat Points amount, currently at $AllPoints total and should be at $($this.level - 1)"
             exit
         }
         if ($AllPoints -lt ($this.level - 1)){
-            Write-Warning "You have [$(($this.level - 1) - $AllPoints)] unspent points you should use and rerun the code."
+            Write-Warning "You have [$(($this.level - 1) - $AllPoints)] unspent points on Stats you should use and rerun the code."
+        }
+        
+        $AllPoints = $this.physlevel + $this.sublevel + $this.knowlevel + $this.commlevel + $this.survlevel
+        if ($AllPoints -le ($this.level - 1)){
+            $this.Phys = 3 + $this.physlevel
+            $this.Sub = 3 + $this.sublevel
+            $this.Know = 3 + $this.knowlevel
+            $this.Comm = 3 + $this.commlevel
+            $this.Surv = 3 + $this.survlevel
+        }
+        else {
+            throw "Error in Skill Points amount, currently at $AllPoints total and should be at $($this.level - 1)"
+            exit
+        }
+        if ($AllPoints -lt ($this.level - 1)){
+            Write-Warning "You have [$(($this.level - 1) - $AllPoints)] unspent points on Skills you should use and rerun the code."
         }
 
         $EquipStats = @(
@@ -247,14 +242,15 @@ class PlayerCharacter {
         if ($this.str -lt 0){$this.str = 0}
         if ($this.mind -lt 0){$this.mind = 0}
 
-        $this.HP = $this.level * 5
+        $this.HP = $this.level * 6
         $this.MD = $this.str + $ArmorPR + $ShieldPR
         $this.RD = $this.dex + $ArmorPR + $ShieldPR
-        $this.SD = $this.mind * 2
+        $this.SD = $this.mind + $ArmorPR + $ShieldPR
 
         $SideArmCMBase = ($this.str) + $this.CMBase - 4
         $MeleeCMBase = ($this.str) + $this.CMBase
         $RangedCMBase = ($this.dex) + $this.CMBase
+        $SpellCMBase = ($this.mind) + $this.CMBase
 
         if ($this.SideArm -match "^Masterwork|^M\. "){$SideArmCMBase = $SideArmCMBase + 2}
         if ($this.MainMelee -match "^Masterwork|^M\. "){$MeleeCMBase = $MeleeCMBase + 2}
@@ -264,13 +260,13 @@ class PlayerCharacter {
 
         $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 4)
         $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
-        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex - 1)
+        $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex)
+        $SpellDmg = Get-DiceRollPerInteger -Integer $($this.mind)
 
         $this.SideArmCM = "$SideArmDmg+$SideArmCMBase"
         $this.MeleeCM = "$MeleeDmg+$MeleeCMBase"
         $this.RangedCM = "$RangedDmg+$RangedCMBase"
-
-        $this.SpellCM = $this.Mind
+        $this.SpellCM = "$SpellDmg+$SpellCMBase"
 
         $this.MeleeFail = [math]::floor((25 - $this.Str) + $ArmorPR + $ShieldPR)
         $this.RangedFail = [math]::floor((25 - $this.Dex) + $ArmorPR + $ShieldPR)
@@ -280,10 +276,7 @@ class PlayerCharacter {
         0..9 | foreach {
             $num = $_
             if ($SpellLevel -ge $num){
-                $this."Points$num" = ($num * 4)
-                if ($this."Points$num" -eq 0){
-                    $this."Points$num" = 1
-                }
+                $this."Points$num" = ((($num * 2) + 1) * 2) + 2
             }
             else {
                 $this."Points$num" = "-"

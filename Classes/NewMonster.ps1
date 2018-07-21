@@ -1,21 +1,21 @@
 class NewMonster {
     $Name
     [int]$Level
-    $HP
-    $MR
-    $RR
-    $SR
+    [int]$HP
+    [int]$MD
+    [int]$RD
+    [int]$SD
     $MeleeCM
     $RangedCM
     $SideArmCM
-    $SpellCM
-    $Str
-    $Dex
-    $Mind
-    $MeleeFail
-    $RangedFail
-    $SpellFail
-    $ArmorBonus
+    [int]$SpellCM
+    [int]$Str
+    [int]$Dex
+    [int]$Mind
+    [int]$MeleeFail
+    [int]$RangedFail
+    [int]$SpellFail
+    [int]$ArmorBonus
 
     hidden $MeleeCMBase
     hidden $RangedCMBase
@@ -28,10 +28,10 @@ class NewMonster {
     NewMonster($level,$type,$style){
         $this.level = $level
         $this.SetType($type)
-        
-        $this.ArmorBonus = 0# Get-Random -min 0 -max $([int]$this.level / 2)
 
-        $this.hp = $this.level * 4
+        $this.ArmorBonus = Get-Random -min 0 -max $([int]$this.level / 2)
+
+        $this.hp = $this.level * 5
         $this.str = [int](3.34 + ($this.level * .34))
         $this.dex = [int](2.67 + ($this.level * .34))
         $this.mind =[int](3.0 + ($this.level * .34))
@@ -39,13 +39,13 @@ class NewMonster {
         $this.MeleeFail =  [math]::floor((30 - $this.Str) + $this.ArmorBonus)
         $this.RangedFail =  [math]::floor((30 - $this.Dex) + $this.ArmorBonus)
         $this.SpellFail =  [math]::floor((30 - $this.Mind) + $this.ArmorBonus)
-        
+
         $this.SetStyle($style)
-        
-        $this.MR = $this.MR + $this.Str + $this.ArmorBonus
-        $this.RR = $this.RR + $this.Dex + $this.ArmorBonus
-        $this.SR = $this.SR + $this.Mind * 2
-        
+
+        $this.MD = $this.MD + $this.Str + $this.ArmorBonus
+        $this.RD = $this.RD + $this.Dex + $this.ArmorBonus
+        $this.SD = $this.SD + $this.Mind * 2
+
         $this.SideArmCMBase = $this.SideArmCMBase + $this.str - 4
         $this.MeleeCMBase = $this.MeleeCMBase + $this.str
         $this.RangedCMBase = $this.RangedCMBase + $this.dex
@@ -61,16 +61,16 @@ class NewMonster {
 
         $this.Name = "$type $style"
     }
-    
+
     [void] SetType($type){
         $this.type = $type
         $this.level = $this.level + [int]$(
             switch ($type){
-                "Minor" {-2}
+                "Minor" {$this.level * -.5}
                 "Standard" {0}
-                "Brutal" {1}
-                "Elite" {3}
-                "Superior" {5}
+                "Brutal" {$this.level * .15}
+                "Elite" {$this.level * .33}
+                "Superior" {$this.level * .5}
             }
         )
         if ($this.level -lt 0){$this.level = 1}
@@ -85,10 +85,10 @@ class NewMonster {
                 $this.Mind = $this.Mind + 4
             }
             "Defender" {
-                $this.MR = +5
-                $this.RR = +5
-                $this.SR = +5
-                $this.HP = +5
+                $this.MD = $this.MD +5
+                $this.RD = $this.RD +5
+                $this.SD = $this.SD +5
+                $this.HP = $this.HP +5
                 $this.MeleeCMBase = $this.MeleeCMBase -5
                 $this.SideArmCMBase = $this.SideArmCMBase -5
                 $this.RangedCMBase = $this.RangedCMBase -5
