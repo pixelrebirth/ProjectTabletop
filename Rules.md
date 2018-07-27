@@ -5,18 +5,16 @@ The rules are heavily based on Eberron and what I saw Eberron being about, namel
 ## Upbringing
 Upbringing is like races in most systems, all the information you need is on the following table.
 
-|Upbringing|Effect|Lore Relevance|
+|Upbringing|Effect|
 |:-----|:-----:|:-----|
-|Body Hardened|AC+2|
+|Body Hardened|MD+2|
+|Dodgy|RD+2|
+|Spell Hardened|SD+2|
 |Heroic|HEROISM+2|
-|Combat Grown|CMBase+2|
-|Magic Infused|SpellCM+2|
-|Athletic|PHYS+2|
-|Sneaky|SUB+2|
-|Well Read|KNOW+2|
-|Survivalist|SURV+2|
-|Well Spoken|COMM+2|
-|Weight Trained|STR+2|
+|Melee Trained|MeleeCM+2|
+|Range Trained|RandedCM+2|
+|Spell Trained|SpellCM+2|
+|Weight Lifting|STR+2|
 |Flexible|DEX+2|
 |Intelligent|MIND+2|
 
@@ -34,44 +32,27 @@ We believe ones actions make who you are, not what you are told you are
 
 ## Building a Character
 ### Stats
-Setting stats at level 1 is simple, STR/DEX/MIND start with the values 3/3/3.
+Setting stats at level 1 is simple, STR/DEX/MIND start with the value 3.
 Every level you get a point to spend
 
 |Stat|Directly Effects|
 |-----|-----|
-|STR|HP, MELEE DAMAGE, MELEE %, MELEE CM, SR|
-|DEX|AC, RANGED DAMAGE, RANGED %, RANGED CM, SR|
-|MIND|SPELL %, Spell CM, SR|
+|STR|MELEE DAMAGE, MELEE %, MELEE CM, MD|
+|DEX|RANGED DAMAGE, RANGED %, RANGED CM, RD|
+|MIND|SPELL DAMAGE, SPELL %, Spell CM, SD|
 
-### Skills
-
-All skills are set to the level your character is at, there are other modifiers like equipment or ability that can modify this beyond the level amount. The skills are:
-
-* PHYS - Physical
-* SUB  - Subterfuge
-* KNOW - Knowledge
-* COMM - Communication
-* SURV - Survival
-
-### Vise/Virtue:
-Choose one Stat and one Skill to be your Vise (-2) and Virtue (+2) 
-
-Example:
-
-* STR/KNOW as a Virtue (gives +2 to each)
-* MIND/COMM as a Vise (gives -2 to each)
-
-### Hit Points, Armor Class (AC), Spell Resistance (SR), Heroism
-* HP: STR + 6/level
-* AC: DEX + Armor + Shield
-* SR: STR + DEX + MIND + 10
+### Health, Defenses, Heroism
+* (Health) HT: 6/level
+* (Melee Defense) MD: STR + Armor + Shield
+* (Ranged Defense) RD: DEX + Armor + Shield
+* (Spell Defense) SD: MIND + Armor + Shield
 * HEROISM: level
-
 
 ### Melee and Ranged damage
 Damage is determined by your stats. We realized people would just take a Greatsword because it did the most damage, not because it fit the character they were building.
 
-There are three classes of melee weapons, two-handed, single-handed, and side arm. Of them, a single primary and secondary weapon can be chosen. The secondary should be a side arm type @ str minus 2 (see below). The weapons, remember, are purely aesthetic and a creative element to your character.
+There are three types of melee weapons, two-handed, single-handed, and side arm. Of them, a single primary and secondary weapon can be chosen. 
+The secondary should be a side arm type @ str minus 2 (see below). The weapons, remember, are purely aesthetic and a creative element to your character.
 
 Damage is determined by taking the correlated stat score, looking at the roll chart below and locating the amount of melee/ranged damage you can do.
 
@@ -90,27 +71,11 @@ To calculate Combat Modifier (CM) you do:
 
 |CM Slot|CM Calculation|
 |-|-|
-Primary Melee|STR + Level
-Secondary Melee|STR + Level - 2
-Ranged|DEX + Level
-Spells (SCM)|MIND + Level
+Melee|STR
+SideArm Melee|STR - 2
+Ranged|DEX
+Spells|MIND
 
-### Spell Combat Modifier
-Spell Combat Modifier (SCM) is a different stat because it is affected slightly differently in the system. More on that later.
-
-### Armor (Physical Resist)
-Armor is what counters Melee and Ranged Combat Rolls.
-
-Armor total is Armor + Shields + DEX
-Armor can be bought, found or stolen. Whatever it may be it should have a range of 1-9 for balance sake. Shields also can give you armor bonus.
-
-Splint Mail - 6 for example would give you 6 armor.
-Small Shield - 2 would be 2 armor bonus
-
-Armor has a direct correlation with failure percentages, meaning if you have a armor with 6 and a shield with 2, you will have 8% higher failure rate on melee, ranged and spells. This offers some level of balance for tank style characters. (more on failure rates later)
-
-### Spell Resist
-Spell resistance is what counters Spell Combat Rolls and is calculated at (10 + STR + DEX + MIND)
 
 ### Roll Chart:
 
