@@ -3,8 +3,7 @@ class PlayerCharacter {
     $Str
     $Dex
     $Mind
-    $Virtue
-    $Vise
+
     $Amulet
     $Ring
     $Helm
@@ -34,11 +33,7 @@ class PlayerCharacter {
     $BankGold
 
     $Level
-    $Phys
-    $Sub
-    $Know
-    $Comm
-    $Surv
+
     $CMBase
     $SideArmCM
     $RangedCM
@@ -73,38 +68,10 @@ class PlayerCharacter {
     hidden $strlevel
     hidden $dexlevel
     hidden $mindlevel
-    hidden $physlevel
-    hidden $sublevel
-    hidden $knowlevel
-    hidden $commlevel
-    hidden $survlevel
 
     $MeleeFail
     $RangedFail
     $SpellFail
-
-    hidden $Points0
-    hidden $Points1
-    hidden $Points2
-    hidden $Points3
-    hidden $Points4
-    hidden $Points5
-    hidden $Points6
-    hidden $Points7
-    hidden $Points8
-    hidden $Points9
-
-    FirstLevel () {
-        . ./LoadClasses.ps1
-
-        $StatData = @("Virtue","Vise")
-        foreach ($field in $StatData){
-            if (!$this."$field"){
-                $Entry = Get-ManualDataEntry -field $field -Replace $False
-                $this."$field" = $Entry
-            }
-        }
-    }
 
     hidden [int] Roll ($dice) {
         $splitDice = $dice -split("d")
@@ -113,11 +80,16 @@ class PlayerCharacter {
         return (1..$count | ForEach-Object {Get-Random -min 1 -max ($sides+1)} | Measure-Object -sum).sum
     }
 
-    LevelUp () {
-        $this.Level++
-    }
+    UpdateStats ($XP) {
+        $this.Level = 1
+        $this.xp = $XP
+        $XPRemain = $this.XP
 
-    UpdateStats () {
+        while ($XPRemain -ge 0){
+            $XPRemain = $XPRemain - $this.Level*10
+            $this.Level++
+        }
+
         $this.CMBase = 0
         $this.Heroism = $this.Level
         
@@ -135,32 +107,12 @@ class PlayerCharacter {
         if ($AllPoints -lt ($this.level - 1)){
             Write-Warning "You have [$(($this.level - 1) - $AllPoints)] unspent points on Stats you should use and rerun the code."
         }
-        
-        $AllPoints = $this.physlevel + $this.sublevel + $this.knowlevel + $this.commlevel + $this.survlevel
-        if ($AllPoints -le ($this.level - 1)){
-            $this.Phys = 3 + $this.physlevel
-            $this.Sub = 3 + $this.sublevel
-            $this.Know = 3 + $this.knowlevel
-            $this.Comm = 3 + $this.commlevel
-            $this.Surv = 3 + $this.survlevel
-        }
-        else {
-            throw "Error in Skill Points amount, currently at $AllPoints total and should be at $($this.level - 1)"
-            exit
-        }
-        if ($AllPoints -lt ($this.level - 1)){
-            Write-Warning "You have [$(($this.level - 1) - $AllPoints)] unspent points on Skills you should use and rerun the code."
-        }
 
         $EquipStats = @(
             "STR:Power",
             "DEX:Speed",
             "MIND:Wisdom",
-            "Phys:Endurance",
-            "Sub:Shadow",
-            "Know:Brilliance",
-            "Comm:Tongues",
-            "Surv:Hunting",
+            # TODO Add more to these skills and correlate to the treasure code
             "PR:Hardening",
             "Heroism:Bravery",
             "CMBase:Gutting",
@@ -191,13 +143,6 @@ class PlayerCharacter {
             $StatName = $Stat[0]
             $StatType = $Stat[1]
 
-            if ($this.Virtue -match "$($StatName)"){
-                $this."$($StatName)" = $this."$($StatName)" + 2
-            }
-            if ($this.Vise -match "$($StatName)"){
-                $this."$($StatName)" = $this."$($StatName)" - 2
-            }
-
             Foreach ($Type in $AllEquipmentTypes){
                 if ($this."$Type" -match "$($StatType)"){
                     $this."$Type" -match " \+ (\d+)"
@@ -215,16 +160,6 @@ class PlayerCharacter {
         else {$ShieldPR = 0}
 
         switch ($this.TalentName){
-            "Talented"{
-                $Low = 100
-                $LowName = ""
-                if ($this.phys -lt $Low){$Low = $this.phys ; $LowName = "mind"}
-                if ($this.sub -lt $Low){$Low = $this.sub ; $LowName = "sub"}
-                if ($this.know -lt $Low){$Low = $this.know ; $LowName = "know"}
-                if ($this.comm -lt $Low){$Low = $this.comm ; $LowName = "comm"}
-                if ($this.surv -lt $Low){$Low = $this.surv ; $LowName = "surv"}
-                $this."$($LowName)" = $this."$($LowName)" + 2
-            }
             "Well Rounded" {
                 $Low = 100
                 $LowName = ""
@@ -272,16 +207,6 @@ class PlayerCharacter {
         $this.RangedFail = [math]::floor((25 - $this.Dex) + $ArmorPR + $ShieldPR)
         $this.SpellFail = [math]::floor((25 - $this.Mind) + $ArmorPR + $ShieldPR)
 
-        $SpellLevel = [math]::floor($this.level / 2)
-        0..9 | foreach {
-            $num = $_
-            if ($SpellLevel -ge $num){
-                $this."Points$num" = ((($num * 2) + 1) * 2) + 2
-            }
-            else {
-                $this."Points$num" = "-"
-            }
-        }
         if ($this.MeleeFail -lt 0){$this.MeleeFail = 0}
         if ($this.RangedFail -lt 0){$this.RangedFail = 0}
         if ($this.SpellFail -lt 0){$this.SpellFail = 0}

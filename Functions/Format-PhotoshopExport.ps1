@@ -17,12 +17,6 @@ function Format-PhotoshopExport {
     $PlayerCharacter.dex = "$($PlayerCharacter.dex)"
     $PlayerCharacter.mind = "$($PlayerCharacter.mind)"
 
-    $PlayerCharacter.virtue -match '^(\w+)\\(\w+)$|^(\w+)\/(\w+)$'
-    $PlayerCharacter.virtue = "$($matches[1]) + 2 \ $($matches[2]) + 2"
-    
-    $PlayerCharacter.vise -match '^(\w+)\\(\w+)$|^(\w+)\/(\w+)$'
-    $PlayerCharacter.vise = "$($matches[1]) - 2 \ $($matches[2]) - 2"
-
     $PlayerCharacter.BankGold = "Banked Gold: $($PlayerCharacter.BankGold)"
     $PlayerCharacter.Titles = "$($PlayerCharacter.Titles -replace(';',"`n"))"
 

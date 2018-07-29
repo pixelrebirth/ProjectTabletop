@@ -151,26 +151,17 @@ process {
         }
     }
 
-    $PlayerCharacter.FirstLevel()
-
-    $XPRemain = $PlayerCharacter.XP
-    while ($XPRemain -ge 0){
-        $XPRemain = $XPRemain - $Level*10
-        $Level++
-        $PlayerCharacter.LevelUp()
-    }
-
-    $PlayerCharacter.UpdateStats()
+    $PlayerCharacter.UpdateStats($PlayerCharacter.XP)
 }
 
 end {
     $YamlArray = @("PlayerName","CharacterName","Upbringing","TalentName","Titles",
-        "Virtue","Vise","Idol","Foe","Lover","Family","WhereFrom","BestFriend","LastWar","Organization",
+        "Idol","Foe","Lover","Family","WhereFrom","BestFriend","LastWar","Organization",
         "MostLikelyDo","Hobby","Food","DiscoverMagic","WhatSeek","XP","Amulet","Ring","Helm","Shield",
         "ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1","GearSlot2","GearSlot3","GearSlot4",
         "GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12",
         "GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18","BankGold","StrLevel",
-        "DexLevel","MindLevel","PhysLevel","SubLevel","KnowLevel","CommLevel","SurvLevel"
+        "DexLevel","MindLevel"
     )
 
     $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation
