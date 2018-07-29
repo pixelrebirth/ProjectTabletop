@@ -3,15 +3,7 @@ class PlayerCharacter {
     $Str
     $Dex
     $Mind
-<<<<<<< HEAD
-    $StrBase
-    $DexBase
-    $MindBase
-    $Virtue
-    $Vise
-=======
 
->>>>>>> feature/continued20
     $Amulet
     $Ring
     $Helm
