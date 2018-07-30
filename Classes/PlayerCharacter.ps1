@@ -12,6 +12,7 @@ class PlayerCharacter {
     $SideArm
     $MainRanged
     $MainMelee
+
     $GearSlot18
     $GearSlot17
     $GearSlot16
@@ -34,23 +35,32 @@ class PlayerCharacter {
 
     $Level
 
-    $CMBase
     $SideArmCM
     $RangedCM
     $MeleeCM
+    $SpellCM
+
+    $SideArmCMBase
+    $RangedCMBase
+    $MeleeCMBase
+    $SpellCMBase
+    
     $Heroism
+
     $MD
     $RD
     $SD
-    $SpellCM
+
     $HP
     $XP
+
     $Upbringing
     $UpbringingBonus
     $CharacterName
     $TalentName
     $TalentAbility
     [string]$Titles
+
     $Idol
     $Foe
     $Lover
@@ -82,17 +92,15 @@ class PlayerCharacter {
 
     UpdateStats ($XP) {
         $this.Level = 1
-        $this.xp = $XP
+        $this.XP = $XP
         $XPRemain = $this.XP
 
-        while ($XPRemain -ge 0){
+        while ($XPRemain -gt 0){
             $XPRemain = $XPRemain - $this.Level*10
             $this.Level++
         }
 
-        $this.CMBase = 0
         $this.Heroism = $this.Level
-        
         
         $AllPoints = $this.strlevel + $this.dexlevel + $this.mindlevel
         if ($AllPoints -le ($this.level - 1)){
@@ -112,11 +120,13 @@ class PlayerCharacter {
             "STR:Power",
             "DEX:Speed",
             "MIND:Wisdom",
-            # TODO Add more to these skills and correlate to the treasure code
-            "PR:Hardening",
+            "MD:Hardening",
+            "RD:Fleeting"
+            "SD:Force"
             "Heroism:Bravery",
-            "CMBase:Gutting",
-            "SpellCM:Elements"
+            "MeleeCMBase:Gutting",
+            "RangedCMBase:Precision"
+            "SpellCMBase:Elements"
         )
 
         $AllEquipmentTypes = @(
@@ -177,18 +187,18 @@ class PlayerCharacter {
         if ($this.mind -lt 0){$this.mind = 0}
 
         $this.HP = $this.level * 6
-        $this.MD = $this.str + $ArmorPR + $ShieldPR
-        $this.RD = $this.dex + $ArmorPR + $ShieldPR
-        $this.SD = $this.mind + $ArmorPR + $ShieldPR
+        $this.MD = $this.MD + $this.str + $ArmorPR + $ShieldPR
+        $this.RD = $this.RD + $this.dex + $ArmorPR + $ShieldPR
+        $this.SD = $this.SD + $this.mind + $ArmorPR + $ShieldPR
 
-        $SideArmCMBase = ($this.str) + $this.CMBase - 4
-        $MeleeCMBase = ($this.str) + $this.CMBase
-        $RangedCMBase = ($this.dex) + $this.CMBase
-        $SpellCMBase = ($this.mind) + $this.CMBase
+        $this.SideArmCMBase = ($this.str) + $this.SideArmCMBase - 4
+        $this.MeleeCMBase = ($this.str) + $this.MeleeCMBase
+        $this.RangedCMBase = ($this.dex) + $this.RangedBase
+        $this.SpellCMBase = ($this.mind) + $this.SpellCMBase
 
-        if ($this.SideArm -match "^Masterwork|^M\. "){$SideArmCMBase = $SideArmCMBase + 2}
-        if ($this.MainMelee -match "^Masterwork|^M\. "){$MeleeCMBase = $MeleeCMBase + 2}
-        if ($this.MainRanged -match "^Masterwork|^M\. "){$RangedCMBase = $RangedCMBase + 2}
+        if ($this.SideArm -match "^Masterwork|^M\. "){$this.SideArmCMBase = $this.SideArmCMBase + 2}
+        if ($this.MainMelee -match "^Masterwork|^M\. "){$this.MeleeCMBase = $this.MeleeCMBase + 2}
+        if ($this.MainRanged -match "^Masterwork|^M\. "){$this.RangedCMBase = $this.RangedCMBase + 2}
         if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.MR = $this.MR + 2}
         if ($this.Shield -match "^Masterwork|^M\. "){$this.MR = $this.MR + 2}
 
@@ -197,10 +207,10 @@ class PlayerCharacter {
         $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex)
         $SpellDmg = Get-DiceRollPerInteger -Integer $($this.mind)
 
-        $this.SideArmCM = "$SideArmDmg+$SideArmCMBase"
-        $this.MeleeCM = "$MeleeDmg+$MeleeCMBase"
-        $this.RangedCM = "$RangedDmg+$RangedCMBase"
-        $this.SpellCM = "$SpellDmg+$SpellCMBase"
+        $this.SideArmCM = "$SideArmDmg+$($this.SideArmCMBase)"
+        $this.MeleeCM = "$MeleeDmg+$($this.MeleeCMBase)"
+        $this.RangedCM = "$RangedDmg+$($this.RangedCMBase)"
+        $this.SpellCM = "$SpellDmg+$($this.SpellCMBase)"
 
         $this.MeleeFail = [math]::floor((25 - $this.Str) + $ArmorPR + $ShieldPR)
         $this.RangedFail = [math]::floor((25 - $this.Dex) + $ArmorPR + $ShieldPR)

@@ -1,1 +1,1 @@
-.\New-PlayerCharacter.ps1 -PlayerName Kelcey
+.\New-PlayerCharacter.ps1 -PlayerName Test -XP 30 -NoPhotoshop
