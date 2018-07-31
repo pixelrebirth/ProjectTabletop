@@ -1,1 +1,1 @@
-.\New-PlayerCharacter.ps1 -PlayerName Test -XP 30 -NoPhotoshop
+.\New-PlayerCharacter.ps1 -PlayerName Sandy -NoPhotoshop

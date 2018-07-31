@@ -45,7 +45,7 @@ class PlayerCharacter {
     $MeleeCMBase
     $SpellCMBase
     
-    $Heroism
+    $Speed
 
     $MD
     $RD
@@ -100,7 +100,7 @@ class PlayerCharacter {
             $this.Level++
         }
 
-        $this.Heroism = $this.Level
+        $this.Speed = 6
         
         $AllPoints = $this.strlevel + $this.dexlevel + $this.mindlevel
         if ($AllPoints -le ($this.level - 1)){
@@ -123,7 +123,6 @@ class PlayerCharacter {
             "MD:Hardening",
             "RD:Fleeting"
             "SD:Force"
-            "Heroism:Bravery",
             "MeleeCMBase:Gutting",
             "RangedCMBase:Precision"
             "SpellCMBase:Elements"
@@ -199,8 +198,8 @@ class PlayerCharacter {
         if ($this.SideArm -match "^Masterwork|^M\. "){$this.SideArmCMBase = $this.SideArmCMBase + 2}
         if ($this.MainMelee -match "^Masterwork|^M\. "){$this.MeleeCMBase = $this.MeleeCMBase + 2}
         if ($this.MainRanged -match "^Masterwork|^M\. "){$this.RangedCMBase = $this.RangedCMBase + 2}
-        if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.MR = $this.MR + 2}
-        if ($this.Shield -match "^Masterwork|^M\. "){$this.MR = $this.MR + 2}
+        if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.MD = $this.MD + 2}
+        if ($this.Shield -match "^Masterwork|^M\. "){$this.MD = $this.MD + 2}
 
         $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 4)
         $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
@@ -212,9 +211,9 @@ class PlayerCharacter {
         $this.RangedCM = "$RangedDmg+$($this.RangedCMBase)"
         $this.SpellCM = "$SpellDmg+$($this.SpellCMBase)"
 
-        $this.MeleeFail = [math]::floor((25 - $this.Str) + $ArmorPR + $ShieldPR)
-        $this.RangedFail = [math]::floor((25 - $this.Dex) + $ArmorPR + $ShieldPR)
-        $this.SpellFail = [math]::floor((25 - $this.Mind) + $ArmorPR + $ShieldPR)
+        $this.MeleeFail =  $this.MeleeFail + [math]::floor((25 - $this.Str) + $ArmorPR + $ShieldPR)
+        $this.RangedFail = $this.RangedFail + [math]::floor((25 - $this.Dex) + $ArmorPR + $ShieldPR)
+        $this.SpellFail = $this.SpellFail + [math]::floor((25 - $this.Mind) + $ArmorPR + $ShieldPR)
 
         if ($this.MeleeFail -lt 0){$this.MeleeFail = 0}
         if ($this.RangedFail -lt 0){$this.RangedFail = 0}

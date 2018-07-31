@@ -9,7 +9,7 @@ function Format-PhotoshopExport {
         "Foe","WhatSeek","Hobby","Food","WhereFrom","Idol","DiscoverMagic","MostLikelyDo","Lover",
         "BestFriend","Family","LastWar","Organization","BankGold","Amulet","Ring","Shield","Helm",
         "ArmorSet","SideArm","MainRanged","MainMelee","TalentAbility","XP","Upbringing",
-        "SideArmCM","RangedCM","MeleeCM","SpellCM","Heroism","SD","MD","RD","HP","Mind","Str","Dex","Level",
+        "SideArmCM","RangedCM","MeleeCM","SpellCM","Speed","SD","MD","RD","HP","Mind","Str","Dex","Level",
         "MeleeFail","RangedFail","SpellFail","UpbringingBonus","Titles"
     )
 
