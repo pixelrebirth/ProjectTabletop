@@ -142,9 +142,12 @@ class PlayerCharacter {
             "GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18"
         )
 
-        $Bonus = (($this.UpbringingBonus) -split('\+'))[0]
+        $Bonus = (($this.UpbringingBonus) -split('\+|\-'))[0]
         if ($this.UpbringingBonus -match "$Bonus\+(\d+)"){
             $this."$Bonus" = [int]$this."$Bonus" + [int]$matches[1]
+        }
+        if ($this.UpbringingBonus -match "$Bonus\-(\d+)"){
+            $this."$Bonus" = [int]$this."$Bonus" - [int]$matches[1]
         }
 
         Foreach ($Stat in $EquipStats){
