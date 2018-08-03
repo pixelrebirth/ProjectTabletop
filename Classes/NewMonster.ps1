@@ -8,28 +8,29 @@ class NewMonster {
     $MeleeCM
     $RangedCM
     $SideArmCM
-    [int]$SpellCM
-    [int]$Str
-    [int]$Dex
-    [int]$Mind
+    $SpellCM
     [int]$MeleeFail
     [int]$RangedFail
     [int]$SpellFail
-    [int]$ArmorBonus
+    
+    hidden [int]$Str
+    hidden [int]$Dex
+    hidden [int]$Mind
+    hidden [int]$ArmorBonus
 
     hidden $MeleeCMBase
     hidden $RangedCMBase
     hidden $SideArmCMBase
     hidden $SpellCMBase
 
-    [ValidateSet("Minor","Standard","Brutal","Elite","Superior")]$Type
-    [ValidateSet("Synergist","Defender","Support","Assasin","Sharpshooter","Generalist")]$Style
+    hidden [ValidateSet("Minor","Standard","Brutal","Elite","Superior")]$Type
+    hidden [ValidateSet("Synergist","Defender","Support","Assasin","Sharpshooter","Generalist")]$Style
 
     NewMonster($level,$type,$style){
         $this.level = $level
         $this.SetType($type)
 
-        $this.ArmorBonus = Get-Random -min 0 -max $([int]$this.level / 2)
+        $this.ArmorBonus = Get-Random -min 0 -max $([int]$this.level / 3)
 
         $this.hp = $this.level * 5
         $this.str = [int](3.34 + ($this.level * .34))
@@ -42,22 +43,24 @@ class NewMonster {
 
         $this.SetStyle($style)
 
-        $this.MD = $this.MD + $this.Str + $this.ArmorBonus
-        $this.RD = $this.RD + $this.Dex + $this.ArmorBonus
-        $this.SD = $this.SD + $this.Mind * 2
+        $this.MD = $this.MD + $this.str + $this.ArmorBonus
+        $this.RD = $this.RD + $this.dex + $this.ArmorBonus
+        $this.SD = $this.SD + $this.mind + $this.ArmorBonus
 
-        $this.SideArmCMBase = $this.SideArmCMBase + $this.str - 4
-        $this.MeleeCMBase = $this.MeleeCMBase + $this.str
-        $this.RangedCMBase = $this.RangedCMBase + $this.dex
+        $this.SideArmCMBase = ($this.str) + $this.SideArmCMBase - 4
+        $this.MeleeCMBase = ($this.str) + $this.MeleeCMBase
+        $this.RangedCMBase = ($this.dex) + $this.RangedBase
+        $this.SpellCMBase = ($this.mind) + $this.SpellCMBase
 
         $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 4)
         $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
         $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex)
+        $SpellDmg = Get-DiceRollPerInteger -Integer $($this.mind)
 
         $this.SideArmCM = "$SideArmDmg+$($this.SideArmCMBase)"
         $this.MeleeCM = "$MeleeDmg+$($this.MeleeCMBase)"
         $this.RangedCM = "$RangedDmg+$($this.RangedCMBase)"
-        $this.SpellCM = $this.Mind + $this.SpellCMBase
+        $this.SpellCM = "$SpellDmg+$($this.SpellCMBase)"
 
         $this.Name = "$type $style"
     }
@@ -68,9 +71,9 @@ class NewMonster {
             switch ($type){
                 "Minor" {$this.level * -.5}
                 "Standard" {0}
-                "Brutal" {$this.level * .15}
-                "Elite" {$this.level * .33}
-                "Superior" {$this.level * .5}
+                "Brutal" {$this.level * .25}
+                "Elite" {$this.level * .5}
+                "Superior" {$this.level * .75}
             }
         )
         if ($this.level -lt 0){$this.level = 1}
@@ -111,6 +114,10 @@ class NewMonster {
             }
             "Generalist" {}
         }
+
+        if ($this.MeleeFail -lt 0){$this.MeleeFail = 0}
+        if ($this.RangedFail -lt 0){$this.RangedFail = 0}
+        if ($this.SpellFail -lt 0){$this.SpellFail = 0}
     }
 }
 
