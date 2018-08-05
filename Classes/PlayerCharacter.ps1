@@ -54,26 +54,14 @@ class PlayerCharacter {
     $HP
     $XP
 
-    $Upbringing
-    $UpbringingBonus
+    $Specialization
+    $SpecializationBonus
     $CharacterName
     $TalentName
     $TalentAbility
     [string]$Titles
 
-    $Idol
-    $Foe
-    $Lover
-    $Family
-    $WhereFrom
-    $BestFriend
-    $LastWar
-    $Organization
-    $MostLikelyDo
-    $Hobby
-    $Food
-    $DiscoverMagic
-    $WhatSeek
+    $Background
 
     hidden $strlevel
     hidden $dexlevel
@@ -103,17 +91,17 @@ class PlayerCharacter {
         $this.Speed = 6
         
         $AllPoints = $this.strlevel + $this.dexlevel + $this.mindlevel
-        if ($AllPoints -le ($this.level - 1)){
+        if ($AllPoints -le ($this.level)){
             $this.str = 3 + $this.strlevel
             $this.dex = 3 + $this.dexlevel
             $this.mind = 3 + $this.mindlevel
         }
         else {
-            throw "Error in Stat Points amount, currently at $AllPoints total and should be at $($this.level - 1)"
+            throw "Error in Stat Points amount, currently at $AllPoints total and should be at $($this.level)"
             exit
         }
-        if ($AllPoints -lt ($this.level - 1)){
-            Write-Warning "You have [$(($this.level - 1) - $AllPoints)] unspent points on Stats you should use and rerun the code."
+        if ($AllPoints -lt ($this.level)){
+            Write-Warning "You have [$(($this.level) - $AllPoints)] unspent points on Stats you should use and rerun the code."
         }
 
         $EquipStats = @(
@@ -142,11 +130,11 @@ class PlayerCharacter {
             "GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18"
         )
 
-        $Bonus = (($this.UpbringingBonus) -split('\+|\-'))[0]
-        if ($this.UpbringingBonus -match "$Bonus\+(\d+)"){
+        $Bonus = (($this.SpecializationBonus) -split('\+|\-'))[0]
+        if ($this.SpecializationBonus -match "$Bonus\+(\d+)"){
             $this."$Bonus" = [int]$this."$Bonus" + [int]$matches[1]
         }
-        if ($this.UpbringingBonus -match "$Bonus\-(\d+)"){
+        if ($this.SpecializationBonus -match "$Bonus\-(\d+)"){
             $this."$Bonus" = [int]$this."$Bonus" - [int]$matches[1]
         }
 
@@ -201,8 +189,10 @@ class PlayerCharacter {
         if ($this.SideArm -match "^Masterwork|^M\. "){$this.SideArmCMBase = $this.SideArmCMBase + 2}
         if ($this.MainMelee -match "^Masterwork|^M\. "){$this.MeleeCMBase = $this.MeleeCMBase + 2}
         if ($this.MainRanged -match "^Masterwork|^M\. "){$this.RangedCMBase = $this.RangedCMBase + 2}
-        if ($this.ArmorSet -match "^Masterwork|^M\. "){$this.MD = $this.MD + 2}
-        if ($this.Shield -match "^Masterwork|^M\. "){$this.MD = $this.MD + 2}
+
+        if ($this.SideArm -match "^Enchanted|^E\. "){$this.SpellCMBase = $this.SpellCMBase + 2}
+        if ($this.MainMelee -match "^Enchanted|^E\. "){$this.SpellCMBase = $this.SpellCMBase + 2}
+        if ($this.MainRanged -match "^Enchanted|^E\. "){$this.SpellCMBase = $this.SpellCMBase + 2}
 
         $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 4)
         $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
@@ -214,9 +204,9 @@ class PlayerCharacter {
         $this.RangedCM = "$RangedDmg+$($this.RangedCMBase)"
         $this.SpellCM = "$SpellDmg+$($this.SpellCMBase)"
 
-        $this.MeleeFail =  $this.MeleeFail + [math]::floor((25 - $this.Str) + $ArmorPR + $ShieldPR)
-        $this.RangedFail = $this.RangedFail + [math]::floor((25 - $this.Dex) + $ArmorPR + $ShieldPR)
-        $this.SpellFail = $this.SpellFail + [math]::floor((25 - $this.Mind) + $ArmorPR + $ShieldPR)
+        $this.MeleeFail =  $this.MeleeFail + [math]::floor((25 - [int]$this.Str) + (([int]$ArmorPR +  [int]$ShieldPR) * 2))
+        $this.RangedFail = $this.RangedFail + [math]::floor((25 - [int]$this.Dex) + (([int]$ArmorPR + [int]$ShieldPR) * 2))
+        $this.SpellFail = $this.SpellFail + [math]::floor((25 - [int]$this.Mind) + (([int]$ArmorPR + [int]$ShieldPR) * 2))
 
         if ($this.MeleeFail -lt 0){$this.MeleeFail = 0}
         if ($this.RangedFail -lt 0){$this.RangedFail = 0}

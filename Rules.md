@@ -21,10 +21,10 @@ Every level you get a point to spend and this is how you can really mold your ch
 |Dexterity|Ranged Damage, Ranged %, Ranged CM, RD|
 |Mind|Spell Damage, Spell %, Spell CM, SD|
 
-## Upbringing
-Upbringing is like races in most systems, all the information you need is on the following table.
+## Specialization
+Specialization is like races in most systems, all the information you need is on the following table.
 
-|Upbringing|Effect|
+|Specialization|Effect|
 |:----:-:|:-----:|:----:-:|
 |Body Hardened|MD+2|
 |Dodgy|RD+2|

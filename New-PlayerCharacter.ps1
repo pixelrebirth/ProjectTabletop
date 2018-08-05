@@ -9,25 +9,12 @@ DynamicParam {
     . ./LoadClasses.ps1
 
     $ParamNames = @(
-        "Upbringing",
+        "Specialization",
         "CharacterName",
-        "TalentName",
-        "MostLikelyDo",
-        "Hobby",
-        "Food",
-        "Idol",
-        "DiscoverMagic",
-        "Foe",
-        "WhatSeek",
-        "Lover",
-        "Family",
-        "WhereFrom",
-        "BestFriend",
-        "LastWar",
-        "Organization"
+        "TalentName"
     )
 
-    [Scriptblock]$ScriptUpbringing = {Get-Content $PSScriptRoot\Data\Character\Upbringing.txt}
+    [Scriptblock]$ScriptSpecialization = {Get-Content $PSScriptRoot\Data\Character\Specialization.txt}
     [Scriptblock]$ScriptCharacterName = {
         if ($Global:Set -eq $null){
             $AllNames = Get-Content $PSScriptRoot\Data\Character\CharacterName.txt
@@ -38,59 +25,20 @@ DynamicParam {
         $Global:Set
     }
     [Scriptblock]$ScriptTalentName = {Get-Content $PSScriptRoot\Data\Character\TalentName.txt}
-    [Scriptblock]$ScriptMostLikelyDo = {Get-Content $PSScriptRoot\Data\Character\MostLikelyDo.txt}
-    [Scriptblock]$ScriptHobby = {Get-Content $PSScriptRoot\Data\Character\Hobby.txt}
-    [Scriptblock]$ScriptFood = {Get-Content $PSScriptRoot\Data\Character\Food.txt}
-    [Scriptblock]$ScriptIdol = {Get-Content $PSScriptRoot\Data\Character\Idol.txt}
-    [Scriptblock]$ScriptDiscoverMagic = {Get-Content $PSScriptRoot\Data\Character\DiscoverMagic.txt}
-    [Scriptblock]$ScriptFoe = {Get-Content $PSScriptRoot\Data\Character\Foe.txt}
-    [Scriptblock]$ScriptWhatSeek = {Get-Content $PSScriptRoot\Data\Character\WhatSeek.txt}
-    [Scriptblock]$ScriptLover = {Get-Content $PSScriptRoot\Data\Character\Lover.txt}
-    [Scriptblock]$ScriptFamily = {Get-Content $PSScriptRoot\Data\Character\Family.txt}
-    [Scriptblock]$ScriptWhereFrom = {Get-Content $PSScriptRoot\Data\Character\WhereFrom.txt}
-    [Scriptblock]$ScriptBestFriend = {Get-Content $PSScriptRoot\Data\Character\BestFriend.txt}
-    [Scriptblock]$ScriptLastWar = {Get-Content $PSScriptRoot\Data\Character\LastWar.txt}
-    [Scriptblock]$ScriptOrganization = {Get-Content $PSScriptRoot\Data\Character\Organization.txt}
 
     $Scripts = @(
-        $ScriptUpbringing,
+        $ScriptSpecialization,
         $ScriptCharacterName,
-        $ScriptTalentName,
-        $ScriptMostLikelyDo,
-        $ScriptHobby,
-        $ScriptFood,
-        $ScriptIdol,
-        $ScriptDiscoverMagic,
-        $ScriptFoe,
-        $ScriptWhatSeek,
-        $ScriptLover,
-        $ScriptFamily,
-        $ScriptWhereFrom,
-        $ScriptBestFriend,
-        $ScriptLastWar,
-        $ScriptOrganization
+        $ScriptTalentName
     )
 
     return Get-DynamicParam -ParamName $ParamNames -ParamCode $Scripts
 }
 
 begin {
-    $Upbringing = $PsBoundParameters['Upbringing']
+    $Specialization = $PsBoundParameters['Specialization']
     $CharacterName = $PsBoundParameters['CharacterName']
     $TalentName = $PsBoundParameters['TalentName']
-    $MostLikelyDo = $PsBoundParameters['MostLikelyDo']
-    $Hobby = $PsBoundParameters['Hobby']
-    $Food = $PsBoundParameters['Food']
-    $Idol = $PsBoundParameters['Idol']
-    $DiscoverMagic = $PsBoundParameters['DiscoverMagic']
-    $Foe = $PsBoundParameters['Foe']
-    $WhatSeek = $PsBoundParameters['WhatSeek']
-    $Lover = $PsBoundParameters['Lover']
-    $Family = $PsBoundParameters['Family']
-    $WhereFrom = $PsBoundParameters['WhereFrom']
-    $BestFriend = $PsBoundParameters['BestFriend']
-    $LastWar = $PsBoundParameters['LastWar']
-    $Organization = $PsBoundParameters['Organization']
 
     Import-Module powershell-yaml
     . ./LoadClasses.ps1
@@ -112,29 +60,18 @@ process {
         Write-Debug "$($Error[0].Exception.Message)"
     }
 
-    Set-PlayerPropertyNull -PropName Upbringing
+    Set-PlayerPropertyNull -PropName Specialization
     Set-PlayerPropertyNull -PropName CharacterName
     Set-PlayerPropertyNull -PropName TalentName
-    Set-PlayerPropertyNull -PropName MostLikelyDo
-    Set-PlayerPropertyNull -PropName Hobby
-    Set-PlayerPropertyNull -PropName Food
-    Set-PlayerPropertyNull -PropName Idol
-    Set-PlayerPropertyNull -PropName DiscoverMagic
-    Set-PlayerPropertyNull -PropName Foe
-    Set-PlayerPropertyNull -PropName WhatSeek
-    Set-PlayerPropertyNull -PropName Lover
-    Set-PlayerPropertyNull -PropName Family
-    Set-PlayerPropertyNull -PropName WhereFrom
-    Set-PlayerPropertyNull -PropName BestFriend
-    Set-PlayerPropertyNull -PropName LastWar
-    Set-PlayerPropertyNull -PropName Organization
+    Set-PlayerPropertyNull -PropName Background
 
-    if (!$PlayerCharacter.Upbringing -or $PlayerCharacter.Upbringing -notmatch "\;"){
-        $UpbringingFull = Get-Content "$PSScriptRoot\data\character\Upbringing.txt" | where {$_ -match "^$($PlayerCharacter.Upbringing);"}
-        $PlayerCharacter.Upbringing = $UpbringingFull
+
+    if (!$PlayerCharacter.Specialization -or $PlayerCharacter.Specialization -notmatch "\;"){
+        $SpecializationFull = Get-Content "$PSScriptRoot\data\character\Specialization.txt" | where {$_ -match "^$($PlayerCharacter.Specialization);"}
+        $PlayerCharacter.Specialization = $SpecializationFull
     }
-    $PlayerCharacter.UpbringingBonus = $PlayerCharacter.Upbringing.split(";")[1]
-    $PlayerCharacter.Upbringing = $PlayerCharacter.Upbringing.split(";")[0]
+    $PlayerCharacter.SpecializationBonus = $PlayerCharacter.Specialization.split(";")[1]
+    $PlayerCharacter.Specialization = $PlayerCharacter.Specialization.split(";")[0]
 
     if (!$PlayerCharacter.TalentName -or $PlayerCharacter.TalentName -notmatch "\;"){
         $TalentNameFull = Get-Content "$PSScriptRoot\data\character\TalentName.txt" | where {$_ -match "^$($PlayerCharacter.TalentName);"}
@@ -155,13 +92,11 @@ process {
 }
 
 end {
-    $YamlArray = @("PlayerName","CharacterName","Upbringing","TalentName","Titles",
-        "Idol","Foe","Lover","Family","WhereFrom","BestFriend","LastWar","Organization",
-        "MostLikelyDo","Hobby","Food","DiscoverMagic","WhatSeek","XP","Amulet","Ring","Helm","Shield",
-        "ArmorSet","SideArm","MainRanged","MainMelee","GearSlot1","GearSlot2","GearSlot3","GearSlot4",
-        "GearSlot5","GearSlot6","GearSlot7","GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12",
-        "GearSlot13","GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18","BankGold","StrLevel",
-        "DexLevel","MindLevel"
+    $YamlArray = @("PlayerName","CharacterName","Specialization","TalentName","Titles","Background"
+        "XP","Amulet","Ring","Helm","Shield","ArmorSet","SideArm","MainRanged","MainMelee",
+        "GearSlot1","GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7","GearSlot8",
+        "GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13","GearSlot14","GearSlot15","GearSlot16",
+        "GearSlot17","GearSlot18","BankGold","StrLevel","DexLevel","MindLevel"
     )
 
     $PlayerCharacter | Export-Csv "./data/saves/$($PlayerCharacter.PlayerName)-$($PlayerCharacter.CharacterName)`.csv" -Force -NoTypeInformation

@@ -37,9 +37,9 @@ class NewMonster {
         $this.dex = [int](2.67 + ($this.level * .34))
         $this.mind =[int](3.0 + ($this.level * .34))
 
-        $this.MeleeFail =  [math]::floor((30 - $this.Str) + $this.ArmorBonus)
-        $this.RangedFail =  [math]::floor((30 - $this.Dex) + $this.ArmorBonus)
-        $this.SpellFail =  [math]::floor((30 - $this.Mind) + $this.ArmorBonus)
+        $this.MeleeFail =  [math]::floor((30 - $this.Str) + ($this.ArmorBonus) * 2)
+        $this.RangedFail =  [math]::floor((30 - $this.Dex) + ($this.ArmorBonus) * 2)
+        $this.SpellFail =  [math]::floor((30 - $this.Mind) + ($this.ArmorBonus) * 2)
 
         $this.SetStyle($style)
 
@@ -88,14 +88,14 @@ class NewMonster {
                 $this.Mind = $this.Mind + 4
             }
             "Defender" {
-                $this.MD = $this.MD +5
-                $this.RD = $this.RD +5
-                $this.SD = $this.SD +5
-                $this.HP = $this.HP +5
-                $this.MeleeCMBase = $this.MeleeCMBase -5
-                $this.SideArmCMBase = $this.SideArmCMBase -5
-                $this.RangedCMBase = $this.RangedCMBase -5
-                $this.SpellCMBase = $this.SpellCMBase -5
+                $this.MD = $this.MD +2
+                $this.RD = $this.RD +2
+                $this.SD = $this.SD +2
+                $this.HP = $this.HP +2
+                $this.MeleeCMBase = $this.MeleeCMBase -2
+                $this.SideArmCMBase = $this.SideArmCMBase -2
+                $this.RangedCMBase = $this.RangedCMBase -2
+                $this.SpellCMBase = $this.SpellCMBase -2
             }
             "Support" {
                 $this.Dex = $this.Dex + 2

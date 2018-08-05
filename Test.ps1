@@ -1,1 +1,1 @@
-.\New-PlayerCharacter.ps1 -PlayerName Sandy -NoPhotoshop
+.\New-PlayerCharacter.ps1 -PlayerName Kelcey

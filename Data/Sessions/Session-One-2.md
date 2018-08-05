@@ -127,7 +127,7 @@ The cave will quickly end and only a small crawl space near the ceiling seems to
 (Once the adventures figure out a way in) the cave will be narrow for only a hundred feet or so.
 
 - The cavern is gorgeous blue with razor sharp shards of glass like rock jutting out.
-- In the center of the cave there is a glowing green colored sphere, possibly a cocoon.
+- In the center of the cave there is a glowing green colored sphere, possibly a cocoon, possibly not. Stones and boulders float in close proximity to the sphere.
 - You can clearly see hundreds of stirge sacks with dormant stirges in them.
 
 <img 
@@ -152,9 +152,43 @@ Upon investigating the source of the cold you will find a calm and barely moving
 
 The dragon will not respond to your requests, but he/she is magnificent to see. Hardly a sight to believe.
 
-
 <img 
   src='https://i.ytimg.com/vi/eKT2Qnywews/maxresdefault.jpg' 
 style='height:300px' />
 
+The dragon looks toward the space in front of him, implying that you should go in front of him and trust him.
+If you do, (Ilboc will) then he will give you an ice bow, an ice axe and an ice staff. (Masterwork + power/speed/wisdom + 1). He will still say nothing when you take them.
 
+In your mind you hear a deep telepathic voice boom, "When the mountain weeps with molten fury, a challenge shall bring the dawn of men and a reunion of friends."
+
+\page
+
+### The Walled Citadel of Thatelch Delve
+
+The wall is far more impressive in person than in stories. The wall is perfectly carved out of mountain and the entryway is simply massive.
+
+<img 
+  src='https://i.pinimg.com/564x/09/b9/7c/09b97cd48424fdcb873449cdaf17c6a9.jpg' 
+style='height:400px' />
+
+You approach the wall with little caution as there is nothing nearby and turning the corner to see what is inside the opening you simply see stairs, clearly you can see down them about 30 flights.
+
+There is a guardian of some sort standing stoic and unmoving.
+
+<img 
+  src='https://i.pinimg.com/564x/36/2c/e0/362ce09f3bf8a52d0afb8e776b5912e6.jpg' 
+style='height:350px' />
+
+Attempting to get close will cause the guardian to ready himself.
+
+* Superior Sentinel Synergist
+
+Upon defeating him you will find a strange looking key with odd writing.
+
+<img 
+  src='https://3.bp.blogspot.com/-KYi1D0PrKXE/VvryAXO4OpI/AAAAAAAACFY/H4RAVLpNpoUKkXL1tUDXP55WbJvCjM-5g/s1600/2%2B%25284%2529.jpg' 
+style='height:200px' />
+
+> Wing it with the mine of karak. Get badass hammer. End game.
+
+==== Session End ====
