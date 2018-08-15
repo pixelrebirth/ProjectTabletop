@@ -1,8 +1,8 @@
 class PlayerCharacter {
     $PlayerName
-    $Str
-    $Dex
-    $Mind
+    [int]$Str
+    [int]$Dex
+    [int]$Mind
 
     $Amulet
     $Ring
@@ -33,26 +33,30 @@ class PlayerCharacter {
     $GearSlot1
     $BankGold
 
+    $Masterwork = $false
+    $Enchanted = $false
+    $EquipmentTrack = @()
+
     $Level
 
+    $MeleeCM
     $SideArmCM
     $RangedCM
-    $MeleeCM
     $SpellCM
 
-    $SideArmCMBase
-    $RangedCMBase
-    $MeleeCMBase
-    $SpellCMBase
+    [int]$MeleeCMBase
+    [int]$SideArmCMBase
+    [int]$RangedCMBase
+    [int]$SpellCMBase
     
     $Speed
 
-    $MD
-    $RD
-    $SD
+    [int]$MD
+    [int]$RD
+    [int]$SD
 
-    $HP
-    $XP
+    [int]$HP
+    [int]$XP
 
     $Specialization
     $SpecializationBonus
@@ -67,9 +71,9 @@ class PlayerCharacter {
     hidden $dexlevel
     hidden $mindlevel
 
-    $MeleeFail
-    $RangedFail
-    $SpellFail
+    [int]$MeleeFail
+    [int]$RangedFail
+    [int]$SpellFail
 
     hidden [int] Roll ($dice) {
         $splitDice = $dice -split("d")
@@ -105,13 +109,13 @@ class PlayerCharacter {
         }
 
         $EquipStats = @(
-            "STR:Power",
-            "DEX:Speed",
-            "MIND:Wisdom",
+            "MeleeFail:Finesse",
+            "RangedFail:Accuracy",
+            "SpellFail:Wisdom",
             "MD:Hardening",
             "RD:Fleeting"
             "SD:Force"
-            "MeleeCMBase:Gutting",
+            "MeleeCMBase:Power",
             "RangedCMBase:Precision"
             "SpellCMBase:Elements"
         )
@@ -124,54 +128,37 @@ class PlayerCharacter {
             "ArmorSet",
             "SideArm",
             "MainRanged",
-            "MainMelee",
-            "GearSlot1","GearSlot2","GearSlot3","GearSlot4","GearSlot5","GearSlot6","GearSlot7",
-            "GearSlot8","GearSlot9","GearSlot10","GearSlot11","GearSlot12","GearSlot13",
-            "GearSlot14","GearSlot15","GearSlot16","GearSlot17","GearSlot18"
+            "MainMelee"
         )
 
-        $Bonus = (($this.SpecializationBonus) -split('\+|\-'))[0]
-        if ($this.SpecializationBonus -match "$Bonus\+(\d+)"){
-            $this."$Bonus" = [int]$this."$Bonus" + [int]$matches[1]
-        }
-        if ($this.SpecializationBonus -match "$Bonus\-(\d+)"){
-            $this."$Bonus" = [int]$this."$Bonus" - [int]$matches[1]
-        }
-
-        Foreach ($Stat in $EquipStats){
-            $Stat = ($Stat).split(":")
-            $StatName = $Stat[0]
-            $StatType = $Stat[1]
-
-            Foreach ($Type in $AllEquipmentTypes){
-                if ($this."$Type" -match "$($StatType)"){
-                    $this."$Type" -match " \+ (\d+)"
-                    $PlusAttribute = $matches[1]
-                    $CurrentAttribute = $this."$($StatName)"
-                    $this."$($StatName)" = $CurrentAttribute + $PlusAttribute
+        Foreach ($Type in $AllEquipmentTypes){
+            Foreach ($Stat in $EquipStats){
+                $matches = $null
+                $Stat = ($Stat).split(":")
+                $StatName = $Stat[0]
+                $StatType = $Stat[1]
+                
+                if ($this."$Type" -match "of $($StatType)"){
+                    $this."$Type" -match " \+ (?<Attrib>\d+)" | Out-Null
+                    $PlusAttribute = $matches['Attrib']
+                    if ($this."$($StatName)" -lt $PlusAttribute){
+                        $this."$($StatName)" = $PlusAttribute
+                    }
                 }
             }
         }
 
-        if ($this.ArmorSet -match "\[(\d+)\]"){$ArmorPR = $matches[1]}
-        else {$ArmorPR = 0}
-
-        if ($this.Shield -match "\[(\d+)\]"){$ShieldPR = $matches[1]}
-        else {$ShieldPR = 0}
-
-        switch ($this.TalentName){
-            "Well Rounded" {
-                $Low = 100
-                $LowName = ""
-                if ($this.str -lt $Low){$Low = $this.str ; $LowName = "str"}
-                if ($this.dex -lt $Low){$Low = $this.dex ; $LowName = "dex"}
-                if ($this.mind -lt $Low){$Low = $this.mind ; $LowName = "mind"}
-                $this."$($LowName)" = $this."$($LowName)" + 1
-            }
-            "Combat Training" {
-                $this.CMBase + ([math]::floor(.2 * $this.level)) + 1
-            }
+        $Bonus = (($this.SpecializationBonus) -split('\+|\-'))[0]
+        if ($this.SpecializationBonus -match "$Bonus\+(?<Spec>\d+)|$Bonus\-(?<Spec>\d+)"){
+            $this."$Bonus" = [int]$this."$Bonus" + [int]$matches['Spec']
         }
+
+        if ($this.ArmorSet -match "\[?<APR>(\d+)\]"){$ArmorPR = $matches['APR']}
+        else {$ArmorPR = 0}
+        
+        if ($this.Shield -match "\[(?<SPR>\d+)\]"){$ShieldPR = $matches['SPR']}
+        else {$ShieldPR = 0}
+        
         if ($this.dex -lt 0){$this.dex = 0}
         if ($this.str -lt 0){$this.str = 0}
         if ($this.mind -lt 0){$this.mind = 0}
@@ -186,13 +173,20 @@ class PlayerCharacter {
         $this.RangedCMBase = ($this.dex) + $this.RangedBase
         $this.SpellCMBase = ($this.mind) + $this.SpellCMBase
 
-        if ($this.SideArm -match "^Masterwork|^M\. "){$this.SideArmCMBase = $this.SideArmCMBase + 2}
-        if ($this.MainMelee -match "^Masterwork|^M\. "){$this.MeleeCMBase = $this.MeleeCMBase + 2}
-        if ($this.MainRanged -match "^Masterwork|^M\. "){$this.RangedCMBase = $this.RangedCMBase + 2}
+        If (!$this.Masterwork){
+            if ($this.SideArm,$this.MainMelee -match "^Masterwork|^M\. "){
+                $this.Str = $this.Str + 2; $this.MasterWork = $true
+            }
+            if ($this.MainRanged -match "^Masterwork|^M\. "){
+                $this.Dex = $this.Dex + 2; $this.Enchanted = $true
+            }
+        }
 
-        if ($this.SideArm -match "^Enchanted|^E\. "){$this.SpellCMBase = $this.SpellCMBase + 2}
-        if ($this.MainMelee -match "^Enchanted|^E\. "){$this.SpellCMBase = $this.SpellCMBase + 2}
-        if ($this.MainRanged -match "^Enchanted|^E\. "){$this.SpellCMBase = $this.SpellCMBase + 2}
+        If (!$this.Enchanting){
+            if ($this.SideArm,$this.MainMelee,$this.MainRanged -match "^Enchanted|^E\. "){
+                $this.Mind = $this.Mind + 2; $this.Enchanted = $true
+            }
+        }
 
         $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 4)
         $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
@@ -204,9 +198,9 @@ class PlayerCharacter {
         $this.RangedCM = "$RangedDmg+$($this.RangedCMBase)"
         $this.SpellCM = "$SpellDmg+$($this.SpellCMBase)"
 
-        $this.MeleeFail =  $this.MeleeFail + [math]::floor((25 - [int]$this.Str) + (([int]$ArmorPR +  [int]$ShieldPR) * 2))
-        $this.RangedFail = $this.RangedFail + [math]::floor((25 - [int]$this.Dex) + (([int]$ArmorPR + [int]$ShieldPR) * 2))
-        $this.SpellFail = $this.SpellFail + [math]::floor((25 - [int]$this.Mind) + (([int]$ArmorPR + [int]$ShieldPR) * 2))
+        $this.MeleeFail =  (-$this.MeleeFail) + [math]::floor((25 - $this.Str) + (($ArmorPR +  $ShieldPR) * 2))
+        $this.RangedFail = (-$this.RangedFail) + [math]::floor((25 - $this.Dex) + (($ArmorPR + $ShieldPR) * 2))
+        $this.SpellFail = (-$this.SpellFail) + [math]::floor((25 - $this.Mind) + (($ArmorPR + $ShieldPR) * 2))
 
         if ($this.MeleeFail -lt 0){$this.MeleeFail = 0}
         if ($this.RangedFail -lt 0){$this.RangedFail = 0}

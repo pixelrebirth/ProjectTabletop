@@ -114,14 +114,14 @@
 18:18:Alchemical*
 19:20:Wondrous Item
 -----
-1:2:of Power*
-3:4:of Speed*
+1:2:of Finesse*
+3:4:of Accuracy*
 5:6:of Wisdom*
 7:8:of Hardening*
 9:10:of Fleeting*
 11:12:of Force*
-13:14:of Bravery*
-15:16:of Gutting*
+13:14:of Decoration*
+15:16:of Power*
 17:18:of Precision*
 19:20:of Elements
 -----
