@@ -1,1 +1,1 @@
-.\New-PlayerCharacter.ps1 -PlayerName Test -NoPhotoshop
+.\New-PlayerCharacter.ps1 -PlayerName Test
