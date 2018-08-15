@@ -133,7 +133,7 @@ class PlayerCharacter {
         
         Foreach ($Type in $AllEquipmentTypes){
             Foreach ($Stat in $EquipStats){
-                $matches = $null
+                $Matches = $null
                 $Stat = ($Stat).split(":")
                 $StatName = $Stat[0]
                 $StatType = $Stat[1]
@@ -164,18 +164,21 @@ class PlayerCharacter {
             }
         }
         
+        $Matches = $null
         $Bonus = (($this.SpecializationBonus) -split('\+|\-'))[0]
         if ($this.SpecializationBonus -match "$Bonus\+(?<Spec>\d+)|$Bonus\-(?<Spec>\d+)"){
             $this."$Bonus" = [int]$this."$Bonus" + [int]$matches['Spec']
         }
         
-        if ($this.ArmorSet -match "\[?<APR>(\d+)\]"){
+        $Matches = $null
+        if ($this.ArmorSet -match "\[(?<APR>\d+)\]"){
             $ArmorPR = $matches['APR']
         }
         else {
             $ArmorPR = 0
         }
         
+        $Matches = $null
         if ($this.Shield -match "\[(?<SPR>\d+)\]"){
             $ShieldPR = $matches['SPR']
         }
@@ -194,14 +197,14 @@ class PlayerCharacter {
         $this.RD = $this.RD + $this.dex + $ArmorPR + $ShieldPR
         $this.SD = $this.SD + $this.mind + $ArmorPR + $ShieldPR
         
-        $this.SideArmCMBase = ($this.str) + $this.MeleeCMBase - 4
+        $this.SideArmCMBase = ($this.str) + $this.MeleeCMBase - 2
         $this.MeleeCMBase = ($this.str) + $this.MeleeCMBase
         $this.RangedCMBase = ($this.dex) + $this.RangedBase
         $this.SpellCMBase = ($this.mind) + $this.SpellCMBase
         
 
 
-        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 4)
+        $SideArmDmg = Get-DiceRollPerInteger -Integer $(($this.str) - 2)
         $MeleeDmg = Get-DiceRollPerInteger -Integer $($this.str)
         $RangedDmg = Get-DiceRollPerInteger -Integer $($this.dex)
         $SpellDmg = Get-DiceRollPerInteger -Integer $($this.mind)
