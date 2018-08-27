@@ -22,33 +22,11 @@ function Export-DungeonMasterSheet {
         }
         $count++
     }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MAJOR PLOT</div>"
-    "\page"
-
-    $onetime = $false
-    foreach ($eachlore in $blobdata.lore){
-        if ($eachlore.source -match "wikia" -and $onetime -eq $false){
-            $onetime = $true
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | HISTORY LORE</div>"
-            "\page"
-        }
-        "### $($eachlore.source)"
-        "$($eachlore.lore)"
-    }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | WIKIA LORE</div>"
-    "\page"
+    
     foreach ($type in @("Allies","Neutrals","Villains")){
         foreach ($character in $blobdata.$type){
             "<div class=`'wide`'>"
-            "### $($character.name) ($($character.Title))"
-            "#### $($character.race) - $($character.class) - Level $($character.level)"
-            
-            "||"
-            "|:-----|"
-            "|$($character.vitals)|"
-            "|$($character.stats.replace('| ',''))|"
-            "|$($character.Attack)|"
-            
+            "### $($character.name) ($($character.Title))"          
             "##### Quote"
             "$($character.Quote)"
             "##### Appearance"
@@ -69,121 +47,9 @@ function Export-DungeonMasterSheet {
         }
     }
 
-
-    "<div class=`'wide`'>"
-    ""
-    $MonsterProperties = @("CR","Name","Vitals","Speed","DamageCM")
-    $kitcount = 1
-    $count = 0
-    $AllGroups = @()
-    foreach ($monsterkit in $blobdata.monsterkits){
-        "### Monster Kit $kitcount"
-        foreach ($monster in $monsterkit.monstergroups){
-            $countgroup = $monster.count
-            foreach ($property in $MonsterProperties){
-                $MonsterProp += "|$property"
-                $MonsterCol += "|:-----"
-                $MonsterString += "|$($monster.$property)"
-            }
-            if ($count -eq 0){
-                "$MonsterProp|"
-                "$MonsterCol|"
-            }
-            "$MonsterString|"
-            
-            $MonsterString = ""
-            $count++
-        }
-        $count = 0
-        $MonsterProp = ""
-        $MonsterCol = ""
-        $kitcount++
-    }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MONSTER TABLES</div>"
-    "\page"
-
-    $count = 1
-    foreach ($monster in $blobdata.monsterkits.monstergroups | sort -property "Name" -unique){
-        "### $($monster.Name)"
-        "##### STRMOD $($monster.strmod), DEXMOD $($monster.dexmod), MINDMOD $($monster.mindmod)"
-        "#### Skills:"
-        "$($monster.skills)"
-        "#### Special Qualities:"
-        "$($monster.SpecialQualities)"
-        "#### Special Attacks:"
-        "$($monster.SpecialAttacks)"
-        "#### Notes:"
-        "$($monster.notes)"
-        "#### Image:"
-        "$($monster.image.replace('E:\Other\PS_Scripts\Personal\DnDMicroliteTools',''))"
-        if ($count -eq 5){
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MONSTER DESCRIPTION </div>"
-            "\page"
-            $count = 0
-        }
-        $count++
-    }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | MONSTER DESCRIPTION </div>"
-    "\page"
-
-    "<div class=`'wide`'>"
-    ""
-    $NPCProperties = @("Name","Vitals","Attack")
-    $kitcount = 1
-    $count = 0
-    foreach ($npckit in $blobdata.npckits){
-        "### NPC Kit $kitcount"
-        foreach ($npcgroup in $npckit.npcgroups){
-            $countgroup = $npcgroup.count
-            foreach ($property in $NPCProperties){
-                $npcProp += "|$property"
-                $npcCol += "|-----:"
-                $npcString += "|$($npcgroup.$property)"
-            }
-            if ($count -eq 0){
-                "$npcProp|"
-                "$npcCol|"
-            }
-            "$npcString|"
-            
-            $npcString = ""
-            $count++
-        }
-        $count = 0
-        $npcProp = ""
-        $npcCol = ""
-        $kitcount++
-    }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | NPC TABLES </div>"
-    "\page"
-
-    $count = 1
-    foreach ($npc in $blobdata.npckits.npcgroups | sort -property "Name" -unique){
-        $stats = $($npc.Stats) -split(', \| ')
-        "### $($npc.Name) ($($npc.race) Level $($npc.level))"        
-        "##### $($stats[0])"
-        "###### $($stats[1])"
-        "#### Class:"
-        "$($npc.Class)"
-        "#### Appearance:"
-        "$($npc.Appearance)"
-        if ($($npc.Traits) -ne $null){
-            "#### Traits:"
-            "$($npc.Traits)"
-        }
-        if ($count -eq 8){
-            "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | NPC DESCRIPTION </div>"
-            "\page"
-            $count=0
-        }
-        $count++
-    }
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | NPC DESCRIPTION </div>"
-    "\page"
-    
     $Count = 0
     "<div class=`'wide`'>"
-    '### Level 3 Treasure Rolls'
+    '### Levelled Treasure Rolls'
     "Roll | Items | Gold"
     "-----:|-----:|----:"
 
@@ -211,27 +77,6 @@ function Export-DungeonMasterSheet {
     "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | NAMES</div>"
     "\page"
     
-    "<div class=`'wide`'>"
-    "# Panic Locations"
-    Foreach ($Location in $BlobData.PanicLocations){
-        "### $($Location.name)"
-        
-        Get-Content -Path ./data/LocationUri.txt | Where {$_ -match "^$($Location.name),(.*)$"} | Out-Null
-        $uri = $Matches[1]
-
-        $GetLore = invoke-webrequest -uri "http://eberron.wikia.com$uri"
-        $Lore = $((($GetLore.ParsedHtml.body.outertext) -split('\n')) | where {$_.length -gt 100})
-
-        foreach ($line in $lore){
-            $ReducedLine = $($line -replace("^[A-Za-z ]+ Edit",""))
-            ""
-            "$ReducedLine"
-        }
-    }
-    "</div>"
-    "<div class='pageNumber auto'></div><div class='pageNumber'>1</div> <div class='footnote'>DM GUIDE | LOCATIONS</div>"
-    "\page"
-
     $count = 1
     "<div class=`'wide`'>"
     "# Vendors"

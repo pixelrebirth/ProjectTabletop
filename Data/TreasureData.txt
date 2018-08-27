@@ -19,7 +19,7 @@
 17:21:Average Lock*
 22:28:Good Lock*
 29:35:Superior Lock*
-36:40:Masterwork Manacles*
+36:40:Manacles*
 41:43:Scroll Case*
 44:46:Silk Rope (50 ft.)*
 47:50:Spyglass*
@@ -100,7 +100,7 @@
 7:8:Dart*
 9:10:Javelin*
 11:12:Longbow*
-13:14:Net*
+13:14:Whip*
 15:17:Shortbow*
 18:20:Sling
 -----
@@ -114,18 +114,16 @@
 18:18:Alchemical*
 19:20:Wondrous Item
 -----
-1:2:of Power*
-3:4:of Speed*
+1:2:of Finesse*
+3:4:of Accuracy*
 5:6:of Wisdom*
-7:8:of Endurance*
-9:10:of Shadow*
-11:12:of Brilliance*
-13:14:of Tongues*
-15:16:of Hunting*
-17:17:of Elements*
-18:18:of Hardening*
-19:19:of Bravery*
-20:20:of Gutting
+7:8:of Hardening*
+9:10:of Fleeting*
+11:12:of Force*
+13:14:of Haste*
+15:16:of Power*
+17:18:of Precision*
+19:20:of Elements
 -----
 01:10:1d10:10:Silver Ewer;Carved Bone Statuette;Ivory Statuette;Fine Gold Bracelet*
 11:25:3d6:10:Cloth of Gold Vestments;Black Velvet Mask with Citrines;Silver Chalice with Lapis Lazuli Gems*

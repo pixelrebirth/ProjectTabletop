@@ -1,0 +1,363 @@
+1. Entry Tunnel
+A rusted portcullis blocks this long tunnel, withanother raised and hidden beyond it. The down portculliscan be raised only from this area, but it cannotbe locked in the up position.
+ Arrow slits and murder holes along the length ofthe tunnel provide defenders with multiple angles ofattack. Anyone looking in through the arrow slits seesshadowy figures beyond (see below or the tacticalencounter).
+Tactical Encounter: Gatehouse (page 78).
+
+2. West Gatehouse
+Sand blown in through the southern arrow slitsspreads across the floor. Straw dummies have beenerected behind the arrow slits to give the illusion ofnumerous guardians.
+Tactical Encounter: Gatehouse.
+
+3. East Gatehouse
+Old weapons racks line the wall of this chamber. Therotting and rusted polearms they once held have beenused to arm more straw dummies.
+Tactical Encounter: Gatehouse.
+
+4. West Upper Gatehouse
+Bones scattered across the floor show where a desertpredator once laired in this chamber.
+Tactical Encounter: Gatehouse.
+
+5. East Upper Gatehouse
+A winch in this chamber once controlled the firstportcullis in area 1. However, it is rusted and broken,
+so that the portcullis cannot be raised from here orlocked in the down position.
+
+6. Southern Overlook
+This chamber allowed defenders to fire down throughmurder holes into the entry tunnel, or through arrowslits into the courtyard below. A working winch controlsthe second portcullis in area 1.
+Tactical Encounter: Gatehouse.
+
+7. West Guardhouse
+Stone benches and a rusted brazier mark this as aresting place for off-duty gate guards. Access to thenorthern overlook (area 19) is barred by a portcullisalong the passage to the north.
+The Lost Mines of Karak
+8. East Guardhouse
+This chamber is identical to area 7. A portcullis alongthe passage to the north blocks access to area 19.
+
+9. Courtyard
+This vast chamber features an arched ceiling supportedby massive carved columns. A portion of the ceiling hascollapsed, covering the floor here in wind-blown sandand creating an opening to the top of the basalt bluff.
+Tactical Encounter: Courtyard (page 80).
+
+10. Stables and Cart Storage
+Dusty bones, rotting wood, and bands of rusted ironare scattered across the floor here. These are theremains of the wide-wheeled wagons once used tohaul ore shipments across the desert and the mulesthat pulled them. A scattering of blue scales showwhere the behir has made this area its lair.
+
+11. Stable Master’s Quarters
+This chamber was taken over by the Warden. Arough bed built of scavenged wood sits against onewall, while the gnoll’s filthy and foul-smelling gear isstrewn across the room.
+
+12. Ore Storage
+Ore from the mines was stored here and made readyfor transport. Though the area is empty, the dustof the floor shows where crates have been movedthrough here recently (Perception DC 12).
+
+13. Entry Hall
+This corridor once guarded entry into the fortress’sgreat hall. Footprints show where numerous creatureshave recently passed this way.
+Tactical Encounter: Great Hall (page 83).
+
+14. West Guard Post
+This former guard chamber is the habitat of a sussurtree growing up from the cracked stone floor. See thetactical encounter for a description.
+Tactical Encounter: Great Hall.
+
+15. East Guard Post
+Like area 14, this chamber is empty except for a pairof sussur trees growing through the stone of the floor.
+Tactical Encounter: Great Hall.
+
+16. Great Hall
+The dwarves of Karak once feasted here before thehigh seat of their mine-thane. This chamber is nowthe lair of an evil dryad who has raised a grove ofsussur trees within it.
+Tactical Encounter: Great Hall.
+
+17. Kitchen
+This chamber now serves as the den of a pair of cacklefiendhyenas. An open well accesses a cistern filledwith drinkable water.
+Tactical Encounter: Great Hall.
+
+18. Larder
+A layer of rot and mold surrounds the roots of a lonesussur tree.
+Tactical Encounter: Great Hall.
+
+19. Northern Overlook
+This defensive position commanded a view of thecourtyard below. Along its northern wall were thequarters of the mine-thane, the clan accountant, andthe head of the guard, as well as a private latrine. Thepersonal chambers have long since been stripped ofany valuables. As well as being easily defensible, this area is freeof the stench and squalor that fills much of the rest ofthe fortress. It makes a good place for the PCs to takean extended rest.
+Tactical Encounter: Foiled Ambush (page 86).
+
+20. Alehouse
+This storage area contains only a few dry andsplintered kegs.
+
+21. Smithy
+Cold forges and dusty anvils show where dwarf smithsrepaired and crafted the mine’s weapons and tools.
+
+22. Coal Storage
+Dusty lumps of anthracite are scattered across thefloor here, a pair of rusted shovels set against the wall.
+
+23. Guard Hal
+lThis wide hall blocks access to the fortress’s lowerlevel with a portcullis controlled from the barracks.
+The desert brigands who occupy the fortress havefilled this area with supplies taken from caravansthey have attacked. A rusted iron statue of a dwarfminer stands on the stairwell landing below.
+Tactical Encounter: Guard Hall (page 81).
+
+69October 2008 | DUNGEON 159
+24. Latrine
+This privy contains nothing of interest or use.
+Tactical Encounter: Guard Hall.
+
+25. Barracks
+The miners, crafters, and guards of the Karak Lodelived in this area, while the smaller side chamberhoused shift-captains. Six stone bunks stand here,
+along with roughly made wooden tables, benches,
+and chairs.
+Tactical Encounter: Guard Hall.
+
+26. Lower Guard Hall
+This locked door controlled access to the fortress’slower level.
+Tactical Encounter: Guard Hall.
+
+27. Lower Guard Post
+When the fortress was occupied, guards here maintaineda watch through the arrow slit looking out ontothe hall.
+Tactical Encounter: Guard Hall.
+
+28. Guardroom
+A squad of guards watched over the empty cells inarea 29—actually the secret entrance to the minesbelow.
+
+29. Dungeon
+Four cells with barred portcullis doors are emptyexcept for stone cots and manacles set into the walls.
+Set within the floor of one of the cells is the onlyentrance to the Karak Lode, but it cannot be detectedfrom this side as long as it is closed. See the “FoiledAmbush” tactical encounter (page 86) for moreinformation.
+
+30. Storerooms
+These chambers once held supplies for the maintenanceand upkeep of the fortress. A fine layer ofmoldy debris is all that remains
+
+31. Crypts
+The dwarves of Ironfell interred their dead here. Thevaults were half filled (mostly with victims of miningaccidents or folk who died in the desert) by the timethe mine was abandoned.
+Tactical Encounter: Crypts (page 85).
+The ancient halls of the Karak lode remain essentially
+unchanged since the days of the dwarves.
+ Illumination: Unless otherwise noted, there is no
+illumination within the fortress.
+Walls, Floors, and Ceilings: The interior spaces
+of the fortress are constructed of close-fitted stone
+(DC 20 to climb). Ceilings are 20 feet high except as
+noted.
+Portals: Rusted iron portcullises bar the way
+into the fortress. See individual encounter areas for
+specific information on raising and lowering the
+portcullises.
+ All doors within the complex are of sturdy wood
+(Strength DC 16 to break open if locked).
+ Except for the main gates (which are barred), all
+the doors within the complex, as well as the portcullises,
+can be opened or activated by the touch of
+an Ironfell signet ring (a minor action). The curse
+chanter in the “Foiled Ambush” encounter (page
+86) carries an Ironfell signet ring, as does the real
+Queen Shephatiah (the “Queen’s Retinue” encounter,
+page 92).
+Rot and Debris: With the exception of area 19,
+much of the fortress has been given over to filth and
+decay. Rubble and the dry-rotted remains of furniture
+are spread across the floors, and the walls are stained
+with condensation and mildew. In the year since
+Karak was reoccupied, Shephatiah’s followers have
+discarded rotten food and other filth in the areas they
+do not inhabit.
+1. Entry Tunnel
+A rusted portcullis blocks this long tunnel, with
+another raised and hidden beyond it. The down portcullis
+can be raised only from this area, but it cannot
+be locked in the up position.
+ Arrow slits and murder holes along the length of
+the tunnel provide defenders with multiple angles of
+attack. Anyone looking in through the arrow slits sees
+shadowy figures beyond (see below or the tactical
+encounter).
+Tactical Encounter: Gatehouse (page 78).
+2. West Gatehouse
+Sand blown in through the southern arrow slits
+spreads across the floor. Straw dummies have been
+erected behind the arrow slits to give the illusion of
+numerous guardians.
+Tactical Encounter: Gatehouse.
+3. East Gatehouse
+Old weapons racks line the wall of this chamber. The
+rotting and rusted polearms they once held have been
+used to arm more straw dummies.
+Tactical Encounter: Gatehouse.
+4. West Upper Gatehouse
+Bones scattered across the floor show where a desert
+predator once laired in this chamber.
+Tactical Encounter: Gatehouse.
+5. East Upper Gatehouse
+A winch in this chamber once controlled the first
+portcullis in area 1. However, it is rusted and broken,
+so that the portcullis cannot be raised from here or
+locked in the down position.
+6. Southern Overlook
+This chamber allowed defenders to fire down through
+murder holes into the entry tunnel, or through arrow
+slits into the courtyard below. A working winch controls
+the second portcullis in area 1.
+Tactical Encounter: Gatehouse.
+7. West Guardhouse
+Stone benches and a rusted brazier mark this as a
+resting place for off-duty gate guards. Access to the
+northern overlook (area 19) is barred by a portcullis
+along the passage to the north.
+The Lost Mines of Karak
+67
+October 2008 | DUNGEON 159
+8. East Guardhouse
+This chamber is identical to area 7. A portcullis along
+the passage to the north blocks access to area 19.
+9. Courtyard
+This vast chamber features an arched ceiling supported
+by massive carved columns. A portion of the ceiling has
+collapsed, covering the floor here in wind-blown sand
+and creating an opening to the top of the basalt bluff.
+Tactical Encounter: Courtyard (page 80).
+10. Stables and Cart Storage
+Dusty bones, rotting wood, and bands of rusted iron
+are scattered across the floor here. These are the
+remains of the wide-wheeled wagons once used to
+haul ore shipments across the desert and the mules
+that pulled them. A scattering of blue scales show
+where the behir has made this area its lair.
+11. Stable Master’s Quarters
+This chamber was taken over by the Warden. A
+rough bed built of scavenged wood sits against one
+wall, while the gnoll’s filthy and foul-smelling gear is
+strewn across the room.
+12. Ore Storage
+Ore from the mines was stored here and made ready
+for transport. Though the area is empty, the dust
+of the floor shows where crates have been moved
+through here recently (Perception DC 12).
+13. Entry Hall
+This corridor once guarded entry into the fortress’s
+great hall. Footprints show where numerous creatures
+have recently passed this way.
+Tactical Encounter: Great Hall (page 83).
+14. West Guard Post
+This former guard chamber is the habitat of a sussur
+tree growing up from the cracked stone floor. See the
+tactical encounter for a description.
+Tactical Encounter: Great Hall.
+15. East Guard Post
+Like area 14, this chamber is empty except for a pair
+of sussur trees growing through the stone of the floor.
+Tactical Encounter: Great Hall.
+68
+October 2008 | DUNGEON 159
+16. Great Hall
+The dwarves of Karak once feasted here before the
+high seat of their mine-thane. This chamber is now
+the lair of an evil dryad who has raised a grove of
+sussur trees within it.
+Tactical Encounter: Great Hall.
+17. Kitchen
+This chamber now serves as the den of a pair of cacklefiend
+hyenas. An open well accesses a cistern filled
+with drinkable water.
+Tactical Encounter: Great Hall.
+18. Larder
+A layer of rot and mold surrounds the roots of a lone
+sussur tree.
+Tactical Encounter: Great Hall.
+19. Northern Overlook
+This defensive position commanded a view of the
+courtyard below. Along its northern wall were the
+quarters of the mine-thane, the clan accountant, and
+the head of the guard, as well as a private latrine. The
+personal chambers have long since been stripped of
+any valuables.
+ As well as being easily defensible, this area is free
+of the stench and squalor that fills much of the rest of
+the fortress. It makes a good place for the PCs to take
+an extended rest.
+Tactical Encounter: Foiled Ambush (page 86).
+20. Alehouse
+This storage area contains only a few dry and
+splintered kegs.
+21. Smithy
+Cold forges and dusty anvils show where dwarf smiths
+repaired and crafted the mine’s weapons and tools.
+22. Coal Storage
+Dusty lumps of anthracite are scattered across the
+floor here, a pair of rusted shovels set against the wall.
+23. Guard Hall
+This wide hall blocks access to the fortress’s lower
+level with a portcullis controlled from the barracks.
+The desert brigands who occupy the fortress have
+filled this area with supplies taken from caravans
+they have attacked. A rusted iron statue of a dwarf
+miner stands on the stairwell landing below.
+Tactical Encounter: Guard Hall (page 81).
+The Lost Mines of Karak
+69
+October 2008 | DUNGEON 159
+24. Latrine
+This privy contains nothing of interest or use.
+Tactical Encounter: Guard Hall.
+25. Barracks
+The miners, crafters, and guards of the Karak Lode
+lived in this area, while the smaller side chamber
+housed shift-captains. Six stone bunks stand here,
+along with roughly made wooden tables, benches,
+and chairs.
+Tactical Encounter: Guard Hall.
+26. Lower Guard Hall
+This locked door controlled access to the fortress’s
+lower level.
+Tactical Encounter: Guard Hall.
+27. Lower Guard Post
+When the fortress was occupied, guards here maintained
+a watch through the arrow slit looking out onto
+the hall.
+Tactical Encounter: Guard Hall.
+28. Guardroom
+A squad of guards watched over the empty cells in
+area 29—actually the secret entrance to the mines
+below.
+29. Dungeon
+Four cells with barred portcullis doors are empty
+except for stone cots and manacles set into the walls.
+Set within the floor of one of the cells is the only
+entrance to the Karak Lode, but it cannot be detected
+from this side as long as it is closed. See the “Foiled
+Ambush” tactical encounter (page 86) for more
+information.
+30. Storerooms
+These chambers once held supplies for the maintenance
+and upkeep of the fortress. A fine layer of
+moldy debris is all that remains
+31. Crypts
+The dwarves of Ironfell interred their dead here. The
+vaults were half filled (mostly with victims of mining
+accidents or folk who died in the desert) by the time
+the mine was abandoned.
+Tactical Encounter: Crypts (page 85).
+The Lost Mines of Karak
+70
+October 2008 | DUNGEON 159
+THE BIRDMAN
+When the PCs first explore area 29, they find one
+of the cells with a prisoner recently captured by a
+patrol.
+This ancient dungeon shows signs of recent use, with scuff
+marks along the floor indicating traffic in both directions.
+Four large cells stand in the center of the chamber, the
+entrance of each blocked by a lowered portcullis controlled
+by a nearby winch and pulley. From the darkness
+ahead comes a bright chirping sound.
+The southwest cell is occupied by an aged human
+male, his lined face sporting a snow-white beard to
+match his fringe of hair. He wears the garb of a simple
+desert peasant, and appears to have not been here
+long. Seven yellow canaries perch on his shoulders
+and hop around his cell. The Birdman whistles and
+chirps at his tiny charges. If spoken to, he simply nods
+and smiles.
+ The prisoner offers no resistance and allows himself
+to be led about by the PCs. If any survivors from
+the fortress are questioned, they state that the Birdman
+is a simple-minded peasant found wandering the
+desert not far from Dunesend a few days before. He
+was captured and brought here to feed the behir.
+ The Birdman wanders those areas of the fortress
+already cleared out by the PCs, hiding from any subsequent
+combat. He accepts food and water if it is
+offered, smiling if spoken to but otherwise ignoring
+the party.
+ The Birdman plays a role in the aftermath of the
+“Foiled Ambush” encounter (page 86)
+THE BIRDMANWhen the PCs first explore area 29, they find oneof the cells with a prisoner recently captured by apatrol.
+This ancient dungeon shows signs of recent use, with scuffmarks along the floor indicating traffic in both directions.
+Four large cells stand in the center of the chamber, theentrance of each blocked by a lowered portcullis controlledby a nearby winch and pulley. From the darknessahead comes a bright chirping sound.
+The southwest cell is occupied by an aged humanmale, his lined face sporting a snow-white beard tomatch his fringe of hair. He wears the garb of a simpledesert peasant, and appears to have not been herelong. Seven yellow canaries perch on his shouldersand hop around his cell. The Birdman whistles andchirps at his tiny charges. If spoken to, he simply nodsand smiles.
+ The prisoner offers no resistance and allows himselfto be led about by the PCs. If any survivors fromthe fortress are questioned, they state that the Birdmanis a simple-minded peasant found wandering thedesert not far from Dunesend a few days before. Hewas captured and brought here to feed the behir.
+ The Birdman wanders those areas of the fortressalready cleared out by the PCs, hiding from any subsequentcombat. He accepts food and water if it isoffered, smiling if spoken to but otherwise ignoringthe party.
