@@ -1,0 +1,3 @@
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\cs.csproj.CoreCompileInputs.cache
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\cs.AssemblyInfoInputs.cache
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\cs.AssemblyInfo.cs

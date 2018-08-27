@@ -1,0 +1,8 @@
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\Character.csproj.CoreCompileInputs.cache
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\Character.AssemblyInfoInputs.cache
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\Character.AssemblyInfo.cs
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\bin\Debug\netstandard2.0\Character.deps.json
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\bin\Debug\netstandard2.0\Character.dll
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\bin\Debug\netstandard2.0\Character.pdb
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\Character.dll
+E:\Other\PS_Scripts\Personal\DnDMicroliteTools\cs\obj\Debug\netstandard2.0\Character.pdb
