@@ -163,32 +163,4 @@ In your mind you hear a deep telepathic voice boom, "When the mountain weeps wit
 
 \page
 
-### The Walled Citadel of Thatelch Delve
-
-The wall is far more impressive in person than in stories. The wall is perfectly carved out of mountain and the entryway is simply massive.
-
-<img 
-  src='https://i.pinimg.com/564x/09/b9/7c/09b97cd48424fdcb873449cdaf17c6a9.jpg' 
-style='height:400px' />
-
-You approach the wall with little caution as there is nothing nearby and turning the corner to see what is inside the opening you simply see stairs, clearly you can see down them about 30 flights.
-
-There is a guardian of some sort standing stoic and unmoving.
-
-<img 
-  src='https://i.pinimg.com/564x/36/2c/e0/362ce09f3bf8a52d0afb8e776b5912e6.jpg' 
-style='height:350px' />
-
-Attempting to get close will cause the guardian to ready himself.
-
-* Superior Sentinel Synergist
-
-Upon defeating him you will find a strange looking key with odd writing.
-
-<img 
-  src='https://3.bp.blogspot.com/-KYi1D0PrKXE/VvryAXO4OpI/AAAAAAAACFY/H4RAVLpNpoUKkXL1tUDXP55WbJvCjM-5g/s1600/2%2B%25284%2529.jpg' 
-style='height:200px' />
-
-> Wing it with the mine of karak. Get badass hammer. End game.
-
 ==== Session End ====
