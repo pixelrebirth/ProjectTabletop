@@ -6,26 +6,27 @@ class Character {
 
     [int] $Movement = 3
     [int] $Health = $this.RndModifier*(20-$this.BaseDefense)
+    [int] $Defense = $this.BaseDefense
+    [int] $Will
 }
 
 class Npc : Character {
     hidden $EquipmentModifier
     hidden [int] $Points
     [int] $Difficulty
+    
+    $Melee
+    $Ranged
+    $Magic
+    
     [int] $Equipment
-
-    [int] $Melee
-    [int] $Ranged
-    [int] $Magic
-    [int] $Will
-    [int] $Defense
     
     Npc ($Difficulty) {
         $this.Difficulty = $Difficulty
         $this.EquipmentModifier = $this.Difficulty
         $this.Points = ($this.Difficulty*$this.PointsPerDifficulty)+$this.BasePoints
         
-        $PropertyArray = ("Melee","Ranged","Magic","Will","Defense","Movement","Health")
+        [System.Collections.ArrayList]$PropertyArray = ("Melee","Ranged","Magic","Will","Will","Defense","Defense","Movement","Health")
         $AllValues = @()
         while ($AllValues.count -gt 7 -OR $AllValues.count -lt 3){
             $AllValues = $this.Get_PointDistributionArray()
@@ -38,8 +39,32 @@ class Npc : Character {
             if ($Value - $Difficulty -gt $this.Equipment){
                 $this.Equipment = $Value - $Difficulty
             }
+            1..2 | foreach {$PropertyArray.Remove("$Property")}
         }
+        $MeleeArray = ("0H","1H","1H+1H","2H","2H+")
+        $RangedArray = ("SR","MR","LR")
+        $MagicArray = ("EM","LM","DM")
+        if ($this.Melee -gt 0){
+            $Random = Get-Random -min 0 -max $MeleeArray.count
+            $MeleeType = $MeleeArray[$Random]
+            $this.Melee = "$MeleeType [$($this.melee)]"
+        }
+        if ($this.Melee -eq 0){$this.melee = "-"}
+        if ($this.Ranged -gt 0){
+            $Random = Get-Random -min 0 -max $RangedArray.count
+            $RangedType = $RangedArray[$Random]
+            $this.Ranged = "$RangedType [$($this.Ranged)]"
+        }
+        if ($this.Melee -eq 0){$this.melee = "-"}
+        if ($this.Magic -gt 0){
+            $Random = Get-Random -min 0 -max $MagicArray.count
+            $MagicType = $MagicArray[$Random]
+            $this.Magic = "$MagicType [$($this.Magic)]"
+        }
+        if ($this.Melee -eq 0){$this.melee = "-"}
     }
+    
+    
     [array] Get_PointDistributionArray () {
         $AllValues = @()
         $TotalValue = $this.Points
@@ -49,7 +74,7 @@ class Npc : Character {
         $count = 0
         while ($TotalValue -gt 0 -or $AllValues.count -lt 7){
             $count++
-            [int] $CalculatedValue = Get-Random -min 1 -max $this.Points
+            [int] $CalculatedValue = Get-Random -min 1 -max 18
             if ($CalculatedValue -le $this.Difficulty+$this.EquipmentModifier){
                 $RemainingValue = $TotalValue - $CalculatedValue
                 if ($RemainingValue -ge 0){
