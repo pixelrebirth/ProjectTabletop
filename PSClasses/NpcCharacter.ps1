@@ -43,7 +43,6 @@ class Npc : Character {
         }
         $MeleeArray = ("0H","1H","1H+1H","2H","2H+")
         $RangedArray = ("SR","MR","LR")
-        $MagicArray = ("EM","LM","DM")
         if ($this.Melee -gt 0){
             $Random = Get-Random -min 0 -max $MeleeArray.count
             $MeleeType = $MeleeArray[$Random]
@@ -55,13 +54,6 @@ class Npc : Character {
             $RangedType = $RangedArray[$Random]
             $this.Ranged = "$RangedType [$($this.Ranged)]"
         }
-        if ($this.Melee -eq 0){$this.melee = "-"}
-        if ($this.Magic -gt 0){
-            $Random = Get-Random -min 0 -max $MagicArray.count
-            $MagicType = $MagicArray[$Random]
-            $this.Magic = "$MagicType [$($this.Magic)]"
-        }
-        if ($this.Melee -eq 0){$this.melee = "-"}
     }
     
     
@@ -95,4 +87,4 @@ class Npc : Character {
         $output = New-Object Npc($Difficulty)
         $output
     }
-} | ft *
+}
