@@ -1,90 +1,88 @@
 class Character {
-    hidden [int] $BaseDefense = 10
-    hidden [int] $RndModifier = 2
+    hidden [int] $BaseDefense = 8
     hidden [int] $PointsPerDifficulty = 5
     hidden [int] $BasePoints = 10
 
-    [int] $Movement = 3
-    [int] $Health = $this.RndModifier*(20-$this.BaseDefense)
+    [int] $Movement = 6
     [int] $Defense = $this.BaseDefense
-    [int] $Will
+    [int] $Tactics
 }
 
 class Npc : Character {
-    hidden $EquipmentModifier
-    hidden [int] $Points
+    $Type
+    $Style
     [int] $Difficulty
-    
-    $Melee
-    $Ranged
+    $Offense
     $Magic
-    
-    [int] $Equipment
-    
-    Npc ($Difficulty) {
+
+    Npc ($Difficulty, $Type){
         $this.Difficulty = $Difficulty
-        $this.EquipmentModifier = $this.Difficulty
-        $this.Points = ($this.Difficulty*$this.PointsPerDifficulty)+$this.BasePoints
-        
-        [System.Collections.ArrayList]$PropertyArray = ("Melee","Ranged","Magic","Will","Will","Defense","Defense","Movement","Health")
-        $AllValues = @()
-        while ($AllValues.count -gt 7 -OR $AllValues.count -lt 3){
-            $AllValues = $this.Get_PointDistributionArray()
-        }
-        #TODO Randomize property array and assign a number from the $AllValues array
-        foreach ($Value in $AllValues){
-            $Random = Get-Random -min 0 $PropertyArray.count
-            $Property = $PropertyArray[$Random]
-            $this."$Property" += $Value
-            if ($Value - $Difficulty -gt $this.Equipment){
-                $this.Equipment = $Value - $Difficulty
+        $this.Type = $Type
+
+        switch ($Type) {
+            "Generalist" {
+                $this.Set_Stats(.33,.33,.33)
             }
-            1..2 | foreach {$PropertyArray.Remove("$Property")}
+            "Offensive" {
+                $this.Set_Stats(.50,.30,.20)
+            }
+            "Defensive" {
+                $this.Set_Stats(.30,.50,.20)
+            }
+            "Tactical" {
+                $this.Set_Stats(.30,.20,.50)
+            }
         }
-        $MeleeArray = ("0H","1H","1H+1H","2H","2H+")
-        $RangedArray = ("SR","MR","LR")
-        if ($this.Melee -gt 0){
-            $Random = Get-Random -min 0 -max $MeleeArray.count
-            $MeleeType = $MeleeArray[$Random]
-            $this.Melee = "$MeleeType [$($this.melee)]"
+
+        [System.Collections.ArrayList]$MagicTechniques = ("Cr","Co","De","Tr","Pe")
+        [System.Collections.ArrayList]$MagicForms = ("An","Ai","Wa","Bo","Pl","Fi","Mi","Ea","Sp","Im")
+        
+        $Max = [math]::ceiling($this.Offense / 5)
+        if ($Max -gt 5){$Max = 5}
+
+        1..$Max | foreach {
+            if ($MagicTechniques.count -le 1){
+                $RandomNumber = 0
+            }
+            else {
+                $RandomNumber = Get-Random -min 0 -max $($MagicTechniques.count-1)
+            }
+
+            $this.Magic += "$($MagicTechniques[$RandomNumber]) "
+            $MagicTechniques.Remove($MagicTechniques[$RandomNumber])
+            Start-Sleep -Milliseconds 50
         }
-        if ($this.Melee -eq 0){$this.melee = "-"}
-        if ($this.Ranged -gt 0){
-            $Random = Get-Random -min 0 -max $RangedArray.count
-            $RangedType = $RangedArray[$Random]
-            $this.Ranged = "$RangedType [$($this.Ranged)]"
+        
+        $Max = [math]::ceiling($this.Offense / 3)
+        $this.Magic = $this.Magic.trim() + "; "
+        1..$Max | foreach {
+            if ($MagicForms.count -le 1){
+                $RandomNumber = 0
+            }
+            else {
+                $RandomNumber = Get-Random -min 0 -max $($MagicForms.count-1)
+            }
+
+            $this.Magic += "$($MagicForms[$RandomNumber]) "
+            $MagicForms.Remove($MagicForms[$RandomNumber])
+            Start-Sleep -Milliseconds 5
         }
+        
+        $this.Magic = $this.Magic.trim()
     }
-    
-    
-    [array] Get_PointDistributionArray () {
-        $AllValues = @()
-        $TotalValue = $this.Points
-        $CalculatedValue = 0
-        $RemainingValue = 0
-        
-        $count = 0
-        while ($TotalValue -gt 0 -or $AllValues.count -lt 7){
-            $count++
-            [int] $CalculatedValue = Get-Random -min 1 -max 18
-            if ($CalculatedValue -le $this.Difficulty+$this.EquipmentModifier){
-                $RemainingValue = $TotalValue - $CalculatedValue
-                if ($RemainingValue -ge 0){
-                    $TotalValue = $RemainingValue
-                    $AllValues += $CalculatedValue
-                }
-            }
-            if ($Count -gt 100){
-                break
-            }
-        }
-        return $AllValues
+
+    [void] Set_Stats ([decimal]$Offense, [decimal]$Defense, [decimal]$Tactics){
+        $PointsTotal = ($this.PointsPerDifficulty * $this.Difficulty) + $this.Difficulty
+
+        $this.Offense = [math]::Ceiling($PointsTotal * $Offense)
+        $this.Defense = $this.Defense + [math]::Ceiling($PointsTotal * $Defense)
+        $this.Tactics = [math]::Ceiling($PointsTotal * $Tactics)
     }
 }
-1..7 | % {
-    $Difficulty = $_
-    1..10 | % {
-        $output = New-Object Npc($Difficulty)
-        $output
-    }
-}
+
+    "Generalist","Offensive","Defensive","Tactical" | foreach {
+        $Type = $_
+        1..7 | % {
+            New-Object Npc($_, $Type)
+        }
+    } | Select "Type","Difficulty","Offense","Defense","Tactics","Movement","Magic" | sort Difficulty,Type | ft
