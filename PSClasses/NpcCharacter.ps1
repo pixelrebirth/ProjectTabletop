@@ -37,38 +37,12 @@ class Npc : Character {
         [System.Collections.ArrayList]$MagicTechniques = ("Cr","Co","De","Tr","Pe")
         [System.Collections.ArrayList]$MagicForms = ("An","Ai","Wa","Bo","Pl","Fi","Mi","Ea","Sp","Im")
         
-        $Max = [math]::ceiling($this.Offense / 5)
+        $Max = [math]::ceiling($this.Offense / 5) + 1
         if ($Max -gt 5){$Max = 5}
-
-        1..$Max | foreach {
-            if ($MagicTechniques.count -le 1){
-                $RandomNumber = 0
-            }
-            else {
-                $RandomNumber = Get-Random -min 0 -max $($MagicTechniques.count-1)
-            }
-
-            $this.Magic += "$($MagicTechniques[$RandomNumber]) "
-            $MagicTechniques.Remove($MagicTechniques[$RandomNumber])
-            Start-Sleep -Milliseconds 50
-        }
+        $this.Magic = "$Max-"
         
-        $Max = [math]::ceiling($this.Offense / 3)
-        $this.Magic = $this.Magic.trim() + "; "
-        1..$Max | foreach {
-            if ($MagicForms.count -le 1){
-                $RandomNumber = 0
-            }
-            else {
-                $RandomNumber = Get-Random -min 0 -max $($MagicForms.count-1)
-            }
-
-            $this.Magic += "$($MagicForms[$RandomNumber]) "
-            $MagicForms.Remove($MagicForms[$RandomNumber])
-            Start-Sleep -Milliseconds 5
-        }
-        
-        $this.Magic = $this.Magic.trim()
+        $Max = [math]::ceiling($this.Offense / 3) + 1
+        $this.Magic += "$Max"
     }
 
     [void] Set_Stats ([decimal]$Offense, [decimal]$Defense, [decimal]$Tactics){
