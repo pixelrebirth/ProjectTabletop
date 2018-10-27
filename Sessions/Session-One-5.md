@@ -30,3 +30,4 @@ Thum strikes out and says __"That was Denethor, and Old King of Thatelch. He was
 __"I wonder what its purpose is, what could it possibly mean to have the gift of ancient sight of doom and chaos. Why would this cause us ill."__ -Ilboc
 
 > The party will take light wounds if they leave it behind anywhere for each square past 20.
+
